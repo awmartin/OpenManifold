@@ -1,0 +1,903 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DDD582C0DA1D0D100B32029 /* OpenManifoldDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58280DA1D0D100B32029 /* OpenManifoldDocument.xib */; };
+		1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD582A0DA1D0D100B32029 /* MainMenu.xib */; };
+		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
+		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
+		8D15AC310486D014006FF6A4 /* OpenManifoldDocument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* OpenManifoldDocument.mm */; settings = {ATTRIBUTES = (); }; };
+		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		AF08776B1029E8CE00162631 /* Rule.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08776A1029E8CE00162631 /* Rule.mm */; };
+		AF087864102A1FB800162631 /* RuleEqualPosition.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087863102A1FB800162631 /* RuleEqualPosition.mm */; };
+		AF087867102A251E00162631 /* RuleMaintainOffset.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087866102A251E00162631 /* RuleMaintainOffset.mm */; };
+		AF08795C102A345C00162631 /* RuleMaintainDistance.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08795B102A345C00162631 /* RuleMaintainDistance.mm */; };
+		AF087AF7102A643700162631 /* gear.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF087AF6102A643700162631 /* gear.icns */; };
+		AF1E39C21025320300963DF5 /* OpenManifold Help in Resources */ = {isa = PBXBuildFile; fileRef = AF1E39C01025320300963DF5 /* OpenManifold Help */; };
+		AF1E40B21027A31A00963DF5 /* Manipulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E40B11027A31A00963DF5 /* Manipulator.mm */; };
+		AF1E45641028AC3B00963DF5 /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45631028AC3B00963DF5 /* FlatView.m */; };
+		AF1E456A1028ADDD00963DF5 /* ScriptsBrowserPanelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45691028ADDD00963DF5 /* ScriptsBrowserPanelController.mm */; };
+		AF1E456C1028AF6500963DF5 /* ScriptsBrowserPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E456B1028AF6500963DF5 /* ScriptsBrowserPanel.xib */; };
+		AF1E45711028B0DD00963DF5 /* ScriptsBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E456E1028B0DD00963DF5 /* ScriptsBrowserCell.m */; };
+		AF1E45721028B0DD00963DF5 /* ScriptsNodeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45701028B0DD00963DF5 /* ScriptsNodeInfo.m */; };
+		AF1E4702102914D500963DF5 /* save.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF1E4701102914D500963DF5 /* save.icns */; };
+		AF1E474710291F8B00963DF5 /* info.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF1E474610291F8B00963DF5 /* info.icns */; };
+		AF1E474E1029226900963DF5 /* OpenManifoldDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E474D1029226900963DF5 /* OpenManifoldDocumentController.m */; };
+		AF1E4755102922A300963DF5 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4750102922A300963DF5 /* PreferencesController.m */; };
+		AF1E4756102922A300963DF5 /* PreferencesModuleGeneralController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4752102922A300963DF5 /* PreferencesModuleGeneralController.m */; };
+		AF1E4757102922A300963DF5 /* PreferencesModuleMobileMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4754102922A300963DF5 /* PreferencesModuleMobileMeController.m */; };
+		AF1E475B1029250D00963DF5 /* PreferencesGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E47591029250D00963DF5 /* PreferencesGeneral.xib */; };
+		AF1E475C1029250D00963DF5 /* PreferencesMobileMe.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E475A1029250D00963DF5 /* PreferencesMobileMe.xib */; };
+		AF1E47EA10293FBE00963DF5 /* DiagramPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E47E910293FBE00963DF5 /* DiagramPanel.xib */; };
+		AF1E47F91029435E00963DF5 /* DiagramPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E47F81029435E00963DF5 /* DiagramPanelController.m */; };
+		AF1E48171029448500963DF5 /* DiagramView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E48161029448500963DF5 /* DiagramView.mm */; };
+		AF1F479D102FF4BC0013EC31 /* Behavior.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1F479C102FF4BC0013EC31 /* Behavior.mm */; };
+		AF1F4AD0103204AB0013EC31 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF1F4ACF103204AB0013EC31 /* DefaultPreferences.plist */; };
+		AF24C3FC101787AF007A1B31 /* CustomOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C3FB101787AF007A1B31 /* CustomOpenGLView.m */; };
+		AF24C41110178875007A1B31 /* PerspectiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C41010178875007A1B31 /* PerspectiveView.m */; };
+		AF24C4131017894E007A1B31 /* libopennurbs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4121017894E007A1B31 /* libopennurbs.a */; };
+		AF24C4151017896D007A1B31 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4141017896D007A1B31 /* OpenGL.framework */; };
+		AF24C4561017898B007A1B31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4551017898B007A1B31 /* CoreFoundation.framework */; };
+		AF24C45B101789D8007A1B31 /* opennurbs_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24C457101789D8007A1B31 /* opennurbs_interface.cpp */; };
+		AF24C46010178A16007A1B31 /* opennurbs_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24C45F10178A16007A1B31 /* opennurbs_gl.cpp */; };
+		AF24C46310178C08007A1B31 /* ObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C46210178C08007A1B31 /* ObjectView.m */; };
+		AF24C47410179A74007A1B31 /* MainDocumentView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF24C47310179A74007A1B31 /* MainDocumentView.mm */; };
+		AF24C5951017A286007A1B31 /* Part.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF24C5941017A286007A1B31 /* Part.mm */; };
+		AF24CA2A1018E8F2007A1B31 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24CA291018E8F2007A1B31 /* Geometry.cpp */; };
+		AF284B66102E95CC000C1C1B /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = AF284B65102E95CC000C1C1B /* Animator.m */; };
+		AF5A7A7C104C5BAE00BF16B4 /* PythonController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF5A7A7B104C5BAE00BF16B4 /* PythonController.mm */; };
+		AF5A7C05104CE63A00BF16B4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
+		AF5A7C06104CE63A00BF16B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
+		AF5A7C07104CE63A00BF16B4 /* OpenManifoldDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58280DA1D0D100B32029 /* OpenManifoldDocument.xib */; };
+		AF5A7C08104CE63A00BF16B4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD582A0DA1D0D100B32029 /* MainMenu.xib */; };
+		AF5A7C09104CE63A00BF16B4 /* ScriptingPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF89079C1020F92A00D819AE /* ScriptingPanel.xib */; };
+		AF5A7C0A104CE63A00BF16B4 /* OpenManifold Help in Resources */ = {isa = PBXBuildFile; fileRef = AF1E39C01025320300963DF5 /* OpenManifold Help */; };
+		AF5A7C0B104CE63A00BF16B4 /* ScriptsBrowserPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E456B1028AF6500963DF5 /* ScriptsBrowserPanel.xib */; };
+		AF5A7C0C104CE63A00BF16B4 /* save.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF1E4701102914D500963DF5 /* save.icns */; };
+		AF5A7C0D104CE63A00BF16B4 /* info.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF1E474610291F8B00963DF5 /* info.icns */; };
+		AF5A7C0E104CE63A00BF16B4 /* PreferencesGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E47591029250D00963DF5 /* PreferencesGeneral.xib */; };
+		AF5A7C0F104CE63A00BF16B4 /* PreferencesMobileMe.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E475A1029250D00963DF5 /* PreferencesMobileMe.xib */; };
+		AF5A7C10104CE63A00BF16B4 /* DiagramPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E47E910293FBE00963DF5 /* DiagramPanel.xib */; };
+		AF5A7C11104CE63A00BF16B4 /* gear.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF087AF6102A643700162631 /* gear.icns */; };
+		AF5A7C12104CE63A00BF16B4 /* InspectorPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFB241AD102B8502001B491E /* InspectorPanel.xib */; };
+		AF5A7C13104CE63A00BF16B4 /* Network Disabled.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241DC102B96F6001B491E /* Network Disabled.icns */; };
+		AF5A7C14104CE63A00BF16B4 /* network.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241DD102B96F6001B491E /* network.icns */; };
+		AF5A7C15104CE63A00BF16B4 /* disconnected.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E1102B9752001B491E /* disconnected.icns */; };
+		AF5A7C16104CE63A00BF16B4 /* CD.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E5102B9C49001B491E /* CD.icns */; };
+		AF5A7C17104CE63A00BF16B4 /* keyboard_button.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E7102BA3C5001B491E /* keyboard_button.png */; };
+		AF5A7C18104CE63A00BF16B4 /* keyboard_rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241EB102BAC52001B491E /* keyboard_rounded.png */; };
+		AF5A7C19104CE63A00BF16B4 /* KeyboardReference.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFB2431E102BD294001B491E /* KeyboardReference.plist */; };
+		AF5A7C1A104CE63A00BF16B4 /* Network Black.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB2437E102BE044001B491E /* Network Black.icns */; };
+		AF5A7C1B104CE63A00BF16B4 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF1F4ACF103204AB0013EC31 /* DefaultPreferences.plist */; };
+		AF5A7C1D104CE63A00BF16B4 /* OpenManifoldDocument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* OpenManifoldDocument.mm */; settings = {ATTRIBUTES = (); }; };
+		AF5A7C1E104CE63A00BF16B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		AF5A7C1F104CE63A00BF16B4 /* CustomOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C3FB101787AF007A1B31 /* CustomOpenGLView.m */; };
+		AF5A7C20104CE63A00BF16B4 /* PerspectiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C41010178875007A1B31 /* PerspectiveView.m */; };
+		AF5A7C21104CE63A00BF16B4 /* opennurbs_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24C457101789D8007A1B31 /* opennurbs_interface.cpp */; };
+		AF5A7C22104CE63A00BF16B4 /* opennurbs_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24C45F10178A16007A1B31 /* opennurbs_gl.cpp */; };
+		AF5A7C23104CE63A00BF16B4 /* ObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C46210178C08007A1B31 /* ObjectView.m */; };
+		AF5A7C24104CE63A00BF16B4 /* MainDocumentView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF24C47310179A74007A1B31 /* MainDocumentView.mm */; };
+		AF5A7C25104CE63A00BF16B4 /* Part.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF24C5941017A286007A1B31 /* Part.mm */; };
+		AF5A7C26104CE63A00BF16B4 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24CA291018E8F2007A1B31 /* Geometry.cpp */; };
+		AF5A7C27104CE63A00BF16B4 /* ScriptingPanelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF8907A71020FA0E00D819AE /* ScriptingPanelController.mm */; };
+		AF5A7C28104CE63A00BF16B4 /* MainDocumentWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF84A0EE10210A7B0049338C /* MainDocumentWindowController.mm */; };
+		AF5A7C29104CE63A00BF16B4 /* Parameter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF77E8DC1024A4B000946304 /* Parameter.mm */; };
+		AF5A7C2A104CE63A00BF16B4 /* Manipulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E40B11027A31A00963DF5 /* Manipulator.mm */; };
+		AF5A7C2B104CE63A00BF16B4 /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45631028AC3B00963DF5 /* FlatView.m */; };
+		AF5A7C2C104CE63A00BF16B4 /* ScriptsBrowserPanelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45691028ADDD00963DF5 /* ScriptsBrowserPanelController.mm */; };
+		AF5A7C2D104CE63A00BF16B4 /* ScriptsBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E456E1028B0DD00963DF5 /* ScriptsBrowserCell.m */; };
+		AF5A7C2E104CE63A00BF16B4 /* ScriptsNodeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45701028B0DD00963DF5 /* ScriptsNodeInfo.m */; };
+		AF5A7C2F104CE63A00BF16B4 /* OpenManifoldDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E474D1029226900963DF5 /* OpenManifoldDocumentController.m */; };
+		AF5A7C30104CE63A00BF16B4 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4750102922A300963DF5 /* PreferencesController.m */; };
+		AF5A7C31104CE63A00BF16B4 /* PreferencesModuleGeneralController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4752102922A300963DF5 /* PreferencesModuleGeneralController.m */; };
+		AF5A7C32104CE63A00BF16B4 /* PreferencesModuleMobileMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4754102922A300963DF5 /* PreferencesModuleMobileMeController.m */; };
+		AF5A7C33104CE63A00BF16B4 /* DiagramPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E47F81029435E00963DF5 /* DiagramPanelController.m */; };
+		AF5A7C34104CE63A00BF16B4 /* DiagramView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E48161029448500963DF5 /* DiagramView.mm */; };
+		AF5A7C35104CE63A00BF16B4 /* Rule.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08776A1029E8CE00162631 /* Rule.mm */; };
+		AF5A7C36104CE63A00BF16B4 /* RuleEqualPosition.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087863102A1FB800162631 /* RuleEqualPosition.mm */; };
+		AF5A7C37104CE63A00BF16B4 /* RuleMaintainOffset.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087866102A251E00162631 /* RuleMaintainOffset.mm */; };
+		AF5A7C38104CE63A00BF16B4 /* RuleMaintainDistance.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08795B102A345C00162631 /* RuleMaintainDistance.mm */; };
+		AF5A7C39104CE63A00BF16B4 /* KeyboardReferencePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2422B102BB9F0001B491E /* KeyboardReferencePanelController.m */; };
+		AF5A7C3A104CE63A00BF16B4 /* KeyboardReferencePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB242AF102BC23F001B491E /* KeyboardReferencePanel.m */; };
+		AF5A7C3B104CE63A00BF16B4 /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = AF284B65102E95CC000C1C1B /* Animator.m */; };
+		AF5A7C3C104CE63A00BF16B4 /* Behavior.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1F479C102FF4BC0013EC31 /* Behavior.mm */; };
+		AF5A7C3D104CE63A00BF16B4 /* PythonController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF5A7A7B104C5BAE00BF16B4 /* PythonController.mm */; };
+		AF5A7C3F104CE63A00BF16B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		AF5A7C40104CE63A00BF16B4 /* libopennurbs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4121017894E007A1B31 /* libopennurbs.a */; };
+		AF5A7C41104CE63A00BF16B4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4141017896D007A1B31 /* OpenGL.framework */; };
+		AF5A7C42104CE63A00BF16B4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4551017898B007A1B31 /* CoreFoundation.framework */; };
+		AF5A7C4B104CE67A00BF16B4 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5A7C4A104CE67A00BF16B4 /* MacRuby.framework */; };
+		AF77E8DD1024A4B000946304 /* Parameter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF77E8DC1024A4B000946304 /* Parameter.mm */; };
+		AF80F999104B69000088F410 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF80F998104B69000088F410 /* Python.framework */; };
+		AF84A0EF10210A7B0049338C /* MainDocumentWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF84A0EE10210A7B0049338C /* MainDocumentWindowController.mm */; };
+		AF89079D1020F92A00D819AE /* ScriptingPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF89079C1020F92A00D819AE /* ScriptingPanel.xib */; };
+		AF8907A81020FA0E00D819AE /* ScriptingPanelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF8907A71020FA0E00D819AE /* ScriptingPanelController.mm */; };
+		AFB241AE102B8502001B491E /* InspectorPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFB241AD102B8502001B491E /* InspectorPanel.xib */; };
+		AFB241DE102B96F6001B491E /* Network Disabled.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241DC102B96F6001B491E /* Network Disabled.icns */; };
+		AFB241DF102B96F6001B491E /* network.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241DD102B96F6001B491E /* network.icns */; };
+		AFB241E2102B9752001B491E /* disconnected.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E1102B9752001B491E /* disconnected.icns */; };
+		AFB241E6102B9C49001B491E /* CD.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E5102B9C49001B491E /* CD.icns */; };
+		AFB241E8102BA3C5001B491E /* keyboard_button.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E7102BA3C5001B491E /* keyboard_button.png */; };
+		AFB241EC102BAC52001B491E /* keyboard_rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241EB102BAC52001B491E /* keyboard_rounded.png */; };
+		AFB2422C102BB9F0001B491E /* KeyboardReferencePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2422B102BB9F0001B491E /* KeyboardReferencePanelController.m */; };
+		AFB242B0102BC23F001B491E /* KeyboardReferencePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB242AF102BC23F001B491E /* KeyboardReferencePanel.m */; };
+		AFB2431F102BD294001B491E /* KeyboardReference.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFB2431E102BD294001B491E /* KeyboardReference.plist */; };
+		AFB2437F102BE044001B491E /* Network Black.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB2437E102BE044001B491E /* Network Black.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1DDD58290DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/OpenManifoldDocument.xib; sourceTree = "<group>"; };
+		1DDD582B0DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2A37F4ACFDCFA73011CA2CEA /* OpenManifoldDocument.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenManifoldDocument.mm; sourceTree = "<group>"; wrapsLines = 1; };
+		2A37F4AEFDCFA73011CA2CEA /* OpenManifoldDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenManifoldDocument.h; sourceTree = "<group>"; };
+		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32DBCF750370BD2300C91783 /* OpenManifold_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenManifold_Prefix.pch; sourceTree = "<group>"; };
+		8D15AC360486D014006FF6A4 /* Info Python.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info Python.plist"; sourceTree = "<group>"; };
+		8D15AC370486D014006FF6A4 /* OpenManifold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenManifold.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF0877691029E8CE00162631 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rule.h; sourceTree = "<group>"; };
+		AF08776A1029E8CE00162631 /* Rule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Rule.mm; sourceTree = "<group>"; };
+		AF087862102A1FB800162631 /* RuleEqualPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleEqualPosition.h; sourceTree = "<group>"; };
+		AF087863102A1FB800162631 /* RuleEqualPosition.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RuleEqualPosition.mm; sourceTree = "<group>"; };
+		AF087865102A251E00162631 /* RuleMaintainOffset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleMaintainOffset.h; sourceTree = "<group>"; };
+		AF087866102A251E00162631 /* RuleMaintainOffset.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RuleMaintainOffset.mm; sourceTree = "<group>"; };
+		AF08795A102A345C00162631 /* RuleMaintainDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleMaintainDistance.h; sourceTree = "<group>"; };
+		AF08795B102A345C00162631 /* RuleMaintainDistance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RuleMaintainDistance.mm; sourceTree = "<group>"; };
+		AF087AF6102A643700162631 /* gear.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = gear.icns; sourceTree = "<group>"; };
+		AF1E39C11025320300963DF5 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = "English.lproj/OpenManifold Help"; sourceTree = "<group>"; };
+		AF1E40B01027A31A00963DF5 /* Manipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manipulator.h; sourceTree = "<group>"; };
+		AF1E40B11027A31A00963DF5 /* Manipulator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Manipulator.mm; sourceTree = "<group>"; };
+		AF1E45621028AC3B00963DF5 /* FlatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatView.h; sourceTree = "<group>"; };
+		AF1E45631028AC3B00963DF5 /* FlatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatView.m; sourceTree = "<group>"; };
+		AF1E45681028ADDD00963DF5 /* ScriptsBrowserPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptsBrowserPanelController.h; sourceTree = "<group>"; };
+		AF1E45691028ADDD00963DF5 /* ScriptsBrowserPanelController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScriptsBrowserPanelController.mm; sourceTree = "<group>"; };
+		AF1E456B1028AF6500963DF5 /* ScriptsBrowserPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScriptsBrowserPanel.xib; sourceTree = "<group>"; };
+		AF1E456D1028B0DD00963DF5 /* ScriptsBrowserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptsBrowserCell.h; sourceTree = "<group>"; };
+		AF1E456E1028B0DD00963DF5 /* ScriptsBrowserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptsBrowserCell.m; sourceTree = "<group>"; };
+		AF1E456F1028B0DD00963DF5 /* ScriptsNodeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptsNodeInfo.h; sourceTree = "<group>"; };
+		AF1E45701028B0DD00963DF5 /* ScriptsNodeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptsNodeInfo.m; sourceTree = "<group>"; };
+		AF1E4701102914D500963DF5 /* save.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = save.icns; sourceTree = "<group>"; };
+		AF1E474610291F8B00963DF5 /* info.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = info.icns; sourceTree = "<group>"; };
+		AF1E474C1029226900963DF5 /* OpenManifoldDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenManifoldDocumentController.h; sourceTree = "<group>"; };
+		AF1E474D1029226900963DF5 /* OpenManifoldDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenManifoldDocumentController.m; sourceTree = "<group>"; };
+		AF1E474F102922A300963DF5 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		AF1E4750102922A300963DF5 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		AF1E4751102922A300963DF5 /* PreferencesModuleGeneralController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesModuleGeneralController.h; sourceTree = "<group>"; };
+		AF1E4752102922A300963DF5 /* PreferencesModuleGeneralController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesModuleGeneralController.m; sourceTree = "<group>"; };
+		AF1E4753102922A300963DF5 /* PreferencesModuleMobileMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesModuleMobileMeController.h; sourceTree = "<group>"; };
+		AF1E4754102922A300963DF5 /* PreferencesModuleMobileMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesModuleMobileMeController.m; sourceTree = "<group>"; };
+		AF1E47591029250D00963DF5 /* PreferencesGeneral.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesGeneral.xib; sourceTree = "<group>"; };
+		AF1E475A1029250D00963DF5 /* PreferencesMobileMe.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesMobileMe.xib; sourceTree = "<group>"; };
+		AF1E47E910293FBE00963DF5 /* DiagramPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiagramPanel.xib; sourceTree = "<group>"; };
+		AF1E47F71029435E00963DF5 /* DiagramPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramPanelController.h; sourceTree = "<group>"; };
+		AF1E47F81029435E00963DF5 /* DiagramPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramPanelController.m; sourceTree = "<group>"; };
+		AF1E48151029448500963DF5 /* DiagramView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramView.h; sourceTree = "<group>"; };
+		AF1E48161029448500963DF5 /* DiagramView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DiagramView.mm; sourceTree = "<group>"; };
+		AF1F479B102FF4BC0013EC31 /* Behavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Behavior.h; sourceTree = "<group>"; };
+		AF1F479C102FF4BC0013EC31 /* Behavior.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Behavior.mm; sourceTree = "<group>"; };
+		AF1F4ACF103204AB0013EC31 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
+		AF24C3FA101787AF007A1B31 /* CustomOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomOpenGLView.h; sourceTree = "<group>"; };
+		AF24C3FB101787AF007A1B31 /* CustomOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomOpenGLView.m; sourceTree = "<group>"; };
+		AF24C40F10178875007A1B31 /* PerspectiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerspectiveView.h; sourceTree = "<group>"; };
+		AF24C41010178875007A1B31 /* PerspectiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerspectiveView.m; sourceTree = "<group>"; };
+		AF24C4121017894E007A1B31 /* libopennurbs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopennurbs.a; path = ../../../Documents/DevProjects/opennurbs/build/Debug/libopennurbs.a; sourceTree = SOURCE_ROOT; };
+		AF24C4141017896D007A1B31 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		AF24C4551017898B007A1B31 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		AF24C457101789D8007A1B31 /* opennurbs_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = opennurbs_interface.cpp; sourceTree = "<group>"; };
+		AF24C458101789D8007A1B31 /* opennurbs_interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opennurbs_interface.h; sourceTree = "<group>"; };
+		AF24C45F10178A16007A1B31 /* opennurbs_gl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = opennurbs_gl.cpp; path = ../../../Documents/DevProjects/opennurbs/opennurbs_gl.cpp; sourceTree = SOURCE_ROOT; };
+		AF24C46110178C08007A1B31 /* ObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectView.h; sourceTree = "<group>"; };
+		AF24C46210178C08007A1B31 /* ObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectView.m; sourceTree = "<group>"; };
+		AF24C47210179A74007A1B31 /* MainDocumentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainDocumentView.h; sourceTree = "<group>"; };
+		AF24C47310179A74007A1B31 /* MainDocumentView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainDocumentView.mm; sourceTree = "<group>"; };
+		AF24C5931017A286007A1B31 /* Part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part.h; sourceTree = "<group>"; };
+		AF24C5941017A286007A1B31 /* Part.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Part.mm; sourceTree = "<group>"; };
+		AF24CA281018E8F2007A1B31 /* Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
+		AF24CA291018E8F2007A1B31 /* Geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
+		AF284B64102E95CC000C1C1B /* Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animator.h; sourceTree = "<group>"; };
+		AF284B65102E95CC000C1C1B /* Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animator.m; sourceTree = "<group>"; };
+		AF5A7A7A104C5BAE00BF16B4 /* PythonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PythonController.h; sourceTree = "<group>"; };
+		AF5A7A7B104C5BAE00BF16B4 /* PythonController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PythonController.mm; sourceTree = "<group>"; };
+		AF5A7C47104CE63A00BF16B4 /* OpenManifold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenManifold.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF5A7C49104CE63A00BF16B4 /* Info Ruby.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info Ruby.plist"; sourceTree = "<group>"; };
+		AF5A7C4A104CE67A00BF16B4 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = /Library/Frameworks/MacRuby.framework; sourceTree = "<absolute>"; };
+		AF77E8DB1024A4B000946304 /* Parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameter.h; sourceTree = "<group>"; };
+		AF77E8DC1024A4B000946304 /* Parameter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Parameter.mm; sourceTree = "<group>"; };
+		AF80F998104B69000088F410 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = /System/Library/Frameworks/Python.framework; sourceTree = "<absolute>"; };
+		AF84A0ED10210A7B0049338C /* MainDocumentWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainDocumentWindowController.h; sourceTree = "<group>"; };
+		AF84A0EE10210A7B0049338C /* MainDocumentWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainDocumentWindowController.mm; sourceTree = "<group>"; };
+		AF89079C1020F92A00D819AE /* ScriptingPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScriptingPanel.xib; sourceTree = "<group>"; };
+		AF8907A61020FA0E00D819AE /* ScriptingPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptingPanelController.h; sourceTree = "<group>"; };
+		AF8907A71020FA0E00D819AE /* ScriptingPanelController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScriptingPanelController.mm; sourceTree = "<group>"; };
+		AFB241AD102B8502001B491E /* InspectorPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectorPanel.xib; sourceTree = "<group>"; };
+		AFB241DC102B96F6001B491E /* Network Disabled.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Network Disabled.icns"; sourceTree = "<group>"; };
+		AFB241DD102B96F6001B491E /* network.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = network.icns; sourceTree = "<group>"; };
+		AFB241E1102B9752001B491E /* disconnected.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = disconnected.icns; sourceTree = "<group>"; };
+		AFB241E5102B9C49001B491E /* CD.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CD.icns; sourceTree = "<group>"; };
+		AFB241E7102BA3C5001B491E /* keyboard_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard_button.png; sourceTree = "<group>"; };
+		AFB241EB102BAC52001B491E /* keyboard_rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard_rounded.png; sourceTree = "<group>"; };
+		AFB2422A102BB9F0001B491E /* KeyboardReferencePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardReferencePanelController.h; sourceTree = "<group>"; };
+		AFB2422B102BB9F0001B491E /* KeyboardReferencePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardReferencePanelController.m; sourceTree = "<group>"; };
+		AFB242AE102BC23F001B491E /* KeyboardReferencePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardReferencePanel.h; sourceTree = "<group>"; };
+		AFB242AF102BC23F001B491E /* KeyboardReferencePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardReferencePanel.m; sourceTree = "<group>"; };
+		AFB2431E102BD294001B491E /* KeyboardReference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyboardReference.plist; sourceTree = "<group>"; };
+		AFB2437E102BE044001B491E /* Network Black.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Network Black.icns"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D15AC330486D014006FF6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				AF24C4131017894E007A1B31 /* libopennurbs.a in Frameworks */,
+				AF24C4151017896D007A1B31 /* OpenGL.framework in Frameworks */,
+				AF24C4561017898B007A1B31 /* CoreFoundation.framework in Frameworks */,
+				AF80F999104B69000088F410 /* Python.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF5A7C3E104CE63A00BF16B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF5A7C3F104CE63A00BF16B4 /* Cocoa.framework in Frameworks */,
+				AF5A7C40104CE63A00BF16B4 /* libopennurbs.a in Frameworks */,
+				AF5A7C41104CE63A00BF16B4 /* OpenGL.framework in Frameworks */,
+				AF5A7C42104CE63A00BF16B4 /* CoreFoundation.framework in Frameworks */,
+				AF5A7C4B104CE67A00BF16B4 /* MacRuby.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF5A7C4A104CE67A00BF16B4 /* MacRuby.framework */,
+				AF80F998104B69000088F410 /* Python.framework */,
+				AF24C4551017898B007A1B31 /* CoreFoundation.framework */,
+				AF24C4141017896D007A1B31 /* OpenGL.framework */,
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
+				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,
+				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB0FE9D524F11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D15AC370486D014006FF6A4 /* OpenManifold.app */,
+				AF5A7C47104CE63A00BF16B4 /* OpenManifold.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A37F4AAFDCFA73011CA2CEA /* OpenManifold */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4ABFDCFA73011CA2CEA /* Classes */,
+				AF0877961029EEB700162631 /* Rules */,
+				AF84A62F1022030D0049338C /* Main Document Window */,
+				AF24C464101792D3007A1B31 /* Primitive View Classes */,
+				AFB2441B102BED7E001B491E /* Diagram Panel */,
+				AFB2441A102BED59001B491E /* Keyboard Reference Panel */,
+				AF1E473B10291E8800963DF5 /* Preferences Panel */,
+				AF087CB5102B394600162631 /* Scripting Panel */,
+				AF1E457A1028B10500963DF5 /* ScriptsBrowser */,
+				AF24C45D101789E4007A1B31 /* Linked Sources */,
+				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
+				2A37F4B8FDCFA73011CA2CEA /* Resources */,
+				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
+				19C28FB0FE9D524F11CA2CBB /* Products */,
+			);
+			name = OpenManifold;
+			sourceTree = "<group>";
+		};
+		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AF1E474C1029226900963DF5 /* OpenManifoldDocumentController.h */,
+				AF1E474D1029226900963DF5 /* OpenManifoldDocumentController.m */,
+				2A37F4AEFDCFA73011CA2CEA /* OpenManifoldDocument.h */,
+				2A37F4ACFDCFA73011CA2CEA /* OpenManifoldDocument.mm */,
+				AF24C5931017A286007A1B31 /* Part.h */,
+				AF24C5941017A286007A1B31 /* Part.mm */,
+				AF77E8DB1024A4B000946304 /* Parameter.h */,
+				AF77E8DC1024A4B000946304 /* Parameter.mm */,
+				AF24CA281018E8F2007A1B31 /* Geometry.h */,
+				AF24CA291018E8F2007A1B31 /* Geometry.cpp */,
+				AF24C458101789D8007A1B31 /* opennurbs_interface.h */,
+				AF24C457101789D8007A1B31 /* opennurbs_interface.cpp */,
+				AF1E40B01027A31A00963DF5 /* Manipulator.h */,
+				AF1E40B11027A31A00963DF5 /* Manipulator.mm */,
+				AF284B64102E95CC000C1C1B /* Animator.h */,
+				AF284B65102E95CC000C1C1B /* Animator.m */,
+				AF1F479B102FF4BC0013EC31 /* Behavior.h */,
+				AF1F479C102FF4BC0013EC31 /* Behavior.mm */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCF750370BD2300C91783 /* OpenManifold_Prefix.pch */,
+				2A37F4B0FDCFA73011CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF1E473A10291E6C00963DF5 /* Graphics */,
+				AF1E39C01025320300963DF5 /* OpenManifold Help */,
+				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
+				8D15AC360486D014006FF6A4 /* Info Python.plist */,
+				AF5A7C49104CE63A00BF16B4 /* Info Ruby.plist */,
+				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
+				1DDD58280DA1D0D100B32029 /* OpenManifoldDocument.xib */,
+				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
+				AF89079C1020F92A00D819AE /* ScriptingPanel.xib */,
+				AF1E456B1028AF6500963DF5 /* ScriptsBrowserPanel.xib */,
+				AF1E47E910293FBE00963DF5 /* DiagramPanel.xib */,
+				AF1E47591029250D00963DF5 /* PreferencesGeneral.xib */,
+				AF1E475A1029250D00963DF5 /* PreferencesMobileMe.xib */,
+				AFB241AD102B8502001B491E /* InspectorPanel.xib */,
+				AFB2431E102BD294001B491E /* KeyboardReference.plist */,
+				AF1F4ACF103204AB0013EC31 /* DefaultPreferences.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF24C4121017894E007A1B31 /* libopennurbs.a */,
+				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
+				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF0877961029EEB700162631 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				AF0877691029E8CE00162631 /* Rule.h */,
+				AF08776A1029E8CE00162631 /* Rule.mm */,
+				AF087862102A1FB800162631 /* RuleEqualPosition.h */,
+				AF087863102A1FB800162631 /* RuleEqualPosition.mm */,
+				AF087865102A251E00162631 /* RuleMaintainOffset.h */,
+				AF087866102A251E00162631 /* RuleMaintainOffset.mm */,
+				AF08795A102A345C00162631 /* RuleMaintainDistance.h */,
+				AF08795B102A345C00162631 /* RuleMaintainDistance.mm */,
+			);
+			name = Rules;
+			sourceTree = "<group>";
+		};
+		AF087CB5102B394600162631 /* Scripting Panel */ = {
+			isa = PBXGroup;
+			children = (
+				AF5A7A7A104C5BAE00BF16B4 /* PythonController.h */,
+				AF5A7A7B104C5BAE00BF16B4 /* PythonController.mm */,
+				AF8907A61020FA0E00D819AE /* ScriptingPanelController.h */,
+				AF8907A71020FA0E00D819AE /* ScriptingPanelController.mm */,
+			);
+			name = "Scripting Panel";
+			sourceTree = "<group>";
+		};
+		AF1E457A1028B10500963DF5 /* ScriptsBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				AF1E45681028ADDD00963DF5 /* ScriptsBrowserPanelController.h */,
+				AF1E45691028ADDD00963DF5 /* ScriptsBrowserPanelController.mm */,
+				AF1E456D1028B0DD00963DF5 /* ScriptsBrowserCell.h */,
+				AF1E456E1028B0DD00963DF5 /* ScriptsBrowserCell.m */,
+				AF1E456F1028B0DD00963DF5 /* ScriptsNodeInfo.h */,
+				AF1E45701028B0DD00963DF5 /* ScriptsNodeInfo.m */,
+			);
+			name = ScriptsBrowser;
+			sourceTree = "<group>";
+		};
+		AF1E473A10291E6C00963DF5 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				AFB2437E102BE044001B491E /* Network Black.icns */,
+				AFB241EB102BAC52001B491E /* keyboard_rounded.png */,
+				AFB241E7102BA3C5001B491E /* keyboard_button.png */,
+				AFB241E5102B9C49001B491E /* CD.icns */,
+				AFB241E1102B9752001B491E /* disconnected.icns */,
+				AFB241DC102B96F6001B491E /* Network Disabled.icns */,
+				AFB241DD102B96F6001B491E /* network.icns */,
+				AF087AF6102A643700162631 /* gear.icns */,
+				AF1E474610291F8B00963DF5 /* info.icns */,
+				AF1E4701102914D500963DF5 /* save.icns */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		AF1E473B10291E8800963DF5 /* Preferences Panel */ = {
+			isa = PBXGroup;
+			children = (
+				AF1E474F102922A300963DF5 /* PreferencesController.h */,
+				AF1E4750102922A300963DF5 /* PreferencesController.m */,
+				AF1E4751102922A300963DF5 /* PreferencesModuleGeneralController.h */,
+				AF1E4752102922A300963DF5 /* PreferencesModuleGeneralController.m */,
+				AF1E4753102922A300963DF5 /* PreferencesModuleMobileMeController.h */,
+				AF1E4754102922A300963DF5 /* PreferencesModuleMobileMeController.m */,
+			);
+			name = "Preferences Panel";
+			sourceTree = "<group>";
+		};
+		AF24C45D101789E4007A1B31 /* Linked Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AF24C45F10178A16007A1B31 /* opennurbs_gl.cpp */,
+			);
+			name = "Linked Sources";
+			sourceTree = "<group>";
+		};
+		AF24C464101792D3007A1B31 /* Primitive View Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AF24C3FA101787AF007A1B31 /* CustomOpenGLView.h */,
+				AF24C3FB101787AF007A1B31 /* CustomOpenGLView.m */,
+				AF24C46110178C08007A1B31 /* ObjectView.h */,
+				AF24C46210178C08007A1B31 /* ObjectView.m */,
+				AF24C40F10178875007A1B31 /* PerspectiveView.h */,
+				AF24C41010178875007A1B31 /* PerspectiveView.m */,
+				AF1E45621028AC3B00963DF5 /* FlatView.h */,
+				AF1E45631028AC3B00963DF5 /* FlatView.m */,
+			);
+			name = "Primitive View Classes";
+			sourceTree = "<group>";
+		};
+		AF84A62F1022030D0049338C /* Main Document Window */ = {
+			isa = PBXGroup;
+			children = (
+				AF84A0ED10210A7B0049338C /* MainDocumentWindowController.h */,
+				AF84A0EE10210A7B0049338C /* MainDocumentWindowController.mm */,
+				AF24C47210179A74007A1B31 /* MainDocumentView.h */,
+				AF24C47310179A74007A1B31 /* MainDocumentView.mm */,
+			);
+			name = "Main Document Window";
+			sourceTree = "<group>";
+		};
+		AFB2441A102BED59001B491E /* Keyboard Reference Panel */ = {
+			isa = PBXGroup;
+			children = (
+				AFB2422A102BB9F0001B491E /* KeyboardReferencePanelController.h */,
+				AFB2422B102BB9F0001B491E /* KeyboardReferencePanelController.m */,
+				AFB242AE102BC23F001B491E /* KeyboardReferencePanel.h */,
+				AFB242AF102BC23F001B491E /* KeyboardReferencePanel.m */,
+			);
+			name = "Keyboard Reference Panel";
+			sourceTree = "<group>";
+		};
+		AFB2441B102BED7E001B491E /* Diagram Panel */ = {
+			isa = PBXGroup;
+			children = (
+				AF1E47F71029435E00963DF5 /* DiagramPanelController.h */,
+				AF1E47F81029435E00963DF5 /* DiagramPanelController.m */,
+				AF1E48151029448500963DF5 /* DiagramView.h */,
+				AF1E48161029448500963DF5 /* DiagramView.mm */,
+			);
+			name = "Diagram Panel";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D15AC270486D014006FF6A4 /* OpenManifold Python */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "OpenManifold Python" */;
+			buildPhases = (
+				8D15AC2B0486D014006FF6A4 /* Resources */,
+				8D15AC300486D014006FF6A4 /* Sources */,
+				8D15AC330486D014006FF6A4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			comments = "This build defines a flag PYTHON, that include the Python framework in the PythonController if it is defined.";
+			dependencies = (
+			);
+			name = "OpenManifold Python";
+			productInstallPath = "$(HOME)/Applications";
+			productName = OpenManifold;
+			productReference = 8D15AC370486D014006FF6A4 /* OpenManifold.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF5A7C03104CE63A00BF16B4 /* OpenManifold Ruby */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF5A7C44104CE63A00BF16B4 /* Build configuration list for PBXNativeTarget "OpenManifold Ruby" */;
+			buildPhases = (
+				AF5A7C04104CE63A00BF16B4 /* Resources */,
+				AF5A7C1C104CE63A00BF16B4 /* Sources */,
+				AF5A7C3E104CE63A00BF16B4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OpenManifold Ruby";
+			productInstallPath = "$(HOME)/Applications";
+			productName = OpenManifold;
+			productReference = AF5A7C47104CE63A00BF16B4 /* OpenManifold.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "OpenManifold" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* OpenManifold */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D15AC270486D014006FF6A4 /* OpenManifold Python */,
+				AF5A7C03104CE63A00BF16B4 /* OpenManifold Ruby */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D15AC2B0486D014006FF6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
+				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
+				1DDD582C0DA1D0D100B32029 /* OpenManifoldDocument.xib in Resources */,
+				1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */,
+				AF89079D1020F92A00D819AE /* ScriptingPanel.xib in Resources */,
+				AF1E39C21025320300963DF5 /* OpenManifold Help in Resources */,
+				AF1E456C1028AF6500963DF5 /* ScriptsBrowserPanel.xib in Resources */,
+				AF1E4702102914D500963DF5 /* save.icns in Resources */,
+				AF1E474710291F8B00963DF5 /* info.icns in Resources */,
+				AF1E475B1029250D00963DF5 /* PreferencesGeneral.xib in Resources */,
+				AF1E475C1029250D00963DF5 /* PreferencesMobileMe.xib in Resources */,
+				AF1E47EA10293FBE00963DF5 /* DiagramPanel.xib in Resources */,
+				AF087AF7102A643700162631 /* gear.icns in Resources */,
+				AFB241AE102B8502001B491E /* InspectorPanel.xib in Resources */,
+				AFB241DE102B96F6001B491E /* Network Disabled.icns in Resources */,
+				AFB241DF102B96F6001B491E /* network.icns in Resources */,
+				AFB241E2102B9752001B491E /* disconnected.icns in Resources */,
+				AFB241E6102B9C49001B491E /* CD.icns in Resources */,
+				AFB241E8102BA3C5001B491E /* keyboard_button.png in Resources */,
+				AFB241EC102BAC52001B491E /* keyboard_rounded.png in Resources */,
+				AFB2431F102BD294001B491E /* KeyboardReference.plist in Resources */,
+				AFB2437F102BE044001B491E /* Network Black.icns in Resources */,
+				AF1F4AD0103204AB0013EC31 /* DefaultPreferences.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF5A7C04104CE63A00BF16B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF5A7C05104CE63A00BF16B4 /* Credits.rtf in Resources */,
+				AF5A7C06104CE63A00BF16B4 /* InfoPlist.strings in Resources */,
+				AF5A7C07104CE63A00BF16B4 /* OpenManifoldDocument.xib in Resources */,
+				AF5A7C08104CE63A00BF16B4 /* MainMenu.xib in Resources */,
+				AF5A7C09104CE63A00BF16B4 /* ScriptingPanel.xib in Resources */,
+				AF5A7C0A104CE63A00BF16B4 /* OpenManifold Help in Resources */,
+				AF5A7C0B104CE63A00BF16B4 /* ScriptsBrowserPanel.xib in Resources */,
+				AF5A7C0C104CE63A00BF16B4 /* save.icns in Resources */,
+				AF5A7C0D104CE63A00BF16B4 /* info.icns in Resources */,
+				AF5A7C0E104CE63A00BF16B4 /* PreferencesGeneral.xib in Resources */,
+				AF5A7C0F104CE63A00BF16B4 /* PreferencesMobileMe.xib in Resources */,
+				AF5A7C10104CE63A00BF16B4 /* DiagramPanel.xib in Resources */,
+				AF5A7C11104CE63A00BF16B4 /* gear.icns in Resources */,
+				AF5A7C12104CE63A00BF16B4 /* InspectorPanel.xib in Resources */,
+				AF5A7C13104CE63A00BF16B4 /* Network Disabled.icns in Resources */,
+				AF5A7C14104CE63A00BF16B4 /* network.icns in Resources */,
+				AF5A7C15104CE63A00BF16B4 /* disconnected.icns in Resources */,
+				AF5A7C16104CE63A00BF16B4 /* CD.icns in Resources */,
+				AF5A7C17104CE63A00BF16B4 /* keyboard_button.png in Resources */,
+				AF5A7C18104CE63A00BF16B4 /* keyboard_rounded.png in Resources */,
+				AF5A7C19104CE63A00BF16B4 /* KeyboardReference.plist in Resources */,
+				AF5A7C1A104CE63A00BF16B4 /* Network Black.icns in Resources */,
+				AF5A7C1B104CE63A00BF16B4 /* DefaultPreferences.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D15AC300486D014006FF6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC310486D014006FF6A4 /* OpenManifoldDocument.mm in Sources */,
+				8D15AC320486D014006FF6A4 /* main.m in Sources */,
+				AF24C3FC101787AF007A1B31 /* CustomOpenGLView.m in Sources */,
+				AF24C41110178875007A1B31 /* PerspectiveView.m in Sources */,
+				AF24C45B101789D8007A1B31 /* opennurbs_interface.cpp in Sources */,
+				AF24C46010178A16007A1B31 /* opennurbs_gl.cpp in Sources */,
+				AF24C46310178C08007A1B31 /* ObjectView.m in Sources */,
+				AF24C47410179A74007A1B31 /* MainDocumentView.mm in Sources */,
+				AF24C5951017A286007A1B31 /* Part.mm in Sources */,
+				AF24CA2A1018E8F2007A1B31 /* Geometry.cpp in Sources */,
+				AF8907A81020FA0E00D819AE /* ScriptingPanelController.mm in Sources */,
+				AF84A0EF10210A7B0049338C /* MainDocumentWindowController.mm in Sources */,
+				AF77E8DD1024A4B000946304 /* Parameter.mm in Sources */,
+				AF1E40B21027A31A00963DF5 /* Manipulator.mm in Sources */,
+				AF1E45641028AC3B00963DF5 /* FlatView.m in Sources */,
+				AF1E456A1028ADDD00963DF5 /* ScriptsBrowserPanelController.mm in Sources */,
+				AF1E45711028B0DD00963DF5 /* ScriptsBrowserCell.m in Sources */,
+				AF1E45721028B0DD00963DF5 /* ScriptsNodeInfo.m in Sources */,
+				AF1E474E1029226900963DF5 /* OpenManifoldDocumentController.m in Sources */,
+				AF1E4755102922A300963DF5 /* PreferencesController.m in Sources */,
+				AF1E4756102922A300963DF5 /* PreferencesModuleGeneralController.m in Sources */,
+				AF1E4757102922A300963DF5 /* PreferencesModuleMobileMeController.m in Sources */,
+				AF1E47F91029435E00963DF5 /* DiagramPanelController.m in Sources */,
+				AF1E48171029448500963DF5 /* DiagramView.mm in Sources */,
+				AF08776B1029E8CE00162631 /* Rule.mm in Sources */,
+				AF087864102A1FB800162631 /* RuleEqualPosition.mm in Sources */,
+				AF087867102A251E00162631 /* RuleMaintainOffset.mm in Sources */,
+				AF08795C102A345C00162631 /* RuleMaintainDistance.mm in Sources */,
+				AFB2422C102BB9F0001B491E /* KeyboardReferencePanelController.m in Sources */,
+				AFB242B0102BC23F001B491E /* KeyboardReferencePanel.m in Sources */,
+				AF284B66102E95CC000C1C1B /* Animator.m in Sources */,
+				AF1F479D102FF4BC0013EC31 /* Behavior.mm in Sources */,
+				AF5A7A7C104C5BAE00BF16B4 /* PythonController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF5A7C1C104CE63A00BF16B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF5A7C1D104CE63A00BF16B4 /* OpenManifoldDocument.mm in Sources */,
+				AF5A7C1E104CE63A00BF16B4 /* main.m in Sources */,
+				AF5A7C1F104CE63A00BF16B4 /* CustomOpenGLView.m in Sources */,
+				AF5A7C20104CE63A00BF16B4 /* PerspectiveView.m in Sources */,
+				AF5A7C21104CE63A00BF16B4 /* opennurbs_interface.cpp in Sources */,
+				AF5A7C22104CE63A00BF16B4 /* opennurbs_gl.cpp in Sources */,
+				AF5A7C23104CE63A00BF16B4 /* ObjectView.m in Sources */,
+				AF5A7C24104CE63A00BF16B4 /* MainDocumentView.mm in Sources */,
+				AF5A7C25104CE63A00BF16B4 /* Part.mm in Sources */,
+				AF5A7C26104CE63A00BF16B4 /* Geometry.cpp in Sources */,
+				AF5A7C27104CE63A00BF16B4 /* ScriptingPanelController.mm in Sources */,
+				AF5A7C28104CE63A00BF16B4 /* MainDocumentWindowController.mm in Sources */,
+				AF5A7C29104CE63A00BF16B4 /* Parameter.mm in Sources */,
+				AF5A7C2A104CE63A00BF16B4 /* Manipulator.mm in Sources */,
+				AF5A7C2B104CE63A00BF16B4 /* FlatView.m in Sources */,
+				AF5A7C2C104CE63A00BF16B4 /* ScriptsBrowserPanelController.mm in Sources */,
+				AF5A7C2D104CE63A00BF16B4 /* ScriptsBrowserCell.m in Sources */,
+				AF5A7C2E104CE63A00BF16B4 /* ScriptsNodeInfo.m in Sources */,
+				AF5A7C2F104CE63A00BF16B4 /* OpenManifoldDocumentController.m in Sources */,
+				AF5A7C30104CE63A00BF16B4 /* PreferencesController.m in Sources */,
+				AF5A7C31104CE63A00BF16B4 /* PreferencesModuleGeneralController.m in Sources */,
+				AF5A7C32104CE63A00BF16B4 /* PreferencesModuleMobileMeController.m in Sources */,
+				AF5A7C33104CE63A00BF16B4 /* DiagramPanelController.m in Sources */,
+				AF5A7C34104CE63A00BF16B4 /* DiagramView.mm in Sources */,
+				AF5A7C35104CE63A00BF16B4 /* Rule.mm in Sources */,
+				AF5A7C36104CE63A00BF16B4 /* RuleEqualPosition.mm in Sources */,
+				AF5A7C37104CE63A00BF16B4 /* RuleMaintainOffset.mm in Sources */,
+				AF5A7C38104CE63A00BF16B4 /* RuleMaintainDistance.mm in Sources */,
+				AF5A7C39104CE63A00BF16B4 /* KeyboardReferencePanelController.m in Sources */,
+				AF5A7C3A104CE63A00BF16B4 /* KeyboardReferencePanel.m in Sources */,
+				AF5A7C3B104CE63A00BF16B4 /* Animator.m in Sources */,
+				AF5A7C3C104CE63A00BF16B4 /* Behavior.mm in Sources */,
+				AF5A7C3D104CE63A00BF16B4 /* PythonController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165FFE840EACC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C1660FE840EACC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD58280DA1D0D100B32029 /* OpenManifoldDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD58290DA1D0D100B32029 /* English */,
+			);
+			name = OpenManifoldDocument.xib;
+			sourceTree = "<group>";
+		};
+		1DDD582A0DA1D0D100B32029 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD582B0DA1D0D100B32029 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A37F4BAFDCFA73011CA2CEA /* English */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		AF1E39C01025320300963DF5 /* OpenManifold Help */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF1E39C11025320300963DF5 /* English */,
+			);
+			name = "OpenManifold Help";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AF5A7C45104CE63A00BF16B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OpenManifold_Prefix.pch;
+				INFOPLIST_FILE = "Info Ruby.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/../opennurbs/build/Debug\\\"",
+				);
+				OTHER_CFLAGS = "-DRUBY=1";
+				PRODUCT_NAME = OpenManifold;
+			};
+			name = Debug;
+		};
+		AF5A7C46104CE63A00BF16B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OpenManifold_Prefix.pch;
+				INFOPLIST_FILE = "Info Ruby.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/../opennurbs/build/Debug\\\"",
+				);
+				PRODUCT_NAME = OpenManifold;
+			};
+			name = Release;
+		};
+		C05733C808A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OpenManifold_Prefix.pch;
+				INFOPLIST_FILE = "Info Python.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../opennurbs/build/Debug\"",
+				);
+				OTHER_CFLAGS = "-DPYTHON=1";
+				PRODUCT_NAME = OpenManifold;
+			};
+			name = Debug;
+		};
+		C05733C908A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OpenManifold_Prefix.pch;
+				INFOPLIST_FILE = "Info Python.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../opennurbs/build/Debug\"",
+				);
+				PRODUCT_NAME = OpenManifold;
+			};
+			name = Release;
+		};
+		C05733CC08A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /Users/awmartin/Documents/DevProjects/opennurbs/build/Debug;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
+			};
+			name = Debug;
+		};
+		C05733CD08A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF5A7C44104CE63A00BF16B4 /* Build configuration list for PBXNativeTarget "OpenManifold Ruby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF5A7C45104CE63A00BF16B4 /* Debug */,
+				AF5A7C46104CE63A00BF16B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "OpenManifold Python" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733C808A9546B00998B17 /* Debug */,
+				C05733C908A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "OpenManifold" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733CC08A9546B00998B17 /* Debug */,
+				C05733CD08A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+}

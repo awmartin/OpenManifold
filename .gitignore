@@ -1,0 +1,15 @@
+#### `.gitignore`
+# xcode noise
+build/*
+*.mode1v3
+*.pbxuser
+
+# SVN directories
+.svn
+
+# osx noise
+.DS_Store
+profile
+
+# Icons and graphics (for size. download elsewhere)
+*.icns

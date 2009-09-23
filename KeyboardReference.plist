@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1</key>
+	<string>Parameter Select Mode</string>
+	<key>2</key>
+	<string>Geometry Select Mode</string>
+	<key>3</key>
+	<string>Part Select Mode</string>
+	<key>4</key>
+	<string>Wireframe Render Mode</string>
+	<key>5</key>
+	<string>Shaded Render Mode</string>
+	<key>A</key>
+	<string>Add a new Part</string>
+	<key>B</key>
+	<string></string>
+	<key>C</key>
+	<string></string>
+	<key>D</key>
+	<string></string>
+	<key>E</key>
+	<string>Scale Manipulator Tool</string>
+	<key>R</key>
+	<string>Rotate Manipulator Tool</string>
+	<key>T</key>
+	<string>Translate Manipulator Tool</string>
+</dict>
+</plist>

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="AppleTitle" content="OpenManifold Help" />
+	<title>OpenManifold Help</title>
+	<link rel="stylesheet" href="undohtml.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<style type="text/css" media="screen">
+
+    body {
+      font-family:Helvetica, Arial, sans-serif;
+      font-size:80%;
+    }
+    h1, h2, h3 { margin: 0 0 1em 0; font-weight:bold; }
+    h1 { font-size:1.8em; }
+    h2 { font-size:1.5em; color:#999; }
+    h3 { font-size:1.2em; color: rgb(51,102,204); }
+    p { 
+      margin:0 0 1em 0;
+      color:#333;
+    }
+
+    div#main {
+      margin:30px;
+    }
+
+    dt {
+      font-family:monospace;
+      font-weight:bold;
+      font-size:1.3em;
+      margin: 0 0 0.5em 0;
+      letter-spacing:0.1em;
+    }
+    
+    dd {
+      margin: 0 0 1em 0;
+    }
+    
+    div.example {
+      border:5px solid #eee;
+      padding:1em;
+      margin:2em 1em;
+    }
+    
+    a {
+      color: rgb(51,102,204);
+    }
+    
+	</style>
+</head>
+
+<body>
+
+<div id="main">
+  <h1>OpenManifold Help</h1>
+
+  <p>
+    OpenManifold is a parametric and algorithmic modeler. Based on the best techniques of existing software like
+    Generative Components, Grasshopper, Rhino, Inventor, Revit, and Processing, this software intends to
+    take a higher-level approach to generative design by allowing the designer to focus on high-level
+    behaviors and relationships, instead of the nitty-gritty details of geometry.
+  </p>
+  
+  <p>The current project help can be found at <a href="http://labs.anomalus.com/">http://labs.anomalus.com/</a></p>
+
+  <h2>Ruby scripting commands</h2>
+
+  <dl>
+    <dt>@openmanifold</dt>
+    <dd>This object controls the document.</dd>
+
+    <dt>@openmanifold.addPart</dt>
+    <dd>
+      Adds a new empty part to the document. These parts contain geometries (surfaces, points, curves, etc.) that are parametrically related. You can specify as many parameters as you like.
+    </dd>
+
+  </dl>
+  
+  <div class="example">
+    <h3>Example: Adding an part</h3>
+      <dl>
+        <dt>@part = @openmanifold.addPart</dt>
+        <dd>
+          That's it. Type this into the script window and click 'Evaluate' or press cmd+return.
+          A wireframe cube should appear in the field.
+        </dd>
+      </dl>
+    </p>
+  </div>
+
+  <p></p>
+</div>
+
+</body>
+</html>
