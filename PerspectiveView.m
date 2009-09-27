@@ -20,8 +20,8 @@
     originX = 0.0f;
     originY = 0.0f;
     originZ = 0.0f;
-    zoom = 1.0f;
-    distanceToTarget = 3.0;
+    zoomFactor = 1.0f;
+    distanceToTarget = 3.0f;
     
     float distanceXZ = distanceToTarget*cos(rotationAngleY);
     eyeY = distanceToTarget*sin(rotationAngleY) + originY;
@@ -184,9 +184,18 @@
 }
 
 #pragma mark -
-#pragma mark Mouse events.
+#pragma mark Navigation methods.
 
-- (void) onOtherMouseDrag
+- (void) orbit
+{
+  rotationAngleX -= (mouseX - pMouseX)/100.0f;
+  rotationAngleY -= (mouseY - pMouseY)/100.0f;
+  if( rotationAngleY >= PI/2 ) rotationAngleY = PI/2-0.01f;
+  if( rotationAngleY <= -PI/2 ) rotationAngleY = -PI/2+0.01f;
+  [self updateEyePosition];
+}
+
+- (void) pan
 {
   float dMouseX = (mouseX - pMouseX)/50.0f;
   float dMouseY = (mouseY - pMouseY)/50.0f;
@@ -211,26 +220,20 @@
   eyeZ += dz;
 }
 
-- (void) onRightMouseDrag
+- (void) zoom
 {
-  if( shiftKeyDown ){
-    [self onOtherMouseDrag];
-    return;
+  if( scrollDeltaY > 0 ){
+    zoomFactor += scrollDeltaY / 100.0f;
+    distanceToTarget += scrollDeltaY / 25.0f;
+  } else {
+    zoomFactor += (pMouseY - mouseY) / 100.0f;
+    distanceToTarget += (pMouseY - mouseY) / 25.0f;
   }
-  rotationAngleX -= (mouseX - pMouseX)/100.0f;
-  rotationAngleY -= (mouseY - pMouseY)/100.0f;
-  if( rotationAngleY >= PI/2 ) rotationAngleY = PI/2-0.01f;
-  if( rotationAngleY <= -PI/2 ) rotationAngleY = -PI/2+0.01f;
-  [self updateEyePosition];
-}
-
-- (void) onScroll:(NSEvent*)event
-{
-  zoom += event.deltaY / 100.0f;
-  distanceToTarget += event.deltaY / 25.0f;
-  // When implementing as a zoom...
-  if( zoom < 0.05f ) zoom = 0.05f;
+  
+  // When implementing as a zoomFactor...
+  if( zoomFactor < 0.05f ) zoomFactor = 0.05f;
   if( distanceToTarget < 0.05f ) distanceToTarget = 0.05f;
+  
   [self updateEyePosition];
 }
 
@@ -241,6 +244,40 @@
   eyeX = distanceXZ*sin(rotationAngleX) + originX;
   eyeZ = distanceXZ*cos(rotationAngleX) + originZ;
 }
+
+
+#pragma mark -
+#pragma mark Mouse events.
+
+- (void) onOtherMouseDrag
+{
+  if( altKeyDown ){
+    [self pan]; // redundant, but explicit
+    return;
+  }
+  [self pan];
+}
+
+- (void) onRightMouseDrag
+{
+  if( shiftKeyDown ){
+    [self pan];
+    return;
+  }
+  
+  if( altKeyDown ){
+    [self zoom];
+    return;
+  }
+  
+  [self orbit];
+}
+
+- (void) onScroll:(NSEvent*)event
+{
+  [self zoom];
+}
+
 
 #pragma mark - 
 #pragma mark OpenGL methods

@@ -76,8 +76,13 @@
   }
 }
 
+#pragma mark -
+#pragma mark Mouse Events.
+
 - (void) onMouseDown
 {
+  if( altKeyDown ) return; // We're using Maya navigation style, so abort here and let the drag take over.
+  
   printf("\n\n--------------------\nOooh click!\n");
   select = YES;
   
@@ -91,6 +96,11 @@
 
 - (void) onMouseDrag
 {
+  if( altKeyDown ){
+    [self orbit];
+    return;
+  }
+  
   int editingMode = [[theController document] getEditingMode];
   
   if( [mani isDragging] ){
@@ -258,6 +268,9 @@
   }
 }
 
+#pragma mark -
+#pragma mark Drawing.
+
 - (void) build
 {
   [[theController getDocument] build];
@@ -270,9 +283,9 @@
   if( select )
     [self build];
   
-  [mani draw:select zoom:zoom];
+  [mani draw:select zoom:zoomFactor];
 
-  [[theController getDocument] draw:select zoom:zoom];
+  [[theController getDocument] draw:select zoom:zoomFactor];
 }
 
 - (void) setManipulatorTarget:(Parameter *)param

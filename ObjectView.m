@@ -26,6 +26,7 @@
     viewFrame = [self frame];
     
     shiftKeyDown = NO;
+    altKeyDown = NO;
   }
   
   return self;
@@ -59,8 +60,6 @@
 
 - (void) mouseDown:(NSEvent *)event
 {
-  /* Handle selecting objects here. */
-  
   [self onMouseDown];
 }
 
@@ -101,7 +100,10 @@
 - (void) mouseDragged:(NSEvent*)event
 {
   [self updateMousePosition:event];
+  
   [self onMouseDrag];
+  
+  [self setNeedsDisplay:YES];
 }
 
 - (void) otherMouseDragged:(NSEvent*)event
@@ -132,14 +134,16 @@
 
 #pragma mark Scroll Wheel Events
 
-- (void) onScroll:(NSEvent*) event
+- (void) onScroll
 {
   // To be overridden by a subclass.
 }
 
-- (void) scrollWheel:(NSEvent*)event 
+- (void) scrollWheel:(NSEvent *)event
 {
-  [self onScroll:event];
+  scrollDeltaX = event.deltaX;
+  scrollDeltaY = event.deltaY;
+  [self onScroll];
 	[self setNeedsDisplay:YES];
 }
 
@@ -184,6 +188,12 @@
     shiftKeyDown = NO;
   }
   
+  if ( flags & NSAlternateKeyMask ) {
+    altKeyDown = YES;
+  } else {
+    altKeyDown = NO;
+  }
+  
   char key = [event.characters characterAtIndex:0];
   [self onKeyDown:key];
   [self setNeedsDisplay:YES];
@@ -204,6 +214,12 @@
     shiftKeyDown = NO;
   }
   
+  if ( flags & NSAlternateKeyMask ) {
+    altKeyDown = YES;
+  } else {
+    altKeyDown = NO;
+  }
+  
   [self onKeyUp];
 }
 
@@ -215,6 +231,12 @@
     shiftKeyDown = YES;
   } else {
     shiftKeyDown = NO;
+  }
+  
+  if ( flags & NSAlternateKeyMask ) {
+    altKeyDown = YES;
+  } else {
+    altKeyDown = NO;
   }
 }
 

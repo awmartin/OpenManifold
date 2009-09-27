@@ -18,7 +18,7 @@
   float originX;
   float originY;
   float originZ;
-  float zoom;
+  float zoomFactor;
   float distanceToTarget;
   float eyeX, eyeY, eyeZ;
 }
@@ -28,6 +28,10 @@
 - (void) setFixedLights;
 - (void) setHeadlight;
 - (void) setupEnvironment;
+
+- (void) zoom;
+- (void) pan;
+- (void) orbit;
 
 - (void) point:(float)x yPos:(float)y zPos:(float)z;
 - (void) cube:(float)s;

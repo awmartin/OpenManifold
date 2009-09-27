@@ -17,6 +17,9 @@
   float pMouseX;
   float pMouseY;
   
+  float scrollDeltaX;
+  float scrollDeltaY;
+  
   BOOL select;
   
   GLuint selectBuf[BUFSIZE];
@@ -29,6 +32,7 @@
   NSRect viewFrame;           /**< Keeps track of the view's position so we can calculate the mouse offset. */
   
   BOOL shiftKeyDown;
+  BOOL altKeyDown;
   
   float aspect;
 }
@@ -43,10 +47,10 @@
 - (void) onOtherMouseDrag;
 - (void) onRightMouseDrag;
 
-- (void) onScroll:(NSEvent*) event;
-- (void) scrollWheel:(NSEvent*)event;
+- (void) onScroll;
+- (void) scrollWheel:(NSEvent *)event;
 
-- (void) updateMousePosition:(NSEvent*)event;
+- (void) updateMousePosition:(NSEvent *)event;
 
 - (void) onKeyDown:(char)key;
 - (void) keyDown:(NSEvent*)event;

@@ -362,8 +362,10 @@
   
   if( select ) glPopName();
   
-  for( int i=0;i<[rules count];i++ ){
-    [[rules objectAtIndex:i] drawRule];
+  if( editingMode != PART ){
+    for( int i=0;i<[rules count];i++ ){
+      [[rules objectAtIndex:i] drawRule];
+    }
   }
   
   wrap->drawModel();
