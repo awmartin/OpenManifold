@@ -222,10 +222,10 @@
 
 - (void) zoom
 {
-  if( scrollDeltaY > 0 ){
+  if( scrollDeltaY != 0 ){ // We're scrolling.
     zoomFactor += scrollDeltaY / 100.0f;
     distanceToTarget += scrollDeltaY / 25.0f;
-  } else {
+  } else { // We're dragging the mouse.
     zoomFactor += (pMouseY - mouseY) / 100.0f;
     distanceToTarget += (pMouseY - mouseY) / 25.0f;
   }
@@ -273,13 +273,14 @@
   [self orbit];
 }
 
-- (void) onScroll:(NSEvent*)event
+- (void) onScroll
 {
-  [self zoom];
+  if( scrollDeltaY != 0 )
+    [self zoom];
 }
 
 
-#pragma mark - 
+#pragma mark -
 #pragma mark OpenGL methods
 
 - (void) prepareOpenGL
@@ -313,18 +314,13 @@
 
 - (void) viewSetup:(NSRect*)rect
 {
-  float w = NSWidth(*rect);
-  float h = NSHeight(*rect);
-  aspect = w/h;
-
   if( select ){
     // Handle the selection case.
-    glGetIntegerv (GL_VIEWPORT, viewport); 
-    glSelectBuffer (BUFSIZE, selectBuf); 
-    (void) glRenderMode (GL_SELECT);
+    glGetIntegerv( GL_VIEWPORT, viewport );
+    glSelectBuffer( BUFSIZE, selectBuf );
+    (void) glRenderMode( GL_SELECT );
 
     glInitNames();
-    //glPushName(-1); // -1 reserved for all the non-selectable background stuff.
   }
   
   /* For rendering perspective views. */
@@ -332,11 +328,26 @@
   glLoadIdentity();
   
   if( select ){
-    /* create 5x5 pixel picking region near cursor location */ 
-    gluPickMatrix((GLdouble) mouseX, (GLdouble) mouseY, 5.0, 5.0, viewport);
+    
+    /* change pick matrix to check for startBoxSelectX, startBoxSelectY */
+    float dX = abs(startBoxSelectX - mouseX);
+    float dY = abs(startBoxSelectY - mouseY);
+    float centerX = dX/2 + MIN(startBoxSelectX, mouseX);
+    float centerY = dY/2 + MIN(startBoxSelectY, mouseY);
+    
+    /* create 5x5 pixel picking region near cursor location */
+    dX = MAX(5.0,dX);
+    dY = MAX(5.0,dY);
+    gluPickMatrix((GLdouble) centerX, (GLdouble) centerY, dX, dY, viewport);
+    
   }
   
-  gluPerspective( 60, aspect, 1.0, 200.0 );
+  //float theta = 2 * atan( (width/2.0f) / 346.4102f) * 180/PI;
+  //printf("width: %f theta: %f\n", width, theta);
+  
+  aspect = width/height;
+  //gluPerspective( theta, aspect, 1.0, 400.0 );
+  gluPerspective( 60, aspect, 1.0, 400.0 );
   
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
@@ -349,21 +360,24 @@
   
   if (!select)
     [self setupEnvironment];
-  //[self setFixedLights];
-  
-  //if( select )
-    //glPopName();
 }
 
 - (void) viewCleanup
 {
   glPopMatrix();
   
+  [self drawHUD];
+  
   if( select ){
 
     hits = glRenderMode(GL_RENDER);
     
-    [self handleSelection];
+    if( currentOperation == MOUSE_DOWN ){
+      [self handleMouseDownSelection];
+    } else if( currentOperation == MOUSE_UP ){
+      [self handleMouseUpSelection];
+    }
+    
   }
 }
 

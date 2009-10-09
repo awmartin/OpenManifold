@@ -15,6 +15,8 @@
   self = [super initWithFrame:frameRect];
   if( self != nil ){
     mani = [[Manipulator alloc] init];
+    [mani retain];
+    
     maniPos = new double[3];
     dirPos = new double[3];
     clickPos = new double[2];
@@ -84,7 +86,11 @@
   if( altKeyDown ) return; // We're using Maya navigation style, so abort here and let the drag take over.
   
   printf("\n\n--------------------\nOooh click!\n");
+  
   select = YES;
+  
+  startBoxSelectX = mouseX;
+  startBoxSelectY = mouseY;
   
   [self setNeedsDisplay:YES];
 }
@@ -92,10 +98,27 @@
 - (void) onMouseUp
 {
   [mani stopDrag];
+  
+  printf("Mouse Up!\n");
+  
+  if( lastOperation == BOX_SELECT || lastOperation == MOUSE_DOWN ){
+    printf("Selecting the box!\n");
+    select = YES;
+    [self setNeedsDisplay:YES];
+  }
 }
 
 - (void) onMouseDrag
 {
+  if( currentOperation == MOUSE_DOWN ){
+    [self setOperation:BOX_SELECT];
+    [self setNeedsDisplay:YES];
+    return;
+  } else if( currentOperation == BOX_SELECT ){
+    [self setNeedsDisplay:YES];
+    return;
+  }
+  
   if( altKeyDown ){
     [self orbit];
     return;
@@ -288,6 +311,42 @@
   [[theController getDocument] draw:select zoom:zoomFactor];
 }
 
+- (void) drawHUD
+{
+  
+  if( currentOperation == BOX_SELECT ){
+    glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
+    
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    glOrtho (0, width, height, 0, 0, 1);
+    
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    
+    glTranslatef(0.375, 0.375, 0);
+    glScalef( 1.0, -1.0, 1.0 );
+    glTranslatef( 0, -height, 0 );
+
+    glColor4f( 1.0f, 1.0f, 1.0f, 0.1f );
+    glBegin( GL_LINE_LOOP );
+    
+    glVertex3f( startBoxSelectX, startBoxSelectY, 0 );
+    glVertex3f( startBoxSelectX, mouseY, 0 );
+    glVertex3f( mouseX, mouseY, 0 );
+    glVertex3f( mouseX, startBoxSelectY, 0 );
+    glEnd();
+    
+    glPopMatrix();
+    
+    glEnable(GL_LIGHTING);
+    glEnable(GL_DEPTH_TEST);
+  }
+}
+
 - (void) setManipulatorTarget:(Parameter *)param
 {
   [mani setTarget:param];
@@ -363,7 +422,7 @@
   return dotProduct/handleLength;
 }
 
-- (void) handleSelection
+- (void) handleMouseDownSelection
 {
   if( hits == 0 ){
     [[theController getDocument] unselectAll];
@@ -373,25 +432,119 @@
   unsigned int i;
   GLuint numNames, *ptr;
   
-  printf ("number of hits = %d\n", hits);
+  printf("number of hits = %d\n", hits);
   
   ptr = (GLuint *) selectBuf;
   
   for (i = 0; i < hits; i++) {
     numNames = *ptr;
-    printf (" number of names for this hit = %d\n", numNames);
+    printf(" number of names for this hit = %d\n", numNames);
     
     if( numNames > 0 ){
-    
+      
       ptr++;
       // Min and max window-coordinate z values.
-      printf (" z1 is %u; ", *ptr);
+      printf(" z1 is %u; ", *ptr);
       ptr++;
-      printf ("z2 is %u\n", *ptr);
+      printf(" z2 is %u\n", *ptr);
       
       
       //The names are:
-      printf (" The names are:\n");
+      printf(" The names are:\n");
+      
+      if( numNames == 2 ) {
+        // The first name is the group. The second is the opengl name of the object.
+        ptr++;
+        int group = *ptr;
+        printf( "  object group = %d | ", group );
+        
+        if( group == GEOMETRY or group == PART ){
+          // Do nothing.
+          for( int j=0;j<numNames-1;j++ ){
+            ptr++;
+            printf( " %d,", *ptr );
+          }
+          
+        } else if( group == UI ){
+          // Only check for UI elements to drag.
+          
+          ptr++;
+          int globalInterfaceIndex = *ptr;
+          printf("interface object = %d\n", globalInterfaceIndex);
+          
+          if( globalInterfaceIndex >= 0 and globalInterfaceIndex <= 8 ){
+            [self calculateDragPath:(globalInterfaceIndex%3)];
+            [mani startDrag:globalInterfaceIndex];
+            [self setOperation:MANIPULATE];
+          }
+          
+        } else {
+          // Nothing.
+          for( int j=0;j<numNames-1;j++ ){
+            ptr++;
+            printf( " %d,", *ptr );
+          }
+        }
+        
+      } else if( numNames == 3 ){
+        ptr++;
+        int group = *ptr;
+        printf( "  object group = %d | ", group );
+        
+        if( group == PARAMETER ){
+          // Do nothing.
+          
+          for( int j=0;j<numNames-1;j++ ){
+            ptr++;
+            printf( " %d,", *ptr );
+          }
+        }
+        
+      } else {
+        for( int j=0;j<numNames;j++ ){
+          ptr++;
+          printf( " %d,", *ptr );
+        }
+      }
+      
+      ptr++;
+    } // end numNames > 0 check
+    printf("\n");
+    
+  } // end hits list
+  
+  
+  
+}
+
+
+- (void) handleMouseUpSelection
+{
+  // Handles the selection of geometry on mouse up events.
+  if( !shiftKeyDown )
+    [mani clearSelection];
+  
+  unsigned int i;
+  GLuint numNames, *ptr;
+  
+  printf("number of hits = %d\n", hits);
+  
+  ptr = (GLuint *) selectBuf;
+  
+  for (i = 0; i < hits; i++) {
+    numNames = *ptr;
+    printf(" number of names for this hit = %d\n", numNames);
+    
+    if( numNames > 0 ){
+      
+      ptr++;
+      // Min and max window-coordinate z values.
+      printf(" z1 is %u; ", *ptr);
+      ptr++;
+      printf(" z2 is %u\n", *ptr);
+      
+      //The names are:
+      printf(" The names are:\n");
       
       if( numNames == 2 ) {
         // The first name is the group. The second is the opengl name of the object.
@@ -408,13 +561,10 @@
           
         } else if( group == UI ){
           
-          ptr++;
-          int globalInterfaceIndex = *ptr;
-          printf("interface object = %d\n", globalInterfaceIndex);
-          
-          if( globalInterfaceIndex >= 0 and globalInterfaceIndex <= 8 ){
-            [self calculateDragPath:(globalInterfaceIndex%3)];
-            [mani startDrag:globalInterfaceIndex];
+          // Do nothing.
+          for( int j=0;j<numNames-1;j++ ){
+            ptr++;
+            printf( " %d,", *ptr );
           }
           
         } else {
@@ -443,10 +593,7 @@
           id part = [[doc parts] objectAtIndex:partIndex];
           id parameter = [[part parameters] objectAtIndex:parameterIndex];
           
-          if( shiftKeyDown )
-            [mani addTarget:parameter];
-          else
-            [mani setTarget:parameter];
+          [mani addTarget:parameter];
         }
         
       } else {
@@ -461,7 +608,7 @@
     printf("\n");
     
   } // end hits list
+  
 }
-
 
 @end

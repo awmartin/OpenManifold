@@ -11,6 +11,14 @@
 
 #define BUFSIZE 512
 
+#define IDLE                100
+#define MANIPULATE          101
+#define CLICK_SELECT        102
+#define MULTIPLE_SELECT     103
+#define BOX_SELECT          104
+#define MOUSE_DOWN          105
+#define MOUSE_UP            106
+
 @interface ObjectView : CustomOpenGLView {
   float mouseX;
   float mouseY;
@@ -34,7 +42,12 @@
   BOOL shiftKeyDown;
   BOOL altKeyDown;
   
+  int currentOperation;
+  int lastOperation;
+  
   float aspect;
+  float width;
+  float height;
 }
 
 - (void) onMouseDown;
@@ -63,6 +76,10 @@
 - (void) draw;
 - (void) viewCleanup;
 
-- (void) handleSelection;
+- (void) handleMouseDownSelection;
+- (void) handleMouseUpSelection;
+
+- (void) drawHUD;
+- (void) setOperation:(int)newOperation;
 
 @end

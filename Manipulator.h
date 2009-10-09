@@ -43,6 +43,8 @@
  */
 - (void) reset;
 
+- (void) clearSelection;
+
 - (void) addTarget:(id)newTarget;
 
 - (void) setTarget:(id)newTarget;

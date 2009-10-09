@@ -73,6 +73,11 @@
 {
   [self setPositionX:0 y:0 z:0];
   
+  [self clearSelection];
+}
+
+- (void) clearSelection
+{
   [targets makeObjectsPerformSelector:@selector(unSelect)];
   
   [targets removeAllObjects];

@@ -910,7 +910,7 @@ cHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOQA</bytes>
 						<object class="NSPopUpButton" id="595174307">
 							<reference key="NSNextResponder" ref="1006"/>
 							<int key="NSvFlags">265</int>
-							<string key="NSFrame">{{343, 584}, {100, 22}}</string>
+							<string key="NSFrame">{{343, 583}, {100, 22}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="728096204">
@@ -924,9 +924,9 @@ cHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOQA</bytes>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
-								<object class="NSMenuItem" key="NSMenuItem" id="431728700">
+								<object class="NSMenuItem" key="NSMenuItem" id="454099864">
 									<reference key="NSMenu" ref="967717060"/>
-									<string key="NSTitle">Ruby</string>
+									<string key="NSTitle">Python</string>
 									<string key="NSKeyEquiv"/>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
@@ -941,10 +941,9 @@ cHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOQA</bytes>
 									<string key="NSTitle">OtherViews</string>
 									<object class="NSMutableArray" key="NSMenuItems">
 										<bool key="EncodedWithXMLCoder">YES</bool>
-										<reference ref="431728700"/>
-										<object class="NSMenuItem" id="454099864">
+										<object class="NSMenuItem" id="431728700">
 											<reference key="NSMenu" ref="967717060"/>
-											<string key="NSTitle">Python</string>
+											<string key="NSTitle">Ruby</string>
 											<string key="NSKeyEquiv"/>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
@@ -953,8 +952,10 @@ cHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOQA</bytes>
 											<string key="NSAction">_popUpItemAction:</string>
 											<reference key="NSTarget" ref="728096204"/>
 										</object>
+										<reference ref="454099864"/>
 									</object>
 								</object>
+								<int key="NSSelectedIndex">1</int>
 								<int key="NSPreferredEdge">1</int>
 								<bool key="NSUsesItemFromMenu">YES</bool>
 								<bool key="NSAltersState">YES</bool>
@@ -1013,8 +1014,8 @@ cHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOQA</bytes>
 																<object class="NSLayoutManager" key="NSLayoutManager">
 																	<object class="NSTextStorage" key="NSTextStorage">
 																		<object class="NSMutableString" key="NSString">
-																			<bytes key="NS.bytes">IyBBZGRzIGEgbmV3IFBhcnQgd2l0aCBhIHNpbmdsZSBzdXJmYWNlLgpAcGFydCA9IEBtZXRyb24uYWRk
-UGFydApAcGFydC5hZGRTdXJmYWNlCg</bytes>
+																			<bytes key="NS.bytes">IyBBZGRzIGEgbmV3IFBhcnQgd2l0aCBhIHNpbmdsZSBzdXJmYWNlLgpwYXJ0ID0gX29wZW5tYW5pZm9s
+ZC5hZGRQYXJ0KCkKcGFydC5hZGRTdXJmYWNlKCkKA</bytes>
 																		</object>
 																		<object class="NSDictionary" key="NSAttributes">
 																			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1099,7 +1100,7 @@ UGFydApAcGFydC5hZGRTdXJmYWNlCg</bytes>
 																<nil key="NSDefaultParagraphStyle"/>
 															</object>
 															<int key="NSTVFlags">6</int>
-															<string key="NSMaxSize">{717, 1e+07}</string>
+															<string key="NSMaxSize">{839, 1e+07}</string>
 															<string key="NSMinize">{213, 0}</string>
 															<nil key="NSDelegate"/>
 														</object>
@@ -1222,7 +1223,7 @@ UGFydApAcGFydC5hZGRTdXJmYWNlCg</bytes>
 																<nil key="NSDefaultParagraphStyle"/>
 															</object>
 															<int key="NSTVFlags">6</int>
-															<string key="NSMaxSize">{717, 1e+07}</string>
+															<string key="NSMaxSize">{843, 1e+07}</string>
 															<string key="NSMinize">{223, 0}</string>
 															<nil key="NSDelegate"/>
 														</object>
@@ -1400,8 +1401,8 @@ UGFydApAcGFydC5hZGRTdXJmYWNlCg</bytes>
 							<reference ref="633805381"/>
 							<reference ref="959493929"/>
 							<reference ref="188200377"/>
-							<reference ref="588820651"/>
 							<reference ref="595174307"/>
+							<reference ref="588820651"/>
 						</object>
 						<reference key="parent" ref="1005"/>
 					</object>
@@ -1685,9 +1686,9 @@ UGFydApAcGFydC5hZGRTdXJmYWNlCg</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{624, 420}, {450, 608}}</string>
+					<string>{{762, 344}, {450, 608}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{624, 420}, {450, 608}}</string>
+					<string>{{762, 344}, {450, 608}}</string>
 					<reference ref="9"/>
 					<string>{196, 240}</string>
 					<string>{{202, 428}, {480, 270}}</string>
@@ -1716,7 +1717,7 @@ UGFydApAcGFydC5hZGRTdXJmYWNlCg</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{892, 1060}, {100, 37}}</string>
+					<string>{{745, 974}, {100, 37}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1819,7 +1820,7 @@ UGFydApAcGFydC5hZGRTdXJmYWNlCg</bytes>
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.LastKnownRelativeProjectPath">Metron.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">OpenManifold.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>
 </archive>

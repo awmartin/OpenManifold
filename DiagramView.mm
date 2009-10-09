@@ -59,7 +59,7 @@
   dragTarget = -1;
 }
 
-- (void) handleSelection
+- (void) handleMouseDownSelection
 {
   if( hits == 0 ){
     //[[theController getDocument] unselectAll];

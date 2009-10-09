@@ -32,7 +32,11 @@
   return self;
 }
 
-
+- (void) setOperation: (int)newOperation
+{
+  lastOperation = currentOperation;
+  currentOperation = newOperation;
+}
 
 /* ********************* Mouse click events ********************* */
 
@@ -60,6 +64,7 @@
 
 - (void) mouseDown:(NSEvent *)event
 {
+  [self setOperation:MOUSE_DOWN];
   [self onMouseDown];
 }
 
@@ -75,6 +80,7 @@
 
 - (void) mouseUp:(NSEvent *)event
 {
+  [self setOperation:MOUSE_UP];
   [self onMouseUp];
 }
 
@@ -266,7 +272,12 @@
 }
 
 
-- (void) handleSelection
+- (void) handleMouseDownSelection
+{
+  // To be overridden by the subclass
+}
+
+- (void) handleMouseUpSelection
 {
   // To be overridden by the subclass
 }
@@ -277,10 +288,10 @@
   [context makeCurrentContext];
   // Drawing code here.
   
-  float w = NSWidth(rect);
-  float h = NSHeight(rect);
+  width = NSWidth(rect);
+  height = NSHeight(rect);
   
-  glViewport( 0, 0, w, h );
+  glViewport( 0, 0, width, height );
   
   glClearColor(backgroundColor[0],backgroundColor[1],backgroundColor[2],backgroundColor[3]);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -318,6 +329,9 @@
   [context flushBuffer];
 }
 
-
+- (void) drawHUD
+{
+  // To be overridden by subclass.
+}
 
 @end

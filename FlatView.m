@@ -28,25 +28,32 @@
 
 /* ********************* Mouse events ********************* */
 
-
-
-- (void) onOtherMouseDrag
+- (void) pan
 {
   originX += (mouseX - pMouseX);
   originY += (mouseY - pMouseY);
+}
+
+- (void) zoom
+{
+  zoom += scrollDeltaY / 50.0f;
+  // When implementing as a zoom...
+  if( zoom < 0.05f ) zoom = 0.05f;
+}
+
+- (void) onOtherMouseDrag
+{
+  [self pan];
 }
 
 - (void) onRightMouseDrag
 {
-  originX += (mouseX - pMouseX);
-  originY += (mouseY - pMouseY);
+  [self pan];
 }
 
-- (void) onScroll:(NSEvent*)event
+- (void) onScroll
 {
-  zoom += event.deltaY / 50.0f;
-  // When implementing as a zoom...
-  if( zoom < 0.05f ) zoom = 0.05f;
+  [self zoom];
 }
 
 
@@ -99,9 +106,6 @@
 
 - (void) viewSetup:(NSRect*)rect
 {
-  float w = NSWidth(*rect);
-  float h = NSHeight(*rect);
-  
   if( select ){
     // Handle the selection case.
     glGetIntegerv (GL_VIEWPORT, viewport); 
@@ -120,7 +124,7 @@
     gluPickMatrix((GLdouble) mouseX, (GLdouble) mouseY, 5.0, 5.0, viewport);
   }
   
-  gluOrtho2D(0.0, w/scaleFactor, 0.0, h/scaleFactor);
+  gluOrtho2D(0.0, width/scaleFactor, 0.0, height/scaleFactor);
   //gluPerspective( 60, aspect, 1.0, 200.0 );
   /*glFrustum( -(GLfloat)w/(GLfloat)1000.0f, (GLfloat)w/(GLfloat)1000.0f, 
    -(GLfloat)h/(GLfloat)1000.0f, (GLfloat)h/(GLfloat)1000.0f, 1.0, 200.0 );*/
@@ -156,7 +160,11 @@
     
     hits = glRenderMode(GL_RENDER);
     
-    [self handleSelection];
+    if( currentOperation == MOUSE_DOWN ){
+      [self handleMouseDownSelection];
+    } else if( currentOperation == MOUSE_UP ){
+      [self handleMouseUpSelection];
+    }
   }
 }
 

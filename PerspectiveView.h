@@ -21,6 +21,8 @@
   float zoomFactor;
   float distanceToTarget;
   float eyeX, eyeY, eyeZ;
+  double startBoxSelectX;
+  double startBoxSelectY;
 }
 
 - (id) initWithFrame:(NSRect)frameRect;
