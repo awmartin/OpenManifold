@@ -16,6 +16,9 @@
 #import "Rule.h"
 #import "Animator.h"
 
+
+#import "Growl/Growl.h"
+
 #ifdef RUBY
 #import <MacRuby/MacRuby.h>
 #endif
@@ -460,6 +463,16 @@
   Part* el = [[Part alloc] initWithWrapper:wrap forDocument:self];
   [self.parts addObject:el];
   wrap->refreshModel();
+  
+  [GrowlApplicationBridge
+    notifyWithTitle:@"Part added."
+    description:@"A new part was added to the document."
+    notificationName:@"Part Added"
+   iconData:nil
+   priority:nil
+   isSticky:nil
+   clickContext:nil];
+  
   return el;
 }
 

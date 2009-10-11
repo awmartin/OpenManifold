@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="502"/>
 			<integer value="480"/>
+			<integer value="502"/>
 			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -1964,6 +1964,9 @@
 			</object>
 			<object class="NSCustomObject" id="858377940">
 				<string key="NSClassName">KeyboardReferencePanelController</string>
+			</object>
+			<object class="NSCustomObject" id="989188223">
+				<string key="NSClassName">GrowlController</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -4136,6 +4139,11 @@
 						<reference key="object" ref="964936565"/>
 						<reference key="parent" ref="149253171"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">805</int>
+						<reference key="object" ref="989188223"/>
+						<reference key="parent" ref="1049"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -4462,6 +4470,7 @@
 					<string>801.IBPluginDependency</string>
 					<string>802.IBPluginDependency</string>
 					<string>803.IBPluginDependency</string>
+					<string>805.IBPluginDependency</string>
 					<string>81.IBEditorWindowLastContentRect</string>
 					<string>81.IBPluginDependency</string>
 					<string>81.ImportedFromIB2</string>
@@ -4589,7 +4598,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{525, 802}, {197, 73}}</string>
-					<string>{{139, 1096}, {680, 20}}</string>
+					<string>{{140, 1096}, {680, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{74, 862}</string>
@@ -4939,6 +4948,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{271, 843}, {199, 253}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
@@ -4971,11 +4981,19 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">804</int>
+			<int key="maxID">805</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">GrowlController</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">GrowlController.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">KeyboardReferencePanel</string>
 					<string key="superclassName">NSPanel</string>

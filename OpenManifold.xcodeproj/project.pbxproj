@@ -19,6 +19,13 @@
 		AF087867102A251E00162631 /* RuleMaintainOffset.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087866102A251E00162631 /* RuleMaintainOffset.mm */; };
 		AF08795C102A345C00162631 /* RuleMaintainDistance.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08795B102A345C00162631 /* RuleMaintainDistance.mm */; };
 		AF087AF7102A643700162631 /* gear.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF087AF6102A643700162631 /* gear.icns */; };
+		AF152DD110812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
+		AF152DD210812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
+		AF152E3D10816653003EECBE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF152E3C10816653003EECBE /* Growl.framework */; };
+		AF152E3E10816653003EECBE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF152E3C10816653003EECBE /* Growl.framework */; };
+		AF152E5D1081669A003EECBE /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AF152E3C10816653003EECBE /* Growl.framework */; };
+		AF152E9010816BB8003EECBE /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = AF152DBD10811F2B003EECBE /* Growl Registration Ticket.growlRegDict */; };
+		AF152E9110816BB9003EECBE /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = AF152DBD10811F2B003EECBE /* Growl Registration Ticket.growlRegDict */; };
 		AF1E39C21025320300963DF5 /* OpenManifold Help in Resources */ = {isa = PBXBuildFile; fileRef = AF1E39C01025320300963DF5 /* OpenManifold Help */; };
 		AF1E40B21027A31A00963DF5 /* Manipulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E40B11027A31A00963DF5 /* Manipulator.mm */; };
 		AF1E45641028AC3B00963DF5 /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45631028AC3B00963DF5 /* FlatView.m */; };
@@ -131,6 +138,19 @@
 		AFB2437F102BE044001B491E /* Network Black.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB2437E102BE044001B491E /* Network Black.icns */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AF152DE41081238F003EECBE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AF152E5D1081669A003EECBE /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -155,6 +175,10 @@
 		AF08795A102A345C00162631 /* RuleMaintainDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleMaintainDistance.h; sourceTree = "<group>"; };
 		AF08795B102A345C00162631 /* RuleMaintainDistance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RuleMaintainDistance.mm; sourceTree = "<group>"; };
 		AF087AF6102A643700162631 /* gear.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = gear.icns; sourceTree = "<group>"; };
+		AF152DBD10811F2B003EECBE /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
+		AF152DCF10812104003EECBE /* GrowlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlController.h; sourceTree = "<group>"; };
+		AF152DD010812104003EECBE /* GrowlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowlController.m; sourceTree = "<group>"; };
+		AF152E3C10816653003EECBE /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		AF1E39C11025320300963DF5 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = "English.lproj/OpenManifold Help"; sourceTree = "<group>"; };
 		AF1E40B01027A31A00963DF5 /* Manipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manipulator.h; sourceTree = "<group>"; };
 		AF1E40B11027A31A00963DF5 /* Manipulator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Manipulator.mm; sourceTree = "<group>"; };
@@ -245,6 +269,7 @@
 				AF24C4151017896D007A1B31 /* OpenGL.framework in Frameworks */,
 				AF24C4561017898B007A1B31 /* CoreFoundation.framework in Frameworks */,
 				AF80F999104B69000088F410 /* Python.framework in Frameworks */,
+				AF152E3D10816653003EECBE /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +282,7 @@
 				AF5A7C41104CE63A00BF16B4 /* OpenGL.framework in Frameworks */,
 				AF5A7C42104CE63A00BF16B4 /* CoreFoundation.framework in Frameworks */,
 				AF5A7C4B104CE67A00BF16B4 /* MacRuby.framework in Frameworks */,
+				AF152E3E10816653003EECBE /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +292,7 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF152E3C10816653003EECBE /* Growl.framework */,
 				AF5A7C4A104CE67A00BF16B4 /* MacRuby.framework */,
 				AF80F998104B69000088F410 /* Python.framework */,
 				AF24C4551017898B007A1B31 /* CoreFoundation.framework */,
@@ -307,6 +334,7 @@
 				AF087CB5102B394600162631 /* Scripting Panel */,
 				AF1E457A1028B10500963DF5 /* ScriptsBrowser */,
 				AF24C45D101789E4007A1B31 /* Linked Sources */,
+				AF152DBC10811EF9003EECBE /* Growl Support */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
@@ -368,6 +396,7 @@
 				AFB241AD102B8502001B491E /* InspectorPanel.xib */,
 				AFB2431E102BD294001B491E /* KeyboardReference.plist */,
 				AF1F4ACF103204AB0013EC31 /* DefaultPreferences.plist */,
+				AF152DBD10811F2B003EECBE /* Growl Registration Ticket.growlRegDict */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -375,7 +404,7 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AF24C4121017894E007A1B31 /* libopennurbs.a */,
+				AF152E2F10816459003EECBE /* External Libraries */,
 				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
@@ -406,6 +435,23 @@
 				AF8907A71020FA0E00D819AE /* ScriptingPanelController.mm */,
 			);
 			name = "Scripting Panel";
+			sourceTree = "<group>";
+		};
+		AF152DBC10811EF9003EECBE /* Growl Support */ = {
+			isa = PBXGroup;
+			children = (
+				AF152DCF10812104003EECBE /* GrowlController.h */,
+				AF152DD010812104003EECBE /* GrowlController.m */,
+			);
+			name = "Growl Support";
+			sourceTree = "<group>";
+		};
+		AF152E2F10816459003EECBE /* External Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				AF24C4121017894E007A1B31 /* libopennurbs.a */,
+			);
+			name = "External Libraries";
 			sourceTree = "<group>";
 		};
 		AF1E457A1028B10500963DF5 /* ScriptsBrowser */ = {
@@ -514,6 +560,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "OpenManifold Python" */;
 			buildPhases = (
+				AF152DE41081238F003EECBE /* CopyFiles */,
 				8D15AC2B0486D014006FF6A4 /* Resources */,
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
@@ -593,6 +640,7 @@
 				AFB2431F102BD294001B491E /* KeyboardReference.plist in Resources */,
 				AFB2437F102BE044001B491E /* Network Black.icns in Resources */,
 				AF1F4AD0103204AB0013EC31 /* DefaultPreferences.plist in Resources */,
+				AF152E9010816BB8003EECBE /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +671,7 @@
 				AF5A7C19104CE63A00BF16B4 /* KeyboardReference.plist in Resources */,
 				AF5A7C1A104CE63A00BF16B4 /* Network Black.icns in Resources */,
 				AF5A7C1B104CE63A00BF16B4 /* DefaultPreferences.plist in Resources */,
+				AF152E9110816BB9003EECBE /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,6 +715,7 @@
 				AF284B66102E95CC000C1C1B /* Animator.m in Sources */,
 				AF1F479D102FF4BC0013EC31 /* Behavior.mm in Sources */,
 				AF5A7A7C104C5BAE00BF16B4 /* PythonController.mm in Sources */,
+				AF152DD110812104003EECBE /* GrowlController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +756,7 @@
 				AF5A7C3B104CE63A00BF16B4 /* Animator.m in Sources */,
 				AF5A7C3C104CE63A00BF16B4 /* Behavior.mm in Sources */,
 				AF5A7C3D104CE63A00BF16B4 /* PythonController.mm in Sources */,
+				AF152DD210812104003EECBE /* GrowlController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +811,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = required;
@@ -783,6 +838,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OpenManifold_Prefix.pch;
@@ -801,6 +860,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -823,6 +886,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OpenManifold_Prefix.pch;
@@ -840,6 +907,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_MODEL_TUNING = G5;
