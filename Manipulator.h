@@ -13,6 +13,13 @@
 #define ROTATE    1
 #define SCALE     2
 
+
+#define GROUP_INTERFACE   2
+
+#define Z_AXIS    0
+#define X_AXIS    1
+#define Y_AXIS    2
+
 @interface Manipulator : NSObject {
   BOOL dragging;
   int draggingAxis;

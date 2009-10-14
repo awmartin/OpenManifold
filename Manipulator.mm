@@ -211,7 +211,7 @@
   float r = 0.05;
   float o = 0.1;
   
-  if( select ) glPushName(2);  // This is the group name for interface objects.
+  if( select ) glPushName(GROUP_INTERFACE);  // This is the group name for interface objects.
   
   glDisable( GL_LIGHTING );
   
@@ -219,7 +219,7 @@
   glTranslatef( x, y, z );
   glScalef(0.3*zoom,0.3*zoom,0.3*zoom);
   
-  if( select ) glPushName(0);
+  if( select ) glPushName(Z_AXIS);
     glColor3f(1.0,0,0);
     glBegin(GL_QUAD_STRIP);
     for( a=0;a<=2*pi+pi/10;a+=pi/10 ){
@@ -238,7 +238,7 @@
   
   glRotatef(90, 0, 1, 0);
   
-  if( select ) glPushName(1);
+  if( select ) glPushName(X_AXIS);
     glColor3f(0,1.0,0);
     
     glBegin(GL_QUAD_STRIP);
@@ -258,7 +258,7 @@
   
   glRotatef(-90, 1, 0, 0);
   
-  if( select ) glPushName(2);
+  if( select ) glPushName(Y_AXIS);
     glColor3f(0,0,1.0);
     
     glBegin(GL_QUAD_STRIP);
