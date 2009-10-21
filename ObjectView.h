@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "CustomOpenGLView.h"
 
+
 #define BUFSIZE 512
 
 #define IDLE                100

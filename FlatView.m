@@ -8,7 +8,6 @@
 
 #import "FlatView.h"
 
-
 @implementation FlatView
 
 - (id)initWithFrame:(NSRect)frameRect {

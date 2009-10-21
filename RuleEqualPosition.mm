@@ -8,7 +8,6 @@
 
 #import "RuleEqualPosition.h"
 
-
 @implementation RuleEqualPosition
 
 - (void) rule

@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "Rule.h"
 
-
 @interface RuleMaintainOffset : Rule {
   Parameter* p0;
   Parameter* p1;

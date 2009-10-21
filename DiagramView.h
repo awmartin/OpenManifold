@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "FlatView.h"
-#import "DiagramPanelController.h"
-#import "OpenManifoldDocument.h"
+
+@class DiagramPanelController;
+@class OpenManifoldDocument;
+
 
 @interface DiagramView : FlatView {
   IBOutlet DiagramPanelController* theController;

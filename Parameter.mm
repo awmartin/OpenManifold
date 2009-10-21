@@ -12,6 +12,7 @@
 #import "MainDocumentWindowController.h"
 #import "MainDocumentView.h"
 #import "Rule.h"
+#import "Part.h"
 
 
 @implementation Parameter
@@ -27,7 +28,7 @@
     parent = part;
     values = [[NSMutableDictionary alloc] init];
     
-    linkages = [NSMutableArray array];     /**< Keeps track of what objects this parameters is attached to. */
+    linkages = [NSMutableArray array];     /**< Keeps track of what this parameter is attached to. */
     [linkages retain];
     
     rules = [NSMutableArray array];
@@ -88,7 +89,7 @@
   [newLinkage addObject:parameterType];                               // 1
   [newLinkage addObject:[NSNumber numberWithInt:objectType]];         // 2
   [newLinkage addObject:[NSNumber numberWithInt:globalIndex]];        // 3
-   
+  
   [linkages addObject:newLinkage];
   
   [newLinkage release];
@@ -186,8 +187,13 @@
                              [[values objectForKey:@"posX"] floatValue], 
                              [[values objectForKey:@"posY"] floatValue], 
                              [[values objectForKey:@"posZ"] floatValue] );
-        
-      } // end line endpoint case
+        // end line endpoint case
+      } else if( ([type isEqualToString:@"point"] or [ type UTF8String ] == "point") and [objectType intValue] == POINT ){
+        geometry->setPoint( [geometryObjectIndex intValue], 
+                                  [[values objectForKey:@"posX"] floatValue], 
+                                  [[values objectForKey:@"posY"] floatValue], 
+                                  [[values objectForKey:@"posZ"] floatValue] );
+      }
       
     } // loop through count
     

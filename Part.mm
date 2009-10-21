@@ -12,6 +12,9 @@
 #import "Parameter.h"
 #import "opennurbs_interface.h"
 #import "Behavior.h"
+#import "OpenManifoldDocument.h"
+#import "MainDocumentWindowController.h"
+#import "MainDocumentView.h"
 
 @implementation Part
 

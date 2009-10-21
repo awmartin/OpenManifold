@@ -15,6 +15,7 @@
 #import "DiagramPanelController.h"
 #import "Rule.h"
 #import "Animator.h"
+#import "Parameter.h"
 
 
 #import "Growl/Growl.h"

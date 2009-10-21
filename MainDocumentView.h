@@ -8,10 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PerspectiveView.h"
-#import "MainDocumentWindowController.h"
-#import "Manipulator.h"
-#import "OpenManifoldDocument.h"
-#import "Part.h"
+
+@class MainDocumentWindowController;
+@class Manipulator;
+@class OpenManifoldDocument;
+@class Part;
+@class Parameter;
+
 
 #define X_AXIS    1
 #define Y_AXIS    2

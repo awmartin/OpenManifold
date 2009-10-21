@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Parameter.h"
+
+@class Parameter;
 
 #define TRANSLATE 0
 #define ROTATE    1

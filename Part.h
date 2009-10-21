@@ -7,12 +7,12 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#import "OpenManifoldDocument.h"
-#import "MainDocumentWindowController.h"
-#import "MainDocumentView.h"
 
 class Geometry;
 class ON_Wrapper;
+@class OpenManifoldDocument;
+@class MainDocumentWindowController;
+@class MainDocumentView;
 
 @interface Part : NSObject {
   Geometry* geometry;

@@ -20,6 +20,52 @@ Geometry::Geometry( ONX_Model* mo )
   model = mo;
 }
 
+int Geometry::addPoint( float x, float y, float z )
+{
+  ON_Point* pt = new ON_Point(x, y, z);
+  
+  int local_object_index = points_table.size();
+  local_object_indices.push_back( local_object_index );
+  
+  points_table.push_back( pt );
+  object_types.push_back( POINT );
+  
+  int global_object_index = model->m_object_table.Count(); // So se can keep track of this object globally.
+  global_object_indices.push_back( global_object_index );
+  
+  selected_objects.push_back( 0 );
+  
+  if ( points_table[local_object_index]->IsValid() ) {
+    ONX_Model_Object& object = model->m_object_table.AppendNew();
+    
+    object.m_object = points_table.back();
+    object.m_bDeleteObject = false;
+    object.m_attributes.m_layer_index = 0;
+    object.m_attributes.m_name = "point";
+    
+    object.m_attributes.m_material_index = 0;
+    object.m_attributes.SetMaterialSource(ON::material_from_object);
+    
+    ON_CreateUuid( object.m_attributes.m_uuid );
+    model->m_object_id_index.AddUuidIndex(object.m_attributes.m_uuid, global_object_index, false);
+    
+    return local_object_index;
+  } else {
+    points_table.pop_back();
+    object_types.pop_back();
+    selected_objects.pop_back();
+    global_object_indices.pop_back();
+    return -1;
+  }
+}
+
+void Geometry::setPoint( int point_index, float x, float y, float z )
+{
+  points_table[point_index]->point.x = x;
+  points_table[point_index]->point.y = y;
+  points_table[point_index]->point.z = z;
+}
+
 
 int Geometry::addLine( float x1, float y1, float z1, float x2, float y2, float z2 )
 {

@@ -7,7 +7,8 @@
 //
 
 #import "DiagramView.h"
-
+#import "DiagramPanelController.h"
+#import "OpenManifoldDocument.h"
 
 @implementation DiagramView
 

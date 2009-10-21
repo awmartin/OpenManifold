@@ -16,6 +16,7 @@ class ONX_Model;
 class ONX_Model_Object;
 class ON_LineCurve;
 class ON_Point;
+class ON_3dPoint;
 
 #define POINT     0
 #define LINE      1
@@ -35,10 +36,14 @@ public:
   vector<ON_NurbsSurface *> surfaces_table;
   vector<ON_NurbsCurve *> curves_table;
   vector<ON_LineCurve *> lines_table;
+  vector<ON_Point *> points_table;
   
   ONX_Model* model;               /**< Reference to the opennurbs model object. */
   
   Geometry( ONX_Model* mo );
+  
+  int addPoint( float x, float y, float z );
+  void setPoint( int point_index, float x, float y, float z );
   
   int addLine( float x1, float y1, float z1, float x2, float y2, float z2 );
   void setLineEndPoint( int line_index, int num, float x, float y, float z );

@@ -8,7 +8,6 @@
 
 #import "PerspectiveView.h"
 
-
 @implementation PerspectiveView
 
 - (id)initWithFrame:(NSRect)frameRect {

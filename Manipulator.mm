@@ -9,7 +9,7 @@
 #import <OpenGL/gl.h>
 #import <OpenGL/glu.h>
 #import "Manipulator.h"
-
+#import "Parameter.h"
 
 @implementation Manipulator
 

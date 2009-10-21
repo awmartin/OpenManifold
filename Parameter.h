@@ -53,8 +53,15 @@ class Geometry;
 
 - (BOOL) isDirty;
 
+/**
+ *  Makes a node dirty for the graph evaluation.
+ */
 - (void) setDirty;
 
+
+/**
+ *  Makes cleans a dirty node.
+ */
 - (void) reset;
 
 /** 

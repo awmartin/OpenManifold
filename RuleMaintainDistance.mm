@@ -8,7 +8,6 @@
 
 #import "RuleMaintainDistance.h"
 
-
 @implementation RuleMaintainDistance
 
 - (void) setup

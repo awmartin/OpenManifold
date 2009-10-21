@@ -8,7 +8,6 @@
 
 #import "RuleMaintainOffset.h"
 
-
 @implementation RuleMaintainOffset
 
 - (void) setup

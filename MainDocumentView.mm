@@ -8,6 +8,10 @@
 
 #import "MainDocumentView.h"
 #import "OpenManifoldDocumentController.h"
+#import "MainDocumentWindowController.h"
+#import "Manipulator.h"
+#import "OpenManifoldDocument.h"
+#import "Part.h"
 
 @implementation MainDocumentView
 
