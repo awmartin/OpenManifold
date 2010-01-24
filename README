@@ -1,0 +1,10 @@
+OpenManifold is a software platform for performative architectural design. It combines the functionality of associative, parametric geometry, engineering performance analysis, and algorithmic generation.
+
+Code is hosted at GitHub: http://github.com/awmartin/OpenManifold
+
+Open source libraries used include: 
+* OpenNURBS
+* CGAL
+* OOFEM
+
+William Martin
