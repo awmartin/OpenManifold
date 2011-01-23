@@ -942,6 +942,7 @@
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
+				WARNING_CFLAGS = "-Wno-write-strings";
 			};
 			name = Debug;
 		};

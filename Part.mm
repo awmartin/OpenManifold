@@ -77,10 +77,10 @@
 	}
 }
 
-- (void) writeMesh
+- (void) mesh
 {
 	if( [derivedProperties count] > 0 ){
-		[[derivedProperties objectAtIndex:0] writeMesh];
+		[[derivedProperties objectAtIndex:0] mesh];
 	}
 }
 
