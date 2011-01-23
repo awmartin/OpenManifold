@@ -278,8 +278,8 @@ bool Geometry::finishSurface( int surface_index )
   return success;
 }
 
-vector<int> Geometry::thickenSurface( int surface_index, float thickness ){
-
+vector<int> Geometry::thickenSurface( int surface_index, float thickness )
+{
 	
 	ON_NurbsSurface* surface = surfaces_table[surface_index];
 	
@@ -438,6 +438,170 @@ void Geometry::updateThickenedSurface( int surface_index, double thickness, vect
 	}
 	
 }
+
+int Geometry::getNodeIndex( int u, int v, int side ){
+	int uCount = 21;
+	int vCount = 21;
+	
+	return u*vCount + v + side*(uCount*vCount);
+}
+
+void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes, vector<Face>& faces){
+	ON_NurbsSurface* surface = surfaces_table[surface_index];
+	
+	int uCount = 21;
+	int vCount = 21;
+	ON_3dPoint topPts[uCount][vCount];
+	ON_3dPoint bottomPts[uCount][vCount];
+	
+	double uMin, uMax, vMin, vMax;
+	
+	surface->GetDomain(0, &uMin, &uMax);
+	surface->GetDomain(1, &vMin, &vMax);
+	
+	double uStep = (uMax-uMin)/(double)(uCount-1);
+	double vStep = (vMax-vMin)/(double)(vCount-1);
+	
+	double u, v;
+	
+	for( int uc=0; uc<=uCount-1; uc++ ){
+		for( int vc=0; vc<=vCount-1; vc++ ){
+			
+			ON_3dPoint pt;
+			ON_3dVector vec;
+			
+			u = uStep * (double)uc + uMin;
+			v = vStep * (double)vc + vMin;
+			
+			surface->EvNormal(u, v, pt, vec);
+			addPoint( pt.x, pt.y, pt.z );
+			
+			addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
+			addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
+			
+			topPts[uc][vc].x = pt.x + thickness*vec.x;
+			topPts[uc][vc].y = pt.y + thickness*vec.y;
+			topPts[uc][vc].z = pt.z + thickness*vec.z;
+			
+			bottomPts[uc][vc].x = pt.x - thickness*vec.x;
+			bottomPts[uc][vc].y = pt.y - thickness*vec.y;
+			bottomPts[uc][vc].z = pt.z - thickness*vec.z;
+		}
+	}
+	
+	// Put the nodes into the node list.
+	for( int uc=0; uc<=uCount-1; uc++ ){
+		for( int vc=0; vc<=vCount-1; vc++ ){
+			Node n;
+			n.x = topPts[uc][vc].x;
+			n.y = topPts[uc][vc].y;
+			n.z = topPts[uc][vc].z;
+			nodes.push_back( n );
+		}
+	}
+	
+	for( int uc=0; uc<=uCount-1; uc++ ){
+		for( int vc=0; vc<=vCount-1; vc++ ){
+			Node n;
+			n.x = bottomPts[uc][vc].x;
+			n.y = bottomPts[uc][vc].y;
+			n.z = bottomPts[uc][vc].z;
+			nodes.push_back( n );
+		}
+	}
+	
+	
+	// Put the faces into the face list.
+	for( int uc=0; uc<uCount-1; uc++ ){
+		for( int vc=0; vc<vCount-1; vc++ ){
+			Face f;
+			f.pt0 = getNodeIndex(uc, vc, 0);
+			f.pt1 = getNodeIndex(uc, vc+1, 0);
+			f.pt2 = getNodeIndex(uc+1, vc, 0);
+			faces.push_back(f);
+			
+			Face g;
+			g.pt0 = getNodeIndex(uc, vc+1, 0);
+			g.pt1 = getNodeIndex(uc+1, vc, 0);
+			g.pt2 = getNodeIndex(uc+1, vc+1, 0);
+			faces.push_back(g);
+		}
+	}
+	
+	for( int uc=0; uc<uCount-1; uc++ ){
+		for( int vc=0; vc<vCount-1; vc++ ){
+			Face f;
+			f.pt0 = getNodeIndex(uc, vc, 1);
+			f.pt1 = getNodeIndex(uc, vc+1, 1);
+			f.pt2 = getNodeIndex(uc+1, vc, 1);
+			faces.push_back(f);
+			
+			Face g;
+			g.pt0 = getNodeIndex(uc, vc+1, 1);
+			g.pt1 = getNodeIndex(uc+1, vc, 1);
+			g.pt2 = getNodeIndex(uc+1, vc+1, 1);
+			faces.push_back(g);
+		}
+	}
+	
+	for( int u=0; u<uCount-1; u++ ){
+		Face f;
+		f.pt0 = getNodeIndex(u, 0, 0);
+		f.pt1 = getNodeIndex(u+1, 0, 0);
+		f.pt2 = getNodeIndex(u, 0, 1);
+		faces.push_back(f);
+		
+		Face g;
+		g.pt0 = getNodeIndex(u+1, 0, 0);
+		g.pt1 = getNodeIndex(u, 0, 1);
+		g.pt2 = getNodeIndex(u+1, 0, 1);
+		faces.push_back(g);
+	}
+	
+	for( int u=0; u<uCount-1; u++ ){
+		Face f;
+		f.pt0 = getNodeIndex(u, vCount-1, 0);
+		f.pt1 = getNodeIndex(u+1, vCount-1, 0);
+		f.pt2 = getNodeIndex(u, vCount-1, 1);
+		faces.push_back(f);
+		
+		Face g;
+		g.pt0 = getNodeIndex(u+1, vCount-1, 0);
+		g.pt1 = getNodeIndex(u, vCount-1, 1);
+		g.pt2 = getNodeIndex(u+1, vCount-1, 1);
+		faces.push_back(g);
+	}
+	
+	for( int v=0; v<vCount-1; v++ ){
+		Face f;
+		f.pt0 = getNodeIndex(0, v, 0);
+		f.pt1 = getNodeIndex(0, v+1, 0);
+		f.pt2 = getNodeIndex(0, v, 1);
+		faces.push_back(f);
+		
+		Face g;
+		g.pt0 = getNodeIndex(0, v+1, 0);
+		g.pt1 = getNodeIndex(0, v, 1);
+		g.pt2 = getNodeIndex(0, v+1, 1);
+		faces.push_back(g);
+	}
+	
+	for( int v=0; v<vCount-1; v++ ){
+		Face f;
+		f.pt0 = getNodeIndex(uCount-1, v, 0);
+		f.pt1 = getNodeIndex(uCount-1, v+1, 0);
+		f.pt2 = getNodeIndex(uCount-1, v, 1);
+		faces.push_back(f);
+		
+		Face g;
+		g.pt0 = getNodeIndex(uCount-1, v+1, 0);
+		g.pt1 = getNodeIndex(uCount-1, v, 1);
+		g.pt2 = getNodeIndex(uCount-1, v+1, 1);
+		faces.push_back(g);
+	}
+	
+}
+
 
 void Geometry::updateSimpleSurface( int surface_index, ON_3dPoint& pt00, ON_3dPoint& pt01, ON_3dPoint& pt10, ON_3dPoint& pt11 ){
 	surfaces_table[surface_index]->SetCV( 0, 0, pt00 );

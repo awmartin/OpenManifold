@@ -23,6 +23,10 @@
 		AF087AF7102A643700162631 /* gear.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF087AF6102A643700162631 /* gear.icns */; };
 		AF13F32612EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */; };
 		AF13F32712EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */; };
+		AF13F51D12EBF57700D0CDD9 /* tetgen in Resources */ = {isa = PBXBuildFile; fileRef = AF13F51C12EBF57700D0CDD9 /* tetgen */; };
+		AF13F51E12EBF57700D0CDD9 /* tetgen in Resources */ = {isa = PBXBuildFile; fileRef = AF13F51C12EBF57700D0CDD9 /* tetgen */; };
+		AF13F55212EC798500D0CDD9 /* libtet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13F55112EC798500D0CDD9 /* libtet.a */; };
+		AF13F55312EC798500D0CDD9 /* libtet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13F55112EC798500D0CDD9 /* libtet.a */; };
 		AF152DD110812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
 		AF152DD210812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
 		AF152E3D10816653003EECBE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF152E3C10816653003EECBE /* Growl.framework */; };
@@ -179,6 +183,9 @@
 		AF087AF6102A643700162631 /* gear.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = gear.icns; sourceTree = "<group>"; };
 		AF13F32412EBC08600D0CDD9 /* ThickenedSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThickenedSurface.h; sourceTree = "<group>"; };
 		AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ThickenedSurface.mm; sourceTree = "<group>"; };
+		AF13F51C12EBF57700D0CDD9 /* tetgen */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = tetgen; path = ../../OpenManifold/src/tetgen/tetgen; sourceTree = SOURCE_ROOT; };
+		AF13F55112EC798500D0CDD9 /* libtet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtet.a; path = ../../OpenManifold/src/tetgen/libtet.a; sourceTree = SOURCE_ROOT; };
+		AF13F55912EC7A0B00D0CDD9 /* tetgen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tetgen.h; sourceTree = "<group>"; };
 		AF152DBD10811F2B003EECBE /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		AF152DCF10812104003EECBE /* GrowlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlController.h; sourceTree = "<group>"; };
 		AF152DD010812104003EECBE /* GrowlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowlController.m; sourceTree = "<group>"; };
@@ -272,6 +279,7 @@
 				AF24C4561017898B007A1B31 /* CoreFoundation.framework in Frameworks */,
 				AF80F999104B69000088F410 /* Python.framework in Frameworks */,
 				AF152E3D10816653003EECBE /* Growl.framework in Frameworks */,
+				AF13F55312EC798500D0CDD9 /* libtet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +293,7 @@
 				AF5A7C42104CE63A00BF16B4 /* CoreFoundation.framework in Frameworks */,
 				AF5A7C4B104CE67A00BF16B4 /* MacRuby.framework in Frameworks */,
 				AF152E3E10816653003EECBE /* Growl.framework in Frameworks */,
+				AF13F55212EC798500D0CDD9 /* libtet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +386,7 @@
 		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AF13F55912EC7A0B00D0CDD9 /* tetgen.h */,
 				32DBCF750370BD2300C91783 /* OpenManifold_Prefix.pch */,
 				2A37F4B0FDCFA73011CA2CEA /* main.m */,
 			);
@@ -386,6 +396,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AF13F51C12EBF57700D0CDD9 /* tetgen */,
 				AF1E473A10291E6C00963DF5 /* Graphics */,
 				AF1E39C01025320300963DF5 /* OpenManifold Help */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
@@ -455,6 +466,7 @@
 		AF152E2F10816459003EECBE /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AF13F55112EC798500D0CDD9 /* libtet.a */,
 				AF24C4121017894E007A1B31 /* libopennurbs.a */,
 			);
 			name = "External Libraries";
@@ -643,6 +655,7 @@
 				AFB2437F102BE044001B491E /* Network Black.icns in Resources */,
 				AF1F4AD0103204AB0013EC31 /* DefaultPreferences.plist in Resources */,
 				AF152E9010816BB8003EECBE /* Growl Registration Ticket.growlRegDict in Resources */,
+				AF13F51E12EBF57700D0CDD9 /* tetgen in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,6 +685,7 @@
 				AF5A7C1A104CE63A00BF16B4 /* Network Black.icns in Resources */,
 				AF5A7C1B104CE63A00BF16B4 /* DefaultPreferences.plist in Resources */,
 				AF152E9110816BB9003EECBE /* Growl Registration Ticket.growlRegDict in Resources */,
+				AF13F51D12EBF57700D0CDD9 /* tetgen in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +845,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/../opennurbs/build/Debug\\\"",
+					"\"$(SRCROOT)/../../OpenManifold/src/tetgen\"",
 				);
 				OTHER_CFLAGS = "-DRUBY=1";
 				PRODUCT_NAME = OpenManifold;
@@ -854,6 +869,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/../opennurbs/build/Debug\\\"",
+					"\"$(SRCROOT)/../../OpenManifold/src/tetgen\"",
 				);
 				PRODUCT_NAME = OpenManifold;
 			};
@@ -879,6 +895,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../opennurbs/build/Debug\"",
+					"\"$(SRCROOT)/../../OpenManifold/src/tetgen\"",
 				);
 				OTHER_CFLAGS = "-DPYTHON=1";
 				PRODUCT_NAME = OpenManifold;
@@ -902,6 +919,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../opennurbs/build/Debug\"",
+					"\"$(SRCROOT)/../../OpenManifold/src/tetgen\"",
 				);
 				PRODUCT_NAME = OpenManifold;
 			};

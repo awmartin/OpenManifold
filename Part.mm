@@ -77,6 +77,13 @@
 	}
 }
 
+- (void) writeMesh
+{
+	if( [derivedProperties count] > 0 ){
+		[[derivedProperties objectAtIndex:0] writeMesh];
+	}
+}
+
 - (void) behave
 {
   if( [behaviors count] > 0 )

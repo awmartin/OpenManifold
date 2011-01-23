@@ -24,6 +24,14 @@ class ON_3dPoint;
 #define SURFACE   3
 #define BREP      4
 
+struct Face {
+	int pt0, pt1, pt2;
+};
+
+struct Node {
+	double x, y, z;
+};
+
 class Geometry {
 
 public:
@@ -66,6 +74,10 @@ public:
 	
 	vector<int> thickenSurface( int surface_index, float thickness );
 	void updateThickenedSurface( int, double, vector<int>& );
+	
+	int getNodeIndex( int u, int v, int side );
+	void getMesh( int, double, vector<Node>&, vector<Face>&);
+	
 	void updateSimpleSurface( int, ON_3dPoint&, ON_3dPoint&, ON_3dPoint&, ON_3dPoint& );
 	int addSimpleSurface( ON_3dPoint&, ON_3dPoint&, ON_3dPoint&, ON_3dPoint& );
 	
@@ -120,5 +132,3 @@ public:
   int* getObjectIndicies();
   int* getSelected();
 };
-
-

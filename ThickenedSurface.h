@@ -18,4 +18,6 @@ class Geometry;
 
 - (id) initWithSurface:(int)surfaceIndex andGeometry:(Geometry *)geo;
 
+- (void) writeMesh;
+
 @end
