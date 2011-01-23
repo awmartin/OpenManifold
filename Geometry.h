@@ -53,7 +53,7 @@ public:
   void setCurveCV( int curve_index, int u, float x, float y, float z );
   int finishCurve( int curve_index );
   
-  int addEmptySurface( int, int, int );
+  int addEmptySurface( int, int, int, int, int );
   void setSurfaceKnot( int, int, int, double );
   void setSurfaceCV( int, int, int, float, float, float );
   
@@ -63,7 +63,12 @@ public:
    *  @return An integer containing the global index of the surface if successful. -1 if not.
    */
   bool finishSurface( int surface_index );
-
+	
+	vector<int> thickenSurface( int surface_index, float thickness );
+	void updateThickenedSurface( int, double, vector<int>& );
+	void updateSimpleSurface( int, ON_3dPoint&, ON_3dPoint&, ON_3dPoint&, ON_3dPoint& );
+	int addSimpleSurface( ON_3dPoint&, ON_3dPoint&, ON_3dPoint&, ON_3dPoint& );
+	
   /** Returns a control vector from a surface geometry.
    *  This is used to update the parameters of a part or part when the opennurbs
    *  engine is responsible for a transformation. Most of the time, the parameters

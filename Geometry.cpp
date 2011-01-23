@@ -202,12 +202,12 @@ int Geometry::finishCurve( int curve_index )
 }
 
 
-int Geometry::addEmptySurface( int dim, int u_cv_count, int v_cv_count )
+int Geometry::addEmptySurface( int dim, int u_cv_count, int v_cv_count, int u_degree, int v_degree )
 {
   // Always assume these for now.
   const int bIsRational = false;
-  const int u_degree = 3;
-  const int v_degree = 3;
+  //const int u_degree = 3;
+  //const int v_degree = 3;
   
   ON_NurbsSurface* surface = new ON_NurbsSurface( dim, bIsRational, u_degree+1, v_degree+1, u_cv_count, v_cv_count );
   
@@ -278,6 +278,207 @@ bool Geometry::finishSurface( int surface_index )
   return success;
 }
 
+vector<int> Geometry::thickenSurface( int surface_index, float thickness ){
+
+	
+	ON_NurbsSurface* surface = surfaces_table[surface_index];
+	
+	int uCount = 21;
+	int vCount = 21;
+	ON_3dPoint topPts[uCount][vCount];
+	ON_3dPoint bottomPts[uCount][vCount];
+	
+	double uMin, uMax, vMin, vMax;
+	
+	surface->GetDomain(0, &uMin, &uMax);
+	surface->GetDomain(1, &vMin, &vMax);
+	
+	double uStep = (uMax-uMin)/(double)(uCount-1);
+	double vStep = (vMax-vMin)/(double)(vCount-1);
+	
+	double u, v;
+	
+	for( int uc=0; uc<=uCount-1; uc++ ){
+		for( int vc=0; vc<=vCount-1; vc++ ){
+			
+			ON_3dPoint pt;
+			ON_3dVector vec;
+			
+			u = uStep * (double)uc + uMin;
+			v = vStep * (double)vc + vMin;
+			
+			surface->EvNormal(u, v, pt, vec);
+			addPoint( pt.x, pt.y, pt.z );
+			
+			addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
+			addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
+			
+			topPts[uc][vc].x = pt.x + thickness*vec.x;
+			topPts[uc][vc].y = pt.y + thickness*vec.y;
+			topPts[uc][vc].z = pt.z + thickness*vec.z;
+			
+			bottomPts[uc][vc].x = pt.x - thickness*vec.x;
+			bottomPts[uc][vc].y = pt.y - thickness*vec.y;
+			bottomPts[uc][vc].z = pt.z - thickness*vec.z;
+		}
+	}
+	
+	vector<int> indices;
+	
+	for( int uc=0; uc<uCount-1; uc++ ){
+		for( int vc=0; vc<vCount-1; vc++ ){
+			int i = addSimpleSurface( topPts[uc][vc], topPts[uc][vc+1], topPts[uc+1][vc], topPts[uc+1][vc+1] );
+			indices.push_back(i);
+		}
+	}
+	
+	for( int uc=0; uc<uCount-1; uc++ ){
+		for( int vc=0; vc<vCount-1; vc++ ){
+			int i = addSimpleSurface( bottomPts[uc][vc], bottomPts[uc][vc+1], bottomPts[uc+1][vc], bottomPts[uc+1][vc+1] );
+			indices.push_back(i);
+		}
+	}
+	
+	for( int u=0; u<uCount-1; u++ ){
+		int i = addSimpleSurface( topPts[u][0], topPts[u+1][0], bottomPts[u][0], bottomPts[u+1][0] );
+		indices.push_back(i);
+	}
+	
+	for( int u=0; u<uCount-1; u++ ){
+		int i = addSimpleSurface( topPts[u][vCount-1], topPts[u+1][vCount-1], bottomPts[u][vCount-1], bottomPts[u+1][vCount-1] );
+		indices.push_back(i);
+	}
+	
+	for( int v=0; v<vCount-1; v++ ){
+		int i = addSimpleSurface( topPts[0][v], topPts[0][v+1], bottomPts[0][v], bottomPts[0][v+1] );
+		indices.push_back(i);
+	}
+	
+	for( int v=0; v<vCount-1; v++ ){
+		int i = addSimpleSurface( topPts[uCount-1][v], topPts[uCount-1][v+1], bottomPts[uCount-1][v], bottomPts[uCount-1][v+1] );
+		indices.push_back(i);
+	}
+	
+	return indices;
+}
+
+void Geometry::updateThickenedSurface( int surface_index, double thickness, vector<int>& indices ){
+	ON_NurbsSurface* surface = surfaces_table[surface_index];
+	
+	int uCount = 21;
+	int vCount = 21;
+	ON_3dPoint topPts[uCount][vCount];
+	ON_3dPoint bottomPts[uCount][vCount];
+	
+	double uMin, uMax, vMin, vMax;
+	
+	surface->GetDomain(0, &uMin, &uMax);
+	surface->GetDomain(1, &vMin, &vMax);
+	
+	double uStep = (uMax-uMin)/(double)(uCount-1);
+	double vStep = (vMax-vMin)/(double)(vCount-1);
+	
+	double u, v;
+	
+	for( int uc=0; uc<=uCount-1; uc++ ){
+		for( int vc=0; vc<=vCount-1; vc++ ){
+			
+			ON_3dPoint pt;
+			ON_3dVector vec;
+			
+			u = uStep * (double)uc + uMin;
+			v = vStep * (double)vc + vMin;
+			
+			surface->EvNormal(u, v, pt, vec);
+
+			topPts[uc][vc].x = pt.x + thickness*vec.x;
+			topPts[uc][vc].y = pt.y + thickness*vec.y;
+			topPts[uc][vc].z = pt.z + thickness*vec.z;
+			
+			bottomPts[uc][vc].x = pt.x - thickness*vec.x;
+			bottomPts[uc][vc].y = pt.y - thickness*vec.y;
+			bottomPts[uc][vc].z = pt.z - thickness*vec.z;
+		}
+	}
+	
+	int i=0;
+	
+	for( int uc=0; uc<uCount-1; uc++ ){
+		for( int vc=0; vc<vCount-1; vc++ ){
+			updateSimpleSurface( indices[i], topPts[uc][vc], topPts[uc][vc+1], topPts[uc+1][vc], topPts[uc+1][vc+1] );
+			i++;
+		}
+	}
+	
+	for( int uc=0; uc<uCount-1; uc++ ){
+		for( int vc=0; vc<vCount-1; vc++ ){
+			updateSimpleSurface( indices[i], bottomPts[uc][vc], bottomPts[uc][vc+1], bottomPts[uc+1][vc], bottomPts[uc+1][vc+1] );
+			i++;
+		}
+	}
+	
+	for( int u=0; u<uCount-1; u++ ){
+		updateSimpleSurface( indices[i], topPts[u][0], topPts[u+1][0], bottomPts[u][0], bottomPts[u+1][0] );
+		i++;
+	}
+	
+	for( int u=0; u<uCount-1; u++ ){
+		updateSimpleSurface( indices[i], topPts[u][vCount-1], topPts[u+1][vCount-1], bottomPts[u][vCount-1], bottomPts[u+1][vCount-1] );
+		i++;
+	}
+	
+	for( int v=0; v<vCount-1; v++ ){
+		updateSimpleSurface( indices[i], topPts[0][v], topPts[0][v+1], bottomPts[0][v], bottomPts[0][v+1] );
+		i++;
+	}
+	
+	for( int v=0; v<vCount-1; v++ ){
+		updateSimpleSurface( indices[i], topPts[uCount-1][v], topPts[uCount-1][v+1], bottomPts[uCount-1][v], bottomPts[uCount-1][v+1] );
+		i++;
+	}
+	
+}
+
+void Geometry::updateSimpleSurface( int surface_index, ON_3dPoint& pt00, ON_3dPoint& pt01, ON_3dPoint& pt10, ON_3dPoint& pt11 ){
+	surfaces_table[surface_index]->SetCV( 0, 0, pt00 );
+	surfaces_table[surface_index]->SetCV( 0, 1, pt01 );
+	surfaces_table[surface_index]->SetCV( 1, 0, pt10 );
+	surfaces_table[surface_index]->SetCV( 1, 1, pt11 );
+}
+
+
+int Geometry::addSimpleSurface( ON_3dPoint& pt00, ON_3dPoint& pt01, ON_3dPoint& pt10, ON_3dPoint& pt11 ){
+
+	int surface_index = addEmptySurface( 3, 2, 2, 1, 1 );
+	//int global_index = getGlobalIndex(surface_index, SURFACE);
+  int i, j;
+	
+	// Knot vectors.
+	double u_knot[ 2 ];
+  double v_knot[ 2 ];
+	u_knot[0] = 0;
+	u_knot[1] = 1;
+	v_knot[0] = 0;
+	v_knot[1] = 1;
+	
+  for ( i = 0; i < 2; i++ )
+    setSurfaceKnot( surface_index, 0, i, u_knot[i] );
+  
+  for ( j = 0; j < 2; j++ )
+    setSurfaceKnot( surface_index, 1, j, v_knot[j] );
+	
+	surfaces_table[surface_index]->SetCV( 0, 0, pt00 );
+	surfaces_table[surface_index]->SetCV( 0, 1, pt01 );
+	surfaces_table[surface_index]->SetCV( 1, 0, pt10 );
+	surfaces_table[surface_index]->SetCV( 1, 1, pt11 );
+	
+	if( finishSurface( surface_index ) ){
+		return surface_index;
+	} else {
+		return 0;
+	}
+	return 0;
+}
 
 void Geometry::getLineEndPoint( int line_index, int i, double pt[] )
 {

@@ -15,6 +15,7 @@
 #import "OpenManifoldDocument.h"
 #import "MainDocumentWindowController.h"
 #import "MainDocumentView.h"
+#import "ThickenedSurface.h"
 
 @implementation Part
 
@@ -25,6 +26,7 @@
 @synthesize diagramPosX;
 @synthesize diagramPosY;
 @synthesize behaviors;
+@synthesize derivedProperties;
 
 - (id) initWithWrapper:(ON_Wrapper*)wrap forDocument:(id)doc;
 {
@@ -40,6 +42,9 @@
     
     behaviors = [NSMutableArray array];
     [behaviors retain];
+		
+		derivedProperties = [NSMutableArray array];
+		[derivedProperties retain];
     
     diagramPosX = 0;
     diagramPosY = 0;
@@ -52,6 +57,25 @@
   return self;
 }
 
+- (void) thickenSurfaceTest
+{
+	if( geometry->surfaces_table.size() > 0 ){
+		geometry->thickenSurface(0, 0.1);
+	}
+}
+
+- (void) thicken
+{
+	ThickenedSurface* tr = [[ThickenedSurface alloc] initWithSurface:0 andGeometry:geometry];
+	[derivedProperties addObject:tr];
+}
+
+- (void) update
+{
+	for( int i=0; i<[derivedProperties count]; i++ ){
+		[[derivedProperties objectAtIndex:i] update];
+	}
+}
 
 - (void) behave
 {
@@ -85,6 +109,11 @@
   [parameters addObject:point];
   
   return point;
+}
+
+- (void) addPoint:(NSString *)name x:(float)x y:(float)y z:(float)z
+{
+	geometry->addPoint( x, y, z );
 }
 
 
@@ -173,6 +202,65 @@
   geometry->finishCurve( curve_index );
 }
 
+- (void) addSimpleSurface
+{
+	int uCount = 2;
+	int vCount = 2;
+  
+  const int dim = 3;
+  const int u_degree = 1;
+  const int v_degree = 1;
+  const int u_cv_count = uCount;
+  const int v_cv_count = vCount;
+  const int u_knot_count = u_cv_count + u_degree - 1;
+  const int v_knot_count = v_cv_count + v_degree - 1;
+  double u_knot[ u_knot_count ];
+  double v_knot[ v_knot_count ];
+	
+	u_knot[0] = 0;
+	u_knot[1] = 1;
+	v_knot[0] = 0;
+	v_knot[1] = 1;
+  
+  int surface_index = geometry->addEmptySurface( dim, u_cv_count, v_cv_count, u_degree, v_degree );
+  int global_index = geometry->getGlobalIndex(surface_index, SURFACE);
+  int i, j;
+  
+  for ( i = 0; i < u_knot_count; i++ )
+    geometry->setSurfaceKnot( surface_index, 0, i, u_knot[i] );
+  
+  for ( j = 0; j < v_knot_count; j++ )
+    geometry->setSurfaceKnot( surface_index, 1, j, v_knot[j] );
+  
+  
+  float x, y, z;
+  for ( i = 0; i < u_cv_count; i++ ) {
+    for ( j = 0; j < v_cv_count; j++ ) {
+      x = i;
+      y = j;
+      z = 0;
+      
+      // Create the Parameter for this control vector.
+      Parameter* point = [[Parameter alloc] initWithPart:self andGeometry:geometry];
+      [ point initValue:@"uVal" withNumber:[NSNumber numberWithInt:i ]];
+      [ point initValue:@"vVal" withNumber:[NSNumber numberWithInt:j ]];
+      [ point initValue:@"posX" withNumber:[NSNumber numberWithFloat:x ]];
+      [ point initValue:@"posY" withNumber:[NSNumber numberWithFloat:y ]];
+      [ point initValue:@"posZ" withNumber:[NSNumber numberWithFloat:z ]];
+      [parameters addObject:point];
+      
+      // Note: this adds with the surface_index, which could be a problem later when
+      // other object types are added. 
+      // Hook this new Parameter up with the surface.
+      [point addLinkTo:surface_index type:@"controlpoint" geometry:SURFACE globalIndex:global_index];
+      
+      geometry->setSurfaceCV( surface_index, i, j, x, y, z );
+    }
+  }
+  
+  geometry->finishSurface( surface_index );
+}
+
 - (void) addSurface:(NSString*)identifier u:(int)uCount v:(int)vCount
 {
   if( uCount < 4 ) return;
@@ -216,7 +304,7 @@
     v_knot[v] = v_max;
   
   
-  int surface_index = geometry->addEmptySurface( dim, u_cv_count, v_cv_count );
+  int surface_index = geometry->addEmptySurface( dim, u_cv_count, v_cv_count, u_degree, v_degree );
   int global_index = geometry->getGlobalIndex(surface_index, SURFACE);
   int i, j;
   

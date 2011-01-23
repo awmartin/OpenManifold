@@ -200,6 +200,7 @@
   } // end count case
   
   [self setDirty];
+	[parent update];
 }
 
 

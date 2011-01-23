@@ -14,11 +14,15 @@
 		8D15AC310486D014006FF6A4 /* OpenManifoldDocument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* OpenManifoldDocument.mm */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		AF03DAC212EB83CF00DE62B7 /* DerivedProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF03DAC112EB83CF00DE62B7 /* DerivedProperty.mm */; };
+		AF03DAC312EB83CF00DE62B7 /* DerivedProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF03DAC112EB83CF00DE62B7 /* DerivedProperty.mm */; };
 		AF08776B1029E8CE00162631 /* Rule.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08776A1029E8CE00162631 /* Rule.mm */; };
 		AF087864102A1FB800162631 /* RuleEqualPosition.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087863102A1FB800162631 /* RuleEqualPosition.mm */; };
 		AF087867102A251E00162631 /* RuleMaintainOffset.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087866102A251E00162631 /* RuleMaintainOffset.mm */; };
 		AF08795C102A345C00162631 /* RuleMaintainDistance.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08795B102A345C00162631 /* RuleMaintainDistance.mm */; };
 		AF087AF7102A643700162631 /* gear.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF087AF6102A643700162631 /* gear.icns */; };
+		AF13F32612EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */; };
+		AF13F32712EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */; };
 		AF152DD110812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
 		AF152DD210812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
 		AF152E3D10816653003EECBE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF152E3C10816653003EECBE /* Growl.framework */; };
@@ -74,8 +78,6 @@
 		AF5A7C11104CE63A00BF16B4 /* gear.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF087AF6102A643700162631 /* gear.icns */; };
 		AF5A7C12104CE63A00BF16B4 /* InspectorPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFB241AD102B8502001B491E /* InspectorPanel.xib */; };
 		AF5A7C13104CE63A00BF16B4 /* Network Disabled.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241DC102B96F6001B491E /* Network Disabled.icns */; };
-		AF5A7C14104CE63A00BF16B4 /* network.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241DD102B96F6001B491E /* network.icns */; };
-		AF5A7C15104CE63A00BF16B4 /* disconnected.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E1102B9752001B491E /* disconnected.icns */; };
 		AF5A7C16104CE63A00BF16B4 /* CD.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E5102B9C49001B491E /* CD.icns */; };
 		AF5A7C17104CE63A00BF16B4 /* keyboard_button.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E7102BA3C5001B491E /* keyboard_button.png */; };
 		AF5A7C18104CE63A00BF16B4 /* keyboard_rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241EB102BAC52001B491E /* keyboard_rounded.png */; };
@@ -127,8 +129,6 @@
 		AF8907A81020FA0E00D819AE /* ScriptingPanelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF8907A71020FA0E00D819AE /* ScriptingPanelController.mm */; };
 		AFB241AE102B8502001B491E /* InspectorPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFB241AD102B8502001B491E /* InspectorPanel.xib */; };
 		AFB241DE102B96F6001B491E /* Network Disabled.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241DC102B96F6001B491E /* Network Disabled.icns */; };
-		AFB241DF102B96F6001B491E /* network.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241DD102B96F6001B491E /* network.icns */; };
-		AFB241E2102B9752001B491E /* disconnected.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E1102B9752001B491E /* disconnected.icns */; };
 		AFB241E6102B9C49001B491E /* CD.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E5102B9C49001B491E /* CD.icns */; };
 		AFB241E8102BA3C5001B491E /* keyboard_button.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E7102BA3C5001B491E /* keyboard_button.png */; };
 		AFB241EC102BAC52001B491E /* keyboard_rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241EB102BAC52001B491E /* keyboard_rounded.png */; };
@@ -166,6 +166,8 @@
 		32DBCF750370BD2300C91783 /* OpenManifold_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenManifold_Prefix.pch; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info Python.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info Python.plist"; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* OpenManifold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenManifold.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF03DAC012EB83CF00DE62B7 /* DerivedProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DerivedProperty.h; sourceTree = "<group>"; };
+		AF03DAC112EB83CF00DE62B7 /* DerivedProperty.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DerivedProperty.mm; sourceTree = "<group>"; };
 		AF0877691029E8CE00162631 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rule.h; sourceTree = "<group>"; };
 		AF08776A1029E8CE00162631 /* Rule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Rule.mm; sourceTree = "<group>"; };
 		AF087862102A1FB800162631 /* RuleEqualPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleEqualPosition.h; sourceTree = "<group>"; };
@@ -175,6 +177,8 @@
 		AF08795A102A345C00162631 /* RuleMaintainDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleMaintainDistance.h; sourceTree = "<group>"; };
 		AF08795B102A345C00162631 /* RuleMaintainDistance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RuleMaintainDistance.mm; sourceTree = "<group>"; };
 		AF087AF6102A643700162631 /* gear.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = gear.icns; sourceTree = "<group>"; };
+		AF13F32412EBC08600D0CDD9 /* ThickenedSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThickenedSurface.h; sourceTree = "<group>"; };
+		AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ThickenedSurface.mm; sourceTree = "<group>"; };
 		AF152DBD10811F2B003EECBE /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		AF152DCF10812104003EECBE /* GrowlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlController.h; sourceTree = "<group>"; };
 		AF152DD010812104003EECBE /* GrowlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowlController.m; sourceTree = "<group>"; };
@@ -246,8 +250,6 @@
 		AF8907A71020FA0E00D819AE /* ScriptingPanelController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScriptingPanelController.mm; sourceTree = "<group>"; };
 		AFB241AD102B8502001B491E /* InspectorPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectorPanel.xib; sourceTree = "<group>"; };
 		AFB241DC102B96F6001B491E /* Network Disabled.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Network Disabled.icns"; sourceTree = "<group>"; };
-		AFB241DD102B96F6001B491E /* network.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = network.icns; sourceTree = "<group>"; };
-		AFB241E1102B9752001B491E /* disconnected.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = disconnected.icns; sourceTree = "<group>"; };
 		AFB241E5102B9C49001B491E /* CD.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CD.icns; sourceTree = "<group>"; };
 		AFB241E7102BA3C5001B491E /* keyboard_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard_button.png; sourceTree = "<group>"; };
 		AFB241EB102BAC52001B491E /* keyboard_rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard_rounded.png; sourceTree = "<group>"; };
@@ -364,6 +366,10 @@
 				AF284B65102E95CC000C1C1B /* Animator.m */,
 				AF1F479B102FF4BC0013EC31 /* Behavior.h */,
 				AF1F479C102FF4BC0013EC31 /* Behavior.mm */,
+				AF03DAC012EB83CF00DE62B7 /* DerivedProperty.h */,
+				AF03DAC112EB83CF00DE62B7 /* DerivedProperty.mm */,
+				AF13F32412EBC08600D0CDD9 /* ThickenedSurface.h */,
+				AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -474,9 +480,7 @@
 				AFB241EB102BAC52001B491E /* keyboard_rounded.png */,
 				AFB241E7102BA3C5001B491E /* keyboard_button.png */,
 				AFB241E5102B9C49001B491E /* CD.icns */,
-				AFB241E1102B9752001B491E /* disconnected.icns */,
 				AFB241DC102B96F6001B491E /* Network Disabled.icns */,
-				AFB241DD102B96F6001B491E /* network.icns */,
 				AF087AF6102A643700162631 /* gear.icns */,
 				AF1E474610291F8B00963DF5 /* info.icns */,
 				AF1E4701102914D500963DF5 /* save.icns */,
@@ -632,8 +636,6 @@
 				AF087AF7102A643700162631 /* gear.icns in Resources */,
 				AFB241AE102B8502001B491E /* InspectorPanel.xib in Resources */,
 				AFB241DE102B96F6001B491E /* Network Disabled.icns in Resources */,
-				AFB241DF102B96F6001B491E /* network.icns in Resources */,
-				AFB241E2102B9752001B491E /* disconnected.icns in Resources */,
 				AFB241E6102B9C49001B491E /* CD.icns in Resources */,
 				AFB241E8102BA3C5001B491E /* keyboard_button.png in Resources */,
 				AFB241EC102BAC52001B491E /* keyboard_rounded.png in Resources */,
@@ -663,8 +665,6 @@
 				AF5A7C11104CE63A00BF16B4 /* gear.icns in Resources */,
 				AF5A7C12104CE63A00BF16B4 /* InspectorPanel.xib in Resources */,
 				AF5A7C13104CE63A00BF16B4 /* Network Disabled.icns in Resources */,
-				AF5A7C14104CE63A00BF16B4 /* network.icns in Resources */,
-				AF5A7C15104CE63A00BF16B4 /* disconnected.icns in Resources */,
 				AF5A7C16104CE63A00BF16B4 /* CD.icns in Resources */,
 				AF5A7C17104CE63A00BF16B4 /* keyboard_button.png in Resources */,
 				AF5A7C18104CE63A00BF16B4 /* keyboard_rounded.png in Resources */,
@@ -716,6 +716,8 @@
 				AF1F479D102FF4BC0013EC31 /* Behavior.mm in Sources */,
 				AF5A7A7C104C5BAE00BF16B4 /* PythonController.mm in Sources */,
 				AF152DD110812104003EECBE /* GrowlController.m in Sources */,
+				AF03DAC212EB83CF00DE62B7 /* DerivedProperty.mm in Sources */,
+				AF13F32712EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +759,8 @@
 				AF5A7C3C104CE63A00BF16B4 /* Behavior.mm in Sources */,
 				AF5A7C3D104CE63A00BF16B4 /* PythonController.mm in Sources */,
 				AF152DD210812104003EECBE /* GrowlController.m in Sources */,
+				AF03DAC312EB83CF00DE62B7 /* DerivedProperty.mm in Sources */,
+				AF13F32612EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

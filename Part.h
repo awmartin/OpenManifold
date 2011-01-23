@@ -31,6 +31,7 @@ class ON_Wrapper;
   NSString* name;
   
   NSMutableArray* behaviors;
+	NSMutableArray* derivedProperties;
 }
 
 /** An array of all the parameters that make up this Part. 
@@ -49,6 +50,8 @@ class ON_Wrapper;
 
 @property (nonatomic, retain) NSMutableArray* behaviors;
 
+@property (nonatomic, retain) NSMutableArray* derivedProperties;
+
 /** Contructor for a Part.
  *  This contructor requires the OpenNURBS wrapper object and the current document, so
  *  the Part can send messages to both.
@@ -57,6 +60,10 @@ class ON_Wrapper;
  *  @return An id to the new Part.
  */
 - (id) initWithWrapper:(ON_Wrapper*)wrap forDocument:(id)doc;
+
+- (void) thickenSurfaceTest;
+- (void) thicken;
+- (void) update;
 
 - (void) addBehavior:(id)behavior;
 
@@ -67,6 +74,8 @@ class ON_Wrapper;
 - (void) addCurve;
 
 - (void) addCurve: (int)uCount;
+
+- (void) addSimpleSurface;
 
 - (void) addSurface:(NSString*)identifier u:(int)uCount v:(int)vCount;
 
@@ -89,6 +98,8 @@ class ON_Wrapper;
  *  @return A reference to the Parameter object.
  */
 - (id) addPointParameter:(NSString *)name x:(NSNumber *)x y:(NSNumber *)y z:(NSNumber *)z;
+
+- (void) addPoint:(NSString *)name x:(float)x y:(float)y z:(float)z;
 
 
 /** Translates the Part and all geometries.
