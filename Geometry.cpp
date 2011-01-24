@@ -18,6 +18,8 @@
 Geometry::Geometry( ONX_Model* mo )
 {
   model = mo;
+	uCount = 11;
+	vCount = 11;
 }
 
 int Geometry::addPoint( float x, float y, float z )
@@ -283,8 +285,6 @@ vector<int> Geometry::thickenSurface( int surface_index, float thickness )
 	
 	ON_NurbsSurface* surface = surfaces_table[surface_index];
 	
-	int uCount = 21;
-	int vCount = 21;
 	ON_3dPoint topPts[uCount][vCount];
 	ON_3dPoint bottomPts[uCount][vCount];
 	
@@ -365,8 +365,6 @@ vector<int> Geometry::thickenSurface( int surface_index, float thickness )
 void Geometry::updateThickenedSurface( int surface_index, double thickness, vector<int>& indices ){
 	ON_NurbsSurface* surface = surfaces_table[surface_index];
 	
-	int uCount = 21;
-	int vCount = 21;
 	ON_3dPoint topPts[uCount][vCount];
 	ON_3dPoint bottomPts[uCount][vCount];
 	
@@ -440,17 +438,12 @@ void Geometry::updateThickenedSurface( int surface_index, double thickness, vect
 }
 
 int Geometry::getNodeIndex( int u, int v, int side ){
-	int uCount = 21;
-	int vCount = 21;
-	
 	return u*vCount + v + side*(uCount*vCount);
 }
 
 void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes, vector<Face>& faces){
 	ON_NurbsSurface* surface = surfaces_table[surface_index];
 	
-	int uCount = 21;
-	int vCount = 21;
 	ON_3dPoint topPts[uCount][vCount];
 	ON_3dPoint bottomPts[uCount][vCount];
 	
@@ -521,9 +514,10 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 			faces.push_back(f);
 			
 			Face g;
-			g.pt0 = getNodeIndex(uc, vc+1, 0);
+			// Reversed order.
+			g.pt2 = getNodeIndex(uc, vc+1, 0);
 			g.pt1 = getNodeIndex(uc+1, vc, 0);
-			g.pt2 = getNodeIndex(uc+1, vc+1, 0);
+			g.pt0 = getNodeIndex(uc+1, vc+1, 0);
 			faces.push_back(g);
 		}
 	}
@@ -537,9 +531,10 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 			faces.push_back(f);
 			
 			Face g;
-			g.pt0 = getNodeIndex(uc, vc+1, 1);
+			// reversed order
+			g.pt2 = getNodeIndex(uc, vc+1, 1);
 			g.pt1 = getNodeIndex(uc+1, vc, 1);
-			g.pt2 = getNodeIndex(uc+1, vc+1, 1);
+			g.pt0 = getNodeIndex(uc+1, vc+1, 1);
 			faces.push_back(g);
 		}
 	}
@@ -552,9 +547,10 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 		faces.push_back(f);
 		
 		Face g;
-		g.pt0 = getNodeIndex(u+1, 0, 0);
+		// reversed order
+		g.pt2 = getNodeIndex(u+1, 0, 0);
 		g.pt1 = getNodeIndex(u, 0, 1);
-		g.pt2 = getNodeIndex(u+1, 0, 1);
+		g.pt0 = getNodeIndex(u+1, 0, 1);
 		faces.push_back(g);
 	}
 	
@@ -566,9 +562,10 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 		faces.push_back(f);
 		
 		Face g;
-		g.pt0 = getNodeIndex(u+1, vCount-1, 0);
+		// reversed order
+		g.pt2 = getNodeIndex(u+1, vCount-1, 0);
 		g.pt1 = getNodeIndex(u, vCount-1, 1);
-		g.pt2 = getNodeIndex(u+1, vCount-1, 1);
+		g.pt0 = getNodeIndex(u+1, vCount-1, 1);
 		faces.push_back(g);
 	}
 	
@@ -580,9 +577,10 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 		faces.push_back(f);
 		
 		Face g;
-		g.pt0 = getNodeIndex(0, v+1, 0);
+		// reversed order
+		g.pt2 = getNodeIndex(0, v+1, 0);
 		g.pt1 = getNodeIndex(0, v, 1);
-		g.pt2 = getNodeIndex(0, v+1, 1);
+		g.pt0 = getNodeIndex(0, v+1, 1);
 		faces.push_back(g);
 	}
 	
@@ -594,14 +592,73 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 		faces.push_back(f);
 		
 		Face g;
-		g.pt0 = getNodeIndex(uCount-1, v+1, 0);
+		// reversed order
+		g.pt2 = getNodeIndex(uCount-1, v+1, 0);
 		g.pt1 = getNodeIndex(uCount-1, v, 1);
-		g.pt2 = getNodeIndex(uCount-1, v+1, 1);
+		g.pt0 = getNodeIndex(uCount-1, v+1, 1);
 		faces.push_back(g);
 	}
 	
 }
 
+
+bool Geometry::generateMesh( vector<Node>& nodes, vector<Face>& faces, vector<Color>& colors ){
+	bool bHasVertexNormals = false;
+  bool bHasTexCoords = false;
+  const int vertex_count = nodes.size();
+  const int face_count = faces.size();
+	
+  ON_Mesh* mesh = new ON_Mesh( face_count, vertex_count, bHasVertexNormals, bHasTexCoords);
+	
+	for( int i=0; i<nodes.size(); i++ ){
+		mesh->SetVertex( i, ON_3dPoint( nodes[i].x,  nodes[i].y,  nodes[i].z) );
+	}
+	
+	if( colors.size() == nodes.size() ){
+		for( int i=0; i<nodes.size(); i++ ){
+			mesh->m_C.Append( ON_Color( colors[i].r, colors[i].g, colors[i].b ) );
+		}
+	}
+	
+	for( int i=0; i<faces.size(); i++ ){
+		mesh->SetTriangle( i, faces[i].pt0, faces[i].pt1, faces[i].pt2 );
+	}
+	
+	bool ok = false;
+  if ( mesh->IsValid() ) 
+  {
+    if ( !mesh->HasVertexNormals() )
+      mesh->ComputeVertexNormals();
+		
+		int local_object_index = meshes_table.size();
+		local_object_indices.push_back( local_object_index );
+		
+		meshes_table.push_back( mesh );
+		object_types.push_back( MESH );
+		
+		int global_object_index = model->m_object_table.Count(); // So se can keep track of this object globally.
+		global_object_indices.push_back( global_object_index );
+		
+		selected_objects.push_back( 0 );
+		
+		ONX_Model_Object& object = model->m_object_table.AppendNew();
+    
+    object.m_object = meshes_table.back();
+    object.m_bDeleteObject = false;
+    object.m_attributes.m_layer_index = 0;
+    object.m_attributes.m_name = "mesh";
+    
+    object.m_attributes.m_material_index = 0;
+    object.m_attributes.SetMaterialSource(ON::material_from_object);
+    
+    ON_CreateUuid( object.m_attributes.m_uuid );
+    model->m_object_id_index.AddUuidIndex(object.m_attributes.m_uuid, global_object_index, false);
+    
+		ok = true;
+  }
+	
+  return ok;
+}
 
 void Geometry::updateSimpleSurface( int surface_index, ON_3dPoint& pt00, ON_3dPoint& pt01, ON_3dPoint& pt10, ON_3dPoint& pt11 ){
 	surfaces_table[surface_index]->SetCV( 0, 0, pt00 );

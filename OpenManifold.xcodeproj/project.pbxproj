@@ -27,6 +27,8 @@
 		AF13F51E12EBF57700D0CDD9 /* tetgen in Resources */ = {isa = PBXBuildFile; fileRef = AF13F51C12EBF57700D0CDD9 /* tetgen */; };
 		AF13F55212EC798500D0CDD9 /* libtet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13F55112EC798500D0CDD9 /* libtet.a */; };
 		AF13F55312EC798500D0CDD9 /* libtet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13F55112EC798500D0CDD9 /* libtet.a */; };
+		AF13F5F312ECC71F00D0CDD9 /* oofem in Resources */ = {isa = PBXBuildFile; fileRef = AF13F5F212ECC71F00D0CDD9 /* oofem */; };
+		AF13F5F412ECC71F00D0CDD9 /* oofem in Resources */ = {isa = PBXBuildFile; fileRef = AF13F5F212ECC71F00D0CDD9 /* oofem */; };
 		AF152DD110812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
 		AF152DD210812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
 		AF152E3D10816653003EECBE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF152E3C10816653003EECBE /* Growl.framework */; };
@@ -186,6 +188,7 @@
 		AF13F51C12EBF57700D0CDD9 /* tetgen */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = tetgen; path = ../../OpenManifold/src/tetgen/tetgen; sourceTree = SOURCE_ROOT; };
 		AF13F55112EC798500D0CDD9 /* libtet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtet.a; path = ../../OpenManifold/src/tetgen/libtet.a; sourceTree = SOURCE_ROOT; };
 		AF13F55912EC7A0B00D0CDD9 /* tetgen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tetgen.h; sourceTree = "<group>"; };
+		AF13F5F212ECC71F00D0CDD9 /* oofem */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = oofem; path = "../../OpenManifold/src/oofem/targets/oofem-debug/bin/oofem"; sourceTree = SOURCE_ROOT; };
 		AF152DBD10811F2B003EECBE /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		AF152DCF10812104003EECBE /* GrowlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlController.h; sourceTree = "<group>"; };
 		AF152DD010812104003EECBE /* GrowlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowlController.m; sourceTree = "<group>"; };
@@ -396,6 +399,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AF13F5F212ECC71F00D0CDD9 /* oofem */,
 				AF13F51C12EBF57700D0CDD9 /* tetgen */,
 				AF1E473A10291E6C00963DF5 /* Graphics */,
 				AF1E39C01025320300963DF5 /* OpenManifold Help */,
@@ -656,6 +660,7 @@
 				AF1F4AD0103204AB0013EC31 /* DefaultPreferences.plist in Resources */,
 				AF152E9010816BB8003EECBE /* Growl Registration Ticket.growlRegDict in Resources */,
 				AF13F51E12EBF57700D0CDD9 /* tetgen in Resources */,
+				AF13F5F412ECC71F00D0CDD9 /* oofem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,6 +691,7 @@
 				AF5A7C1B104CE63A00BF16B4 /* DefaultPreferences.plist in Resources */,
 				AF152E9110816BB9003EECBE /* Growl Registration Ticket.growlRegDict in Resources */,
 				AF13F51D12EBF57700D0CDD9 /* tetgen in Resources */,
+				AF13F5F312ECC71F00D0CDD9 /* oofem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,14 +10,28 @@
 #import "DerivedProperty.h"
 
 class Geometry;
+class tetgenio;
+struct Color;
 
 @interface ThickenedSurface : DerivedProperty {
 	Geometry* geometry;
 	vector<int> indices;
+	
+	int uCount;
+	int vCount;
+	
+	tetgenio *in, *out;
+	vector<Color> vertexColors;
 }
 
 - (id) initWithSurface:(int)surfaceIndex andGeometry:(Geometry *)geo;
 
 - (void) mesh;
+
+- (void) showMesh;
+
+- (void) analyze;
+
+- (void) visualize;
 
 @end

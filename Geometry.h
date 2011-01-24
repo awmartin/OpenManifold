@@ -17,12 +17,14 @@ class ONX_Model_Object;
 class ON_LineCurve;
 class ON_Point;
 class ON_3dPoint;
+class ON_Mesh;
 
 #define POINT     0
 #define LINE      1
 #define CURVE     2
 #define SURFACE   3
 #define BREP      4
+#define MESH			5
 
 struct Face {
 	int pt0, pt1, pt2;
@@ -32,10 +34,17 @@ struct Node {
 	double x, y, z;
 };
 
+struct Color {
+	double r, g, b;
+};
+
 class Geometry {
 
 public:
   
+	int uCount;
+	int vCount;
+	
   vector<int> local_object_indices;   /**< The local index of each object relative to their respective tables. */
   vector<int> global_object_indices;  /**< Global OpenGL indices of all the objects. Used for selection. */
   vector<int> object_types;           /**< Keeps track of what an object is, e.g. SURFACE. */
@@ -45,6 +54,7 @@ public:
   vector<ON_NurbsCurve *> curves_table;
   vector<ON_LineCurve *> lines_table;
   vector<ON_Point *> points_table;
+	vector<ON_Mesh *> meshes_table;
   
   ONX_Model* model;               /**< Reference to the opennurbs model object. */
   
@@ -77,6 +87,7 @@ public:
 	
 	int getNodeIndex( int u, int v, int side );
 	void getMesh( int, double, vector<Node>&, vector<Face>&);
+	bool generateMesh( vector<Node>&, vector<Face>&, vector<Color>& );
 	
 	void updateSimpleSurface( int, ON_3dPoint&, ON_3dPoint&, ON_3dPoint&, ON_3dPoint& );
 	int addSimpleSurface( ON_3dPoint&, ON_3dPoint&, ON_3dPoint&, ON_3dPoint& );

@@ -12,6 +12,7 @@ class ONX_Model;
 class ON_NurbsSurface;
 class ON_Object;
 class ON_Material;
+class ON_Mesh;
 
 class ON_Wrapper {
 public:
@@ -46,4 +47,6 @@ public:
   void cleanUp();
   
   void selectObject(int);
+	
+	void ON_GL_MESH( const ON_Mesh& mesh );
 };

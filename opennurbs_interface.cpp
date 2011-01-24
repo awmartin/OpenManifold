@@ -218,6 +218,8 @@ BOOL ON_Wrapper::myInitGL()
   
   gluNurbsProperty( pTheGLNURBSRender, GLU_SAMPLING_TOLERANCE,   100.0f );
   gluNurbsProperty( pTheGLNURBSRender, GLU_PARAMETRIC_TOLERANCE, 0.5f );
+	
+	//gluNurbsProperty( pTheGLNURBSRender, GLU_NURBS_MODE, GLU_NURBS_TESSELLATOR );
   
   //gluNurbsProperty( pTheGLNURBSRender, GLU_DISPLAY_MODE,         (GLfloat)GLU_FILL );
   gluNurbsProperty( pTheGLNURBSRender, GLU_DISPLAY_MODE,         GLU_OUTLINE_POLYGON );
@@ -235,6 +237,8 @@ BOOL ON_Wrapper::myInitGL()
   // register GL NURBS error callback
   gluNurbsCallback( pTheGLNURBSRender, GLU_ERROR, (GLvoid (*)()) error );
   
+	glShadeModel(GL_SMOOTH);
+	
   return true;
 }
 
@@ -357,12 +361,10 @@ void ON_Wrapper::myDisplayObject( const ON_Object& geometry, const ON_Material& 
   const ON_Curve* curve=0;
   const ON_Surface* surface=0;
   
-  // specify rendering material
-  ON_GL( material );
-  
   brep = ON_Brep::Cast(&geometry);
   if ( brep ) 
   {
+		ON_GL( material );
     ON_GL(*brep, pTheGLNURBSRender);
     return;
   }
@@ -370,13 +372,17 @@ void ON_Wrapper::myDisplayObject( const ON_Object& geometry, const ON_Material& 
   mesh = ON_Mesh::Cast(&geometry);
   if ( mesh ) 
   {
-    ON_GL(*mesh);
+		ON_GL( material );
+    //ON_GL(*mesh);
+		// Render meshes manually to incorporate color.
+		ON_GL_MESH(*mesh);
     return;
   }
   
   curve = ON_Curve::Cast(&geometry);
   if ( curve ) 
   {
+		ON_GL( material );
     ON_GL( *curve, pTheGLNURBSRender );
     return;
   }
@@ -384,6 +390,7 @@ void ON_Wrapper::myDisplayObject( const ON_Object& geometry, const ON_Material& 
   surface = ON_Surface::Cast(&geometry);
   if ( surface ) 
   {
+		ON_GL( material );
     gluBeginSurface( pTheGLNURBSRender );
     ON_GL( *surface, pTheGLNURBSRender );
     gluEndSurface( pTheGLNURBSRender );
@@ -393,6 +400,7 @@ void ON_Wrapper::myDisplayObject( const ON_Object& geometry, const ON_Material& 
   point = ON_Point::Cast(&geometry);
   if ( point ) 
   {
+		ON_GL( material );
     ON_GL(*point);
     return;
   }
@@ -400,10 +408,138 @@ void ON_Wrapper::myDisplayObject( const ON_Object& geometry, const ON_Material& 
   cloud = ON_PointCloud::Cast(&geometry);
   if ( cloud ) 
   {
+		ON_GL( material );
     ON_GL(*cloud);
     return;
   }
   
+}
+
+
+void ON_Wrapper::ON_GL_MESH( const ON_Mesh& mesh )
+{
+  int i0, i1, i2, j0, j1, j2;
+  int fi;
+  ON_3fPoint v[4];
+  ON_3fVector n[4];
+  ON_2fPoint t[4];
+	ON_Color c[4];
+	
+  const int face_count = mesh.FaceCount();
+  const BOOL bHasNormals = mesh.HasVertexNormals();
+  const BOOL bHasTCoords = mesh.HasTextureCoordinates();
+	const BOOL bHasVertexColors = mesh.HasVertexColors();
+	
+	/*if( bHasVertexColors )
+		printf("The mesh has colors...\n");
+	else
+		printf("The mesh doesn't have any colors...\n");*/
+	
+  glBegin(GL_TRIANGLES);
+  for ( fi = 0; fi < face_count; fi++ ) {
+    const ON_MeshFace& f = mesh.m_F[fi];
+		
+    v[0] = mesh.m_V[f.vi[0]];
+    v[1] = mesh.m_V[f.vi[1]];
+    v[2] = mesh.m_V[f.vi[2]];
+		
+		
+    if ( bHasNormals ) {
+      n[0] = mesh.m_N[f.vi[0]];
+      n[1] = mesh.m_N[f.vi[1]];
+      n[2] = mesh.m_N[f.vi[2]];
+    }
+		
+    if ( bHasTCoords ) {
+      t[0] = mesh.m_T[f.vi[0]];
+      t[1] = mesh.m_T[f.vi[1]];
+      t[2] = mesh.m_T[f.vi[2]];
+    }
+		
+		if ( bHasVertexColors ){
+			c[0] = mesh.m_C[f.vi[0]];
+      c[1] = mesh.m_C[f.vi[1]];
+      c[2] = mesh.m_C[f.vi[2]];
+		}
+		
+    if ( f.IsQuad() ) {
+      // quadrangle - render as two triangles
+      v[3] = mesh.m_V[f.vi[3]];
+      if ( bHasNormals )
+        n[3] = mesh.m_N[f.vi[3]];
+      if ( bHasTCoords )
+        t[3] = mesh.m_T[f.vi[3]];
+			if ( bHasVertexColors )
+				c[3] = mesh.m_C[f.vi[3]];
+      if ( v[0].DistanceTo(v[2]) <= v[1].DistanceTo(v[3]) ) {
+        i0 = 0; i1 = 1; i2 = 2;
+        j0 = 0; j1 = 2; j2 = 3;
+      }
+      else {
+        i0 = 1; i1 = 2; i2 = 3;
+        j0 = 1; j1 = 3; j2 = 0;
+      }
+    }
+    else {
+      // single triangle
+      i0 = 0; i1 = 1; i2 = 2;
+      j0 = j1 = j2 = 0;
+    }
+		
+    // first triangle
+    if ( bHasNormals )
+      glNormal3f( n[i0].x, n[i0].y, n[i0].z );
+    if ( bHasTCoords )
+      glTexCoord2f( t[i0].x, t[i0].y );
+		if ( bHasVertexColors )
+			glColor3f( c[i0].Red()/255.0, c[i0].Green()/255.0, c[i0].Blue()/255.0 );
+    glVertex3f( v[i0].x, v[i0].y, v[i0].z );
+		
+    if ( bHasNormals )
+      glNormal3f( n[i1].x, n[i1].y, n[i1].z );
+    if ( bHasTCoords )
+      glTexCoord2f( t[i1].x, t[i1].y );
+		if ( bHasVertexColors )
+			glColor3f( c[i1].Red()/255.0, c[i1].Green()/255.0, c[i1].Blue()/255.0 );
+    glVertex3f( v[i1].x, v[i1].y, v[i1].z );
+		
+    if ( bHasNormals )
+      glNormal3f( n[i2].x, n[i2].y, n[i2].z );
+    if ( bHasTCoords )
+      glTexCoord2f( t[i2].x, t[i2].y );
+		if ( bHasVertexColors )
+			glColor3f( c[i2].Red()/255.0, c[i2].Green()/255.0, c[i2].Blue()/255.0 );
+    glVertex3f( v[i2].x, v[i2].y, v[i2].z );
+		
+    if ( j0 != j1 ) {
+      // if we have a quad, second triangle
+      if ( bHasNormals )
+        glNormal3f( n[j0].x, n[j0].y, n[j0].z );
+      if ( bHasTCoords )
+        glTexCoord2f( t[j0].x, t[j0].y );
+			if ( bHasVertexColors )
+				glColor3f( c[j0].Red()/255.0, c[j0].Green()/255.0, c[j0].Blue()/255.0 );
+      glVertex3f( v[j0].x, v[j0].y, v[j0].z );
+			
+      if ( bHasNormals )
+        glNormal3f( n[j1].x, n[j1].y, n[j1].z );
+      if ( bHasTCoords )
+        glTexCoord2f( t[j1].x, t[j1].y );
+			if ( bHasVertexColors )
+				glColor3f( c[j1].Red()/255.0, c[j1].Green()/255.0, c[j1].Blue()/255.0 );
+      glVertex3f( v[j1].x, v[j1].y, v[j1].z );
+			
+      if ( bHasNormals )
+        glNormal3f( n[j2].x, n[j2].y, n[j2].z );
+      if ( bHasTCoords )
+        glTexCoord2f( t[j2].x, t[j2].y );
+			if ( bHasVertexColors )
+				glColor3f( c[j2].Red()/255.0, c[j2].Green()/255.0, c[j2].Blue()/255.0 );
+      glVertex3f( v[j2].x, v[j2].y, v[j2].z );
+    }
+		
+  }
+  glEnd();
 }
 
 /* The basic selection method. The call should really be routed to an Part object. */

@@ -84,6 +84,27 @@
 	}
 }
 
+- (void) showMesh
+{
+	if( [derivedProperties count] > 0 ){
+		[[derivedProperties objectAtIndex:0] showMesh];
+	}
+}
+
+- (void) analyze
+{
+	if( [derivedProperties count] > 0 ){
+		[[derivedProperties objectAtIndex:0] analyze];
+	}
+}
+
+- (void) visualize
+{
+	if( [derivedProperties count] > 0 ){
+		[[derivedProperties objectAtIndex:0] visualize];
+	}
+}
+
 - (void) behave
 {
   if( [behaviors count] > 0 )

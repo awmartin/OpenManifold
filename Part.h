@@ -64,6 +64,10 @@ class ON_Wrapper;
 - (void) thickenSurfaceTest;
 - (void) thicken;
 - (void) update;
+- (void) mesh;
+- (void) analyze;
+- (void) showMesh;
+- (void) visualize;
 
 - (void) addBehavior:(id)behavior;
 
