@@ -15,27 +15,19 @@
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		AF03DAC212EB83CF00DE62B7 /* DerivedProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF03DAC112EB83CF00DE62B7 /* DerivedProperty.mm */; };
-		AF03DAC312EB83CF00DE62B7 /* DerivedProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF03DAC112EB83CF00DE62B7 /* DerivedProperty.mm */; };
 		AF08776B1029E8CE00162631 /* Rule.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08776A1029E8CE00162631 /* Rule.mm */; };
 		AF087864102A1FB800162631 /* RuleEqualPosition.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087863102A1FB800162631 /* RuleEqualPosition.mm */; };
 		AF087867102A251E00162631 /* RuleMaintainOffset.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087866102A251E00162631 /* RuleMaintainOffset.mm */; };
 		AF08795C102A345C00162631 /* RuleMaintainDistance.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08795B102A345C00162631 /* RuleMaintainDistance.mm */; };
 		AF087AF7102A643700162631 /* gear.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF087AF6102A643700162631 /* gear.icns */; };
-		AF13F32612EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */; };
 		AF13F32712EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */; };
-		AF13F51D12EBF57700D0CDD9 /* tetgen in Resources */ = {isa = PBXBuildFile; fileRef = AF13F51C12EBF57700D0CDD9 /* tetgen */; };
 		AF13F51E12EBF57700D0CDD9 /* tetgen in Resources */ = {isa = PBXBuildFile; fileRef = AF13F51C12EBF57700D0CDD9 /* tetgen */; };
-		AF13F55212EC798500D0CDD9 /* libtet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13F55112EC798500D0CDD9 /* libtet.a */; };
 		AF13F55312EC798500D0CDD9 /* libtet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13F55112EC798500D0CDD9 /* libtet.a */; };
-		AF13F5F312ECC71F00D0CDD9 /* oofem in Resources */ = {isa = PBXBuildFile; fileRef = AF13F5F212ECC71F00D0CDD9 /* oofem */; };
 		AF13F5F412ECC71F00D0CDD9 /* oofem in Resources */ = {isa = PBXBuildFile; fileRef = AF13F5F212ECC71F00D0CDD9 /* oofem */; };
 		AF152DD110812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
-		AF152DD210812104003EECBE /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF152DD010812104003EECBE /* GrowlController.m */; };
 		AF152E3D10816653003EECBE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF152E3C10816653003EECBE /* Growl.framework */; };
-		AF152E3E10816653003EECBE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF152E3C10816653003EECBE /* Growl.framework */; };
 		AF152E5D1081669A003EECBE /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AF152E3C10816653003EECBE /* Growl.framework */; };
 		AF152E9010816BB8003EECBE /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = AF152DBD10811F2B003EECBE /* Growl Registration Ticket.growlRegDict */; };
-		AF152E9110816BB9003EECBE /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = AF152DBD10811F2B003EECBE /* Growl Registration Ticket.growlRegDict */; };
 		AF1E39C21025320300963DF5 /* OpenManifold Help in Resources */ = {isa = PBXBuildFile; fileRef = AF1E39C01025320300963DF5 /* OpenManifold Help */; };
 		AF1E40B21027A31A00963DF5 /* Manipulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E40B11027A31A00963DF5 /* Manipulator.mm */; };
 		AF1E45641028AC3B00963DF5 /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45631028AC3B00963DF5 /* FlatView.m */; };
@@ -58,76 +50,17 @@
 		AF1F4AD0103204AB0013EC31 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF1F4ACF103204AB0013EC31 /* DefaultPreferences.plist */; };
 		AF24C3FC101787AF007A1B31 /* CustomOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C3FB101787AF007A1B31 /* CustomOpenGLView.m */; };
 		AF24C41110178875007A1B31 /* PerspectiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C41010178875007A1B31 /* PerspectiveView.m */; };
-		AF24C4131017894E007A1B31 /* libopennurbs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4121017894E007A1B31 /* libopennurbs.a */; };
 		AF24C4151017896D007A1B31 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4141017896D007A1B31 /* OpenGL.framework */; };
 		AF24C4561017898B007A1B31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4551017898B007A1B31 /* CoreFoundation.framework */; };
 		AF24C45B101789D8007A1B31 /* opennurbs_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24C457101789D8007A1B31 /* opennurbs_interface.cpp */; };
-		AF24C46010178A16007A1B31 /* opennurbs_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24C45F10178A16007A1B31 /* opennurbs_gl.cpp */; };
 		AF24C46310178C08007A1B31 /* ObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C46210178C08007A1B31 /* ObjectView.m */; };
 		AF24C47410179A74007A1B31 /* MainDocumentView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF24C47310179A74007A1B31 /* MainDocumentView.mm */; };
 		AF24C5951017A286007A1B31 /* Part.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF24C5941017A286007A1B31 /* Part.mm */; };
 		AF24CA2A1018E8F2007A1B31 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24CA291018E8F2007A1B31 /* Geometry.cpp */; };
 		AF284B66102E95CC000C1C1B /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = AF284B65102E95CC000C1C1B /* Animator.m */; };
+		AF4A72471329D18E00F18FF6 /* opennurbs_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF4A72461329D18E00F18FF6 /* opennurbs_gl.cpp */; };
+		AF4A72501329E7F700F18FF6 /* libopennurbs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A724F1329E7F700F18FF6 /* libopennurbs.a */; };
 		AF5A7A7C104C5BAE00BF16B4 /* PythonController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF5A7A7B104C5BAE00BF16B4 /* PythonController.mm */; };
-		AF5A7C05104CE63A00BF16B4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
-		AF5A7C06104CE63A00BF16B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
-		AF5A7C07104CE63A00BF16B4 /* OpenManifoldDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58280DA1D0D100B32029 /* OpenManifoldDocument.xib */; };
-		AF5A7C08104CE63A00BF16B4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD582A0DA1D0D100B32029 /* MainMenu.xib */; };
-		AF5A7C09104CE63A00BF16B4 /* ScriptingPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF89079C1020F92A00D819AE /* ScriptingPanel.xib */; };
-		AF5A7C0A104CE63A00BF16B4 /* OpenManifold Help in Resources */ = {isa = PBXBuildFile; fileRef = AF1E39C01025320300963DF5 /* OpenManifold Help */; };
-		AF5A7C0B104CE63A00BF16B4 /* ScriptsBrowserPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E456B1028AF6500963DF5 /* ScriptsBrowserPanel.xib */; };
-		AF5A7C0C104CE63A00BF16B4 /* save.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF1E4701102914D500963DF5 /* save.icns */; };
-		AF5A7C0D104CE63A00BF16B4 /* info.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF1E474610291F8B00963DF5 /* info.icns */; };
-		AF5A7C0E104CE63A00BF16B4 /* PreferencesGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E47591029250D00963DF5 /* PreferencesGeneral.xib */; };
-		AF5A7C0F104CE63A00BF16B4 /* PreferencesMobileMe.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E475A1029250D00963DF5 /* PreferencesMobileMe.xib */; };
-		AF5A7C10104CE63A00BF16B4 /* DiagramPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1E47E910293FBE00963DF5 /* DiagramPanel.xib */; };
-		AF5A7C11104CE63A00BF16B4 /* gear.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF087AF6102A643700162631 /* gear.icns */; };
-		AF5A7C12104CE63A00BF16B4 /* InspectorPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFB241AD102B8502001B491E /* InspectorPanel.xib */; };
-		AF5A7C13104CE63A00BF16B4 /* Network Disabled.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241DC102B96F6001B491E /* Network Disabled.icns */; };
-		AF5A7C16104CE63A00BF16B4 /* CD.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E5102B9C49001B491E /* CD.icns */; };
-		AF5A7C17104CE63A00BF16B4 /* keyboard_button.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241E7102BA3C5001B491E /* keyboard_button.png */; };
-		AF5A7C18104CE63A00BF16B4 /* keyboard_rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = AFB241EB102BAC52001B491E /* keyboard_rounded.png */; };
-		AF5A7C19104CE63A00BF16B4 /* KeyboardReference.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFB2431E102BD294001B491E /* KeyboardReference.plist */; };
-		AF5A7C1A104CE63A00BF16B4 /* Network Black.icns in Resources */ = {isa = PBXBuildFile; fileRef = AFB2437E102BE044001B491E /* Network Black.icns */; };
-		AF5A7C1B104CE63A00BF16B4 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF1F4ACF103204AB0013EC31 /* DefaultPreferences.plist */; };
-		AF5A7C1D104CE63A00BF16B4 /* OpenManifoldDocument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* OpenManifoldDocument.mm */; settings = {ATTRIBUTES = (); }; };
-		AF5A7C1E104CE63A00BF16B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
-		AF5A7C1F104CE63A00BF16B4 /* CustomOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C3FB101787AF007A1B31 /* CustomOpenGLView.m */; };
-		AF5A7C20104CE63A00BF16B4 /* PerspectiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C41010178875007A1B31 /* PerspectiveView.m */; };
-		AF5A7C21104CE63A00BF16B4 /* opennurbs_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24C457101789D8007A1B31 /* opennurbs_interface.cpp */; };
-		AF5A7C22104CE63A00BF16B4 /* opennurbs_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24C45F10178A16007A1B31 /* opennurbs_gl.cpp */; };
-		AF5A7C23104CE63A00BF16B4 /* ObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF24C46210178C08007A1B31 /* ObjectView.m */; };
-		AF5A7C24104CE63A00BF16B4 /* MainDocumentView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF24C47310179A74007A1B31 /* MainDocumentView.mm */; };
-		AF5A7C25104CE63A00BF16B4 /* Part.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF24C5941017A286007A1B31 /* Part.mm */; };
-		AF5A7C26104CE63A00BF16B4 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24CA291018E8F2007A1B31 /* Geometry.cpp */; };
-		AF5A7C27104CE63A00BF16B4 /* ScriptingPanelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF8907A71020FA0E00D819AE /* ScriptingPanelController.mm */; };
-		AF5A7C28104CE63A00BF16B4 /* MainDocumentWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF84A0EE10210A7B0049338C /* MainDocumentWindowController.mm */; };
-		AF5A7C29104CE63A00BF16B4 /* Parameter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF77E8DC1024A4B000946304 /* Parameter.mm */; };
-		AF5A7C2A104CE63A00BF16B4 /* Manipulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E40B11027A31A00963DF5 /* Manipulator.mm */; };
-		AF5A7C2B104CE63A00BF16B4 /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45631028AC3B00963DF5 /* FlatView.m */; };
-		AF5A7C2C104CE63A00BF16B4 /* ScriptsBrowserPanelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45691028ADDD00963DF5 /* ScriptsBrowserPanelController.mm */; };
-		AF5A7C2D104CE63A00BF16B4 /* ScriptsBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E456E1028B0DD00963DF5 /* ScriptsBrowserCell.m */; };
-		AF5A7C2E104CE63A00BF16B4 /* ScriptsNodeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E45701028B0DD00963DF5 /* ScriptsNodeInfo.m */; };
-		AF5A7C2F104CE63A00BF16B4 /* OpenManifoldDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E474D1029226900963DF5 /* OpenManifoldDocumentController.m */; };
-		AF5A7C30104CE63A00BF16B4 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4750102922A300963DF5 /* PreferencesController.m */; };
-		AF5A7C31104CE63A00BF16B4 /* PreferencesModuleGeneralController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4752102922A300963DF5 /* PreferencesModuleGeneralController.m */; };
-		AF5A7C32104CE63A00BF16B4 /* PreferencesModuleMobileMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E4754102922A300963DF5 /* PreferencesModuleMobileMeController.m */; };
-		AF5A7C33104CE63A00BF16B4 /* DiagramPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E47F81029435E00963DF5 /* DiagramPanelController.m */; };
-		AF5A7C34104CE63A00BF16B4 /* DiagramView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1E48161029448500963DF5 /* DiagramView.mm */; };
-		AF5A7C35104CE63A00BF16B4 /* Rule.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08776A1029E8CE00162631 /* Rule.mm */; };
-		AF5A7C36104CE63A00BF16B4 /* RuleEqualPosition.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087863102A1FB800162631 /* RuleEqualPosition.mm */; };
-		AF5A7C37104CE63A00BF16B4 /* RuleMaintainOffset.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF087866102A251E00162631 /* RuleMaintainOffset.mm */; };
-		AF5A7C38104CE63A00BF16B4 /* RuleMaintainDistance.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF08795B102A345C00162631 /* RuleMaintainDistance.mm */; };
-		AF5A7C39104CE63A00BF16B4 /* KeyboardReferencePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2422B102BB9F0001B491E /* KeyboardReferencePanelController.m */; };
-		AF5A7C3A104CE63A00BF16B4 /* KeyboardReferencePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB242AF102BC23F001B491E /* KeyboardReferencePanel.m */; };
-		AF5A7C3B104CE63A00BF16B4 /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = AF284B65102E95CC000C1C1B /* Animator.m */; };
-		AF5A7C3C104CE63A00BF16B4 /* Behavior.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF1F479C102FF4BC0013EC31 /* Behavior.mm */; };
-		AF5A7C3D104CE63A00BF16B4 /* PythonController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF5A7A7B104C5BAE00BF16B4 /* PythonController.mm */; };
-		AF5A7C3F104CE63A00BF16B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		AF5A7C40104CE63A00BF16B4 /* libopennurbs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4121017894E007A1B31 /* libopennurbs.a */; };
-		AF5A7C41104CE63A00BF16B4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4141017896D007A1B31 /* OpenGL.framework */; };
-		AF5A7C42104CE63A00BF16B4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF24C4551017898B007A1B31 /* CoreFoundation.framework */; };
-		AF5A7C4B104CE67A00BF16B4 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5A7C4A104CE67A00BF16B4 /* MacRuby.framework */; };
 		AF77E8DD1024A4B000946304 /* Parameter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF77E8DC1024A4B000946304 /* Parameter.mm */; };
 		AF80F999104B69000088F410 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF80F998104B69000088F410 /* Python.framework */; };
 		AF84A0EF10210A7B0049338C /* MainDocumentWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF84A0EE10210A7B0049338C /* MainDocumentWindowController.mm */; };
@@ -229,12 +162,10 @@
 		AF24C3FB101787AF007A1B31 /* CustomOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomOpenGLView.m; sourceTree = "<group>"; };
 		AF24C40F10178875007A1B31 /* PerspectiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerspectiveView.h; sourceTree = "<group>"; };
 		AF24C41010178875007A1B31 /* PerspectiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerspectiveView.m; sourceTree = "<group>"; };
-		AF24C4121017894E007A1B31 /* libopennurbs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopennurbs.a; path = ../../../Documents/DevProjects/opennurbs/build/Debug/libopennurbs.a; sourceTree = SOURCE_ROOT; };
 		AF24C4141017896D007A1B31 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		AF24C4551017898B007A1B31 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		AF24C457101789D8007A1B31 /* opennurbs_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = opennurbs_interface.cpp; sourceTree = "<group>"; };
 		AF24C458101789D8007A1B31 /* opennurbs_interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opennurbs_interface.h; sourceTree = "<group>"; };
-		AF24C45F10178A16007A1B31 /* opennurbs_gl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = opennurbs_gl.cpp; path = ../../../Documents/DevProjects/opennurbs/opennurbs_gl.cpp; sourceTree = SOURCE_ROOT; };
 		AF24C46110178C08007A1B31 /* ObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectView.h; sourceTree = "<group>"; };
 		AF24C46210178C08007A1B31 /* ObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectView.m; sourceTree = "<group>"; };
 		AF24C47210179A74007A1B31 /* MainDocumentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainDocumentView.h; sourceTree = "<group>"; };
@@ -245,11 +176,10 @@
 		AF24CA291018E8F2007A1B31 /* Geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
 		AF284B64102E95CC000C1C1B /* Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animator.h; sourceTree = "<group>"; };
 		AF284B65102E95CC000C1C1B /* Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animator.m; sourceTree = "<group>"; };
+		AF4A72461329D18E00F18FF6 /* opennurbs_gl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = opennurbs_gl.cpp; path = ../../OpenManifold/src/opennurbs/opennurbs_gl.cpp; sourceTree = "<group>"; };
+		AF4A724F1329E7F700F18FF6 /* libopennurbs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopennurbs.a; path = ../../OpenManifold/src/opennurbs/build/Debug/libopennurbs.a; sourceTree = "<group>"; };
 		AF5A7A7A104C5BAE00BF16B4 /* PythonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PythonController.h; sourceTree = "<group>"; };
 		AF5A7A7B104C5BAE00BF16B4 /* PythonController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PythonController.mm; sourceTree = "<group>"; };
-		AF5A7C47104CE63A00BF16B4 /* OpenManifold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenManifold.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF5A7C49104CE63A00BF16B4 /* Info Ruby.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info Ruby.plist"; sourceTree = "<group>"; };
-		AF5A7C4A104CE67A00BF16B4 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = /Library/Frameworks/MacRuby.framework; sourceTree = "<absolute>"; };
 		AF77E8DB1024A4B000946304 /* Parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameter.h; sourceTree = "<group>"; };
 		AF77E8DC1024A4B000946304 /* Parameter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Parameter.mm; sourceTree = "<group>"; };
 		AF80F998104B69000088F410 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = /System/Library/Frameworks/Python.framework; sourceTree = "<absolute>"; };
@@ -277,26 +207,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
-				AF24C4131017894E007A1B31 /* libopennurbs.a in Frameworks */,
 				AF24C4151017896D007A1B31 /* OpenGL.framework in Frameworks */,
 				AF24C4561017898B007A1B31 /* CoreFoundation.framework in Frameworks */,
 				AF80F999104B69000088F410 /* Python.framework in Frameworks */,
 				AF152E3D10816653003EECBE /* Growl.framework in Frameworks */,
 				AF13F55312EC798500D0CDD9 /* libtet.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AF5A7C3E104CE63A00BF16B4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AF5A7C3F104CE63A00BF16B4 /* Cocoa.framework in Frameworks */,
-				AF5A7C40104CE63A00BF16B4 /* libopennurbs.a in Frameworks */,
-				AF5A7C41104CE63A00BF16B4 /* OpenGL.framework in Frameworks */,
-				AF5A7C42104CE63A00BF16B4 /* CoreFoundation.framework in Frameworks */,
-				AF5A7C4B104CE67A00BF16B4 /* MacRuby.framework in Frameworks */,
-				AF152E3E10816653003EECBE /* Growl.framework in Frameworks */,
-				AF13F55212EC798500D0CDD9 /* libtet.a in Frameworks */,
+				AF4A72501329E7F700F18FF6 /* libopennurbs.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				AF152E3C10816653003EECBE /* Growl.framework */,
-				AF5A7C4A104CE67A00BF16B4 /* MacRuby.framework */,
 				AF80F998104B69000088F410 /* Python.framework */,
 				AF24C4551017898B007A1B31 /* CoreFoundation.framework */,
 				AF24C4141017896D007A1B31 /* OpenGL.framework */,
@@ -330,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				8D15AC370486D014006FF6A4 /* OpenManifold.app */,
-				AF5A7C47104CE63A00BF16B4 /* OpenManifold.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -405,7 +319,6 @@
 				AF1E39C01025320300963DF5 /* OpenManifold Help */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
 				8D15AC360486D014006FF6A4 /* Info Python.plist */,
-				AF5A7C49104CE63A00BF16B4 /* Info Ruby.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 				1DDD58280DA1D0D100B32029 /* OpenManifoldDocument.xib */,
 				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
@@ -470,8 +383,8 @@
 		AF152E2F10816459003EECBE /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A724F1329E7F700F18FF6 /* libopennurbs.a */,
 				AF13F55112EC798500D0CDD9 /* libtet.a */,
-				AF24C4121017894E007A1B31 /* libopennurbs.a */,
 			);
 			name = "External Libraries";
 			sourceTree = "<group>";
@@ -520,7 +433,7 @@
 		AF24C45D101789E4007A1B31 /* Linked Sources */ = {
 			isa = PBXGroup;
 			children = (
-				AF24C45F10178A16007A1B31 /* opennurbs_gl.cpp */,
+				AF4A72461329D18E00F18FF6 /* opennurbs_gl.cpp */,
 			);
 			name = "Linked Sources";
 			sourceTree = "<group>";
@@ -596,24 +509,6 @@
 			productReference = 8D15AC370486D014006FF6A4 /* OpenManifold.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AF5A7C03104CE63A00BF16B4 /* OpenManifold Ruby */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AF5A7C44104CE63A00BF16B4 /* Build configuration list for PBXNativeTarget "OpenManifold Ruby" */;
-			buildPhases = (
-				AF5A7C04104CE63A00BF16B4 /* Resources */,
-				AF5A7C1C104CE63A00BF16B4 /* Sources */,
-				AF5A7C3E104CE63A00BF16B4 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "OpenManifold Ruby";
-			productInstallPath = "$(HOME)/Applications";
-			productName = OpenManifold;
-			productReference = AF5A7C47104CE63A00BF16B4 /* OpenManifold.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -621,13 +516,16 @@
 			isa = PBXProject;
 			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "OpenManifold" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* OpenManifold */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8D15AC270486D014006FF6A4 /* OpenManifold Python */,
-				AF5A7C03104CE63A00BF16B4 /* OpenManifold Ruby */,
 			);
 		};
 /* End PBXProject section */
@@ -664,37 +562,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AF5A7C04104CE63A00BF16B4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AF5A7C05104CE63A00BF16B4 /* Credits.rtf in Resources */,
-				AF5A7C06104CE63A00BF16B4 /* InfoPlist.strings in Resources */,
-				AF5A7C07104CE63A00BF16B4 /* OpenManifoldDocument.xib in Resources */,
-				AF5A7C08104CE63A00BF16B4 /* MainMenu.xib in Resources */,
-				AF5A7C09104CE63A00BF16B4 /* ScriptingPanel.xib in Resources */,
-				AF5A7C0A104CE63A00BF16B4 /* OpenManifold Help in Resources */,
-				AF5A7C0B104CE63A00BF16B4 /* ScriptsBrowserPanel.xib in Resources */,
-				AF5A7C0C104CE63A00BF16B4 /* save.icns in Resources */,
-				AF5A7C0D104CE63A00BF16B4 /* info.icns in Resources */,
-				AF5A7C0E104CE63A00BF16B4 /* PreferencesGeneral.xib in Resources */,
-				AF5A7C0F104CE63A00BF16B4 /* PreferencesMobileMe.xib in Resources */,
-				AF5A7C10104CE63A00BF16B4 /* DiagramPanel.xib in Resources */,
-				AF5A7C11104CE63A00BF16B4 /* gear.icns in Resources */,
-				AF5A7C12104CE63A00BF16B4 /* InspectorPanel.xib in Resources */,
-				AF5A7C13104CE63A00BF16B4 /* Network Disabled.icns in Resources */,
-				AF5A7C16104CE63A00BF16B4 /* CD.icns in Resources */,
-				AF5A7C17104CE63A00BF16B4 /* keyboard_button.png in Resources */,
-				AF5A7C18104CE63A00BF16B4 /* keyboard_rounded.png in Resources */,
-				AF5A7C19104CE63A00BF16B4 /* KeyboardReference.plist in Resources */,
-				AF5A7C1A104CE63A00BF16B4 /* Network Black.icns in Resources */,
-				AF5A7C1B104CE63A00BF16B4 /* DefaultPreferences.plist in Resources */,
-				AF152E9110816BB9003EECBE /* Growl Registration Ticket.growlRegDict in Resources */,
-				AF13F51D12EBF57700D0CDD9 /* tetgen in Resources */,
-				AF13F5F312ECC71F00D0CDD9 /* oofem in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -707,7 +574,6 @@
 				AF24C3FC101787AF007A1B31 /* CustomOpenGLView.m in Sources */,
 				AF24C41110178875007A1B31 /* PerspectiveView.m in Sources */,
 				AF24C45B101789D8007A1B31 /* opennurbs_interface.cpp in Sources */,
-				AF24C46010178A16007A1B31 /* opennurbs_gl.cpp in Sources */,
 				AF24C46310178C08007A1B31 /* ObjectView.m in Sources */,
 				AF24C47410179A74007A1B31 /* MainDocumentView.mm in Sources */,
 				AF24C5951017A286007A1B31 /* Part.mm in Sources */,
@@ -738,49 +604,7 @@
 				AF152DD110812104003EECBE /* GrowlController.m in Sources */,
 				AF03DAC212EB83CF00DE62B7 /* DerivedProperty.mm in Sources */,
 				AF13F32712EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AF5A7C1C104CE63A00BF16B4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AF5A7C1D104CE63A00BF16B4 /* OpenManifoldDocument.mm in Sources */,
-				AF5A7C1E104CE63A00BF16B4 /* main.m in Sources */,
-				AF5A7C1F104CE63A00BF16B4 /* CustomOpenGLView.m in Sources */,
-				AF5A7C20104CE63A00BF16B4 /* PerspectiveView.m in Sources */,
-				AF5A7C21104CE63A00BF16B4 /* opennurbs_interface.cpp in Sources */,
-				AF5A7C22104CE63A00BF16B4 /* opennurbs_gl.cpp in Sources */,
-				AF5A7C23104CE63A00BF16B4 /* ObjectView.m in Sources */,
-				AF5A7C24104CE63A00BF16B4 /* MainDocumentView.mm in Sources */,
-				AF5A7C25104CE63A00BF16B4 /* Part.mm in Sources */,
-				AF5A7C26104CE63A00BF16B4 /* Geometry.cpp in Sources */,
-				AF5A7C27104CE63A00BF16B4 /* ScriptingPanelController.mm in Sources */,
-				AF5A7C28104CE63A00BF16B4 /* MainDocumentWindowController.mm in Sources */,
-				AF5A7C29104CE63A00BF16B4 /* Parameter.mm in Sources */,
-				AF5A7C2A104CE63A00BF16B4 /* Manipulator.mm in Sources */,
-				AF5A7C2B104CE63A00BF16B4 /* FlatView.m in Sources */,
-				AF5A7C2C104CE63A00BF16B4 /* ScriptsBrowserPanelController.mm in Sources */,
-				AF5A7C2D104CE63A00BF16B4 /* ScriptsBrowserCell.m in Sources */,
-				AF5A7C2E104CE63A00BF16B4 /* ScriptsNodeInfo.m in Sources */,
-				AF5A7C2F104CE63A00BF16B4 /* OpenManifoldDocumentController.m in Sources */,
-				AF5A7C30104CE63A00BF16B4 /* PreferencesController.m in Sources */,
-				AF5A7C31104CE63A00BF16B4 /* PreferencesModuleGeneralController.m in Sources */,
-				AF5A7C32104CE63A00BF16B4 /* PreferencesModuleMobileMeController.m in Sources */,
-				AF5A7C33104CE63A00BF16B4 /* DiagramPanelController.m in Sources */,
-				AF5A7C34104CE63A00BF16B4 /* DiagramView.mm in Sources */,
-				AF5A7C35104CE63A00BF16B4 /* Rule.mm in Sources */,
-				AF5A7C36104CE63A00BF16B4 /* RuleEqualPosition.mm in Sources */,
-				AF5A7C37104CE63A00BF16B4 /* RuleMaintainOffset.mm in Sources */,
-				AF5A7C38104CE63A00BF16B4 /* RuleMaintainDistance.mm in Sources */,
-				AF5A7C39104CE63A00BF16B4 /* KeyboardReferencePanelController.m in Sources */,
-				AF5A7C3A104CE63A00BF16B4 /* KeyboardReferencePanel.m in Sources */,
-				AF5A7C3B104CE63A00BF16B4 /* Animator.m in Sources */,
-				AF5A7C3C104CE63A00BF16B4 /* Behavior.mm in Sources */,
-				AF5A7C3D104CE63A00BF16B4 /* PythonController.mm in Sources */,
-				AF152DD210812104003EECBE /* GrowlController.m in Sources */,
-				AF03DAC312EB83CF00DE62B7 /* DerivedProperty.mm in Sources */,
-				AF13F32612EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */,
+				AF4A72471329D18E00F18FF6 /* opennurbs_gl.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,57 +654,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		AF5A7C45104CE63A00BF16B4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_ENABLE_OBJC_GC = required;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = OpenManifold_Prefix.pch;
-				INFOPLIST_FILE = "Info Ruby.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/../opennurbs/build/Debug\\\"",
-					"\"$(SRCROOT)/../../OpenManifold/src/tetgen\"",
-				);
-				OTHER_CFLAGS = "-DRUBY=1";
-				PRODUCT_NAME = OpenManifold;
-			};
-			name = Debug;
-		};
-		AF5A7C46104CE63A00BF16B4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = OpenManifold_Prefix.pch;
-				INFOPLIST_FILE = "Info Ruby.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/../opennurbs/build/Debug\\\"",
-					"\"$(SRCROOT)/../../OpenManifold/src/tetgen\"",
-				);
-				PRODUCT_NAME = OpenManifold;
-			};
-			name = Release;
-		};
 		C05733C808A9546B00998B17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -899,12 +672,13 @@
 				INFOPLIST_FILE = "Info Python.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../opennurbs/build/Debug\"",
 					"\"$(SRCROOT)/../../OpenManifold/src/tetgen\"",
+					"\"$(SRCROOT)/../../OpenManifold/src/opennurbs/build/Release\"",
+					"\"$(SRCROOT)/../../OpenManifold/src/opennurbs/build/Debug\"",
 				);
 				OTHER_CFLAGS = "-DPYTHON=1";
 				PRODUCT_NAME = OpenManifold;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -926,8 +700,11 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../opennurbs/build/Debug\"",
 					"\"$(SRCROOT)/../../OpenManifold/src/tetgen\"",
+					"\"$(SRCROOT)/../../OpenManifold/src/opennurbs/build/Release\"",
+					"\"$(SRCROOT)/../../OpenManifold/src/opennurbs/build/Debug\"",
 				);
 				PRODUCT_NAME = OpenManifold;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -943,7 +720,7 @@
 				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = /Users/awmartin/Documents/DevProjects/opennurbs/build/Debug;
+				LIBRARY_SEARCH_PATHS = /Users/awmartin/Dropbox/DevProjects/opennurbs/build/Debug;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
@@ -967,15 +744,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AF5A7C44104CE63A00BF16B4 /* Build configuration list for PBXNativeTarget "OpenManifold Ruby" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AF5A7C45104CE63A00BF16B4 /* Debug */,
-				AF5A7C46104CE63A00BF16B4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "OpenManifold Python" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

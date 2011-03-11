@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>RootLibraryPath</key>
-	<string>~/Documents/OpenManifold</string>
 	<key>ProjectsFolderPath</key>
-	<string>~/Documents/OpenManifold/Projects</string>
+	<string>~/Dropbox/OpenManifold/Projects</string>
+	<key>RootLibraryPath</key>
+	<string>~/Dropbox/OpenManifold</string>
 </dict>
 </plist>

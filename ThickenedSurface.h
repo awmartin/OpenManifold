@@ -22,6 +22,7 @@ struct Color;
 	
 	tetgenio *in, *out;
 	vector<Color> vertexColors;
+  vector<double> node_displacements;
 }
 
 - (id) initWithSurface:(int)surfaceIndex andGeometry:(Geometry *)geo;

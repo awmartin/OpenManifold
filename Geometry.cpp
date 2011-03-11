@@ -9,8 +9,8 @@
  *
  */
 
-#import "/Users/awmartin/Documents/DevProjects/opennurbs/opennurbs.h"
-#import "/Users/awmartin/Documents/DevProjects/opennurbs/opennurbs_gl.h"
+#import "/Users/awmartin/Dropbox/OpenManifold/src/opennurbs/opennurbs.h"
+#import "/Users/awmartin/Dropbox/OpenManifold/src/opennurbs/opennurbs_gl.h"
 #import "opennurbs_interface.h"
 #import "Geometry.h"
 
@@ -285,9 +285,12 @@ vector<int> Geometry::thickenSurface( int surface_index, float thickness )
 	
 	ON_NurbsSurface* surface = surfaces_table[surface_index];
 	
-	ON_3dPoint topPts[uCount][vCount];
-	ON_3dPoint bottomPts[uCount][vCount];
+	//ON_3dPoint topPts[uCount][vCount];
+	//ON_3dPoint bottomPts[uCount][vCount];
 	
+    vector<ON_3dPoint> topPts;
+    vector<ON_3dPoint> bottomPts;
+    
 	double uMin, uMax, vMin, vMax;
 	
 	surface->GetDomain(0, &uMin, &uMax);
@@ -313,13 +316,18 @@ vector<int> Geometry::thickenSurface( int surface_index, float thickness )
 			addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
 			addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
 			
-			topPts[uc][vc].x = pt.x + thickness*vec.x;
-			topPts[uc][vc].y = pt.y + thickness*vec.y;
-			topPts[uc][vc].z = pt.z + thickness*vec.z;
+            ON_3dPoint t, b;
+            
+			t.x = pt.x + thickness*vec.x;
+			t.y = pt.y + thickness*vec.y;
+			t.z = pt.z + thickness*vec.z;
 			
-			bottomPts[uc][vc].x = pt.x - thickness*vec.x;
-			bottomPts[uc][vc].y = pt.y - thickness*vec.y;
-			bottomPts[uc][vc].z = pt.z - thickness*vec.z;
+			b.x = pt.x - thickness*vec.x;
+			b.y = pt.y - thickness*vec.y;
+			b.z = pt.z - thickness*vec.z;
+            
+            topPts.push_back(t);
+            bottomPts.push_back(b);
 		}
 	}
 	
@@ -327,35 +335,35 @@ vector<int> Geometry::thickenSurface( int surface_index, float thickness )
 	
 	for( int uc=0; uc<uCount-1; uc++ ){
 		for( int vc=0; vc<vCount-1; vc++ ){
-			int i = addSimpleSurface( topPts[uc][vc], topPts[uc][vc+1], topPts[uc+1][vc], topPts[uc+1][vc+1] );
+			int i = addSimpleSurface( topPts[vc*uCount+uc], topPts[(vc+1)*uCount+uc], topPts[vc*uCount+uc+1], topPts[(vc+1)*uCount+uc+1] );
 			indices.push_back(i);
 		}
 	}
 	
 	for( int uc=0; uc<uCount-1; uc++ ){
 		for( int vc=0; vc<vCount-1; vc++ ){
-			int i = addSimpleSurface( bottomPts[uc][vc], bottomPts[uc][vc+1], bottomPts[uc+1][vc], bottomPts[uc+1][vc+1] );
+			int i = addSimpleSurface( bottomPts[vc*uCount+uc], bottomPts[(vc+1)*uCount+uc], bottomPts[vc*uCount+uc+1], bottomPts[(vc+1)*uCount+uc+1] );
 			indices.push_back(i);
 		}
 	}
 	
 	for( int u=0; u<uCount-1; u++ ){
-		int i = addSimpleSurface( topPts[u][0], topPts[u+1][0], bottomPts[u][0], bottomPts[u+1][0] );
+		int i = addSimpleSurface( topPts[u], topPts[u+1], bottomPts[u], bottomPts[u+1] );
 		indices.push_back(i);
 	}
 	
 	for( int u=0; u<uCount-1; u++ ){
-		int i = addSimpleSurface( topPts[u][vCount-1], topPts[u+1][vCount-1], bottomPts[u][vCount-1], bottomPts[u+1][vCount-1] );
+		int i = addSimpleSurface( topPts[(vCount-1)*uCount+u], topPts[(vCount-1)*uCount+u+1], bottomPts[(vCount-1)*uCount+u], bottomPts[(vCount-1)*uCount+u+1] );
 		indices.push_back(i);
 	}
 	
 	for( int v=0; v<vCount-1; v++ ){
-		int i = addSimpleSurface( topPts[0][v], topPts[0][v+1], bottomPts[0][v], bottomPts[0][v+1] );
+		int i = addSimpleSurface( topPts[v*uCount], topPts[(v+1)*uCount], bottomPts[v*uCount], bottomPts[(v+1)*uCount] );
 		indices.push_back(i);
 	}
 	
 	for( int v=0; v<vCount-1; v++ ){
-		int i = addSimpleSurface( topPts[uCount-1][v], topPts[uCount-1][v+1], bottomPts[uCount-1][v], bottomPts[uCount-1][v+1] );
+		int i = addSimpleSurface( topPts[v*uCount+uCount-1], topPts[(v+1)*uCount+uCount-1], bottomPts[v*uCount+uCount-1], bottomPts[(v+1)*uCount+uCount-1] );
 		indices.push_back(i);
 	}
 	
@@ -365,9 +373,12 @@ vector<int> Geometry::thickenSurface( int surface_index, float thickness )
 void Geometry::updateThickenedSurface( int surface_index, double thickness, vector<int>& indices ){
 	ON_NurbsSurface* surface = surfaces_table[surface_index];
 	
-	ON_3dPoint topPts[uCount][vCount];
-	ON_3dPoint bottomPts[uCount][vCount];
+	//ON_3dPoint topPts[uCount][vCount];
+	//ON_3dPoint bottomPts[uCount][vCount];
 	
+    vector<ON_3dPoint> topPts;
+    vector<ON_3dPoint> bottomPts;
+    
 	double uMin, uMax, vMin, vMax;
 	
 	surface->GetDomain(0, &uMin, &uMax);
@@ -388,14 +399,19 @@ void Geometry::updateThickenedSurface( int surface_index, double thickness, vect
 			v = vStep * (double)vc + vMin;
 			
 			surface->EvNormal(u, v, pt, vec);
-
-			topPts[uc][vc].x = pt.x + thickness*vec.x;
-			topPts[uc][vc].y = pt.y + thickness*vec.y;
-			topPts[uc][vc].z = pt.z + thickness*vec.z;
+      
+      ON_3dPoint t, b;
+      
+			t.x = pt.x + thickness*vec.x;
+			t.y = pt.y + thickness*vec.y;
+			t.z = pt.z + thickness*vec.z;
 			
-			bottomPts[uc][vc].x = pt.x - thickness*vec.x;
-			bottomPts[uc][vc].y = pt.y - thickness*vec.y;
-			bottomPts[uc][vc].z = pt.z - thickness*vec.z;
+			b.x = pt.x - thickness*vec.x;
+			b.y = pt.y - thickness*vec.y;
+			b.z = pt.z - thickness*vec.z;
+      
+      topPts.push_back(t);
+      bottomPts.push_back(b);
 		}
 	}
 	
@@ -403,49 +419,53 @@ void Geometry::updateThickenedSurface( int surface_index, double thickness, vect
 	
 	for( int uc=0; uc<uCount-1; uc++ ){
 		for( int vc=0; vc<vCount-1; vc++ ){
-			updateSimpleSurface( indices[i], topPts[uc][vc], topPts[uc][vc+1], topPts[uc+1][vc], topPts[uc+1][vc+1] );
+			updateSimpleSurface( indices[i], topPts[vc*uCount+uc], topPts[(vc+1)*uCount+uc], topPts[vc*uCount+uc+1], topPts[(vc+1)*uCount+uc+1] );
 			i++;
 		}
 	}
 	
 	for( int uc=0; uc<uCount-1; uc++ ){
 		for( int vc=0; vc<vCount-1; vc++ ){
-			updateSimpleSurface( indices[i], bottomPts[uc][vc], bottomPts[uc][vc+1], bottomPts[uc+1][vc], bottomPts[uc+1][vc+1] );
+			updateSimpleSurface( indices[i], bottomPts[vc*uCount+uc], bottomPts[(vc+1)*uCount+uc], bottomPts[vc*uCount+uc+1], bottomPts[(vc+1)*uCount+uc+1] );
 			i++;
 		}
 	}
 	
 	for( int u=0; u<uCount-1; u++ ){
-		updateSimpleSurface( indices[i], topPts[u][0], topPts[u+1][0], bottomPts[u][0], bottomPts[u+1][0] );
+		updateSimpleSurface( indices[i], topPts[u], topPts[u+1], bottomPts[u], bottomPts[u+1] );
 		i++;
 	}
 	
 	for( int u=0; u<uCount-1; u++ ){
-		updateSimpleSurface( indices[i], topPts[u][vCount-1], topPts[u+1][vCount-1], bottomPts[u][vCount-1], bottomPts[u+1][vCount-1] );
+		updateSimpleSurface( indices[i], topPts[(vCount-1)*uCount+u], topPts[(vCount-1)*uCount+u+1], bottomPts[(vCount-1)*uCount+u], bottomPts[(vCount-1)*uCount+u+1] );
 		i++;
 	}
 	
 	for( int v=0; v<vCount-1; v++ ){
-		updateSimpleSurface( indices[i], topPts[0][v], topPts[0][v+1], bottomPts[0][v], bottomPts[0][v+1] );
+		updateSimpleSurface( indices[i], topPts[v*uCount], topPts[(v+1)*uCount], bottomPts[v*uCount], bottomPts[(v+1)*uCount] );
 		i++;
 	}
 	
 	for( int v=0; v<vCount-1; v++ ){
-		updateSimpleSurface( indices[i], topPts[uCount-1][v], topPts[uCount-1][v+1], bottomPts[uCount-1][v], bottomPts[uCount-1][v+1] );
+		updateSimpleSurface( indices[i], topPts[v*uCount+uCount-1], topPts[(v+1)*uCount+uCount-1], bottomPts[v*uCount+uCount-1], bottomPts[(v+1)*uCount+uCount-1] );
 		i++;
 	}
 	
 }
 
 int Geometry::getNodeIndex( int u, int v, int side ){
-	return u*vCount + v + side*(uCount*vCount);
+	//return u*vCount + v + side*(uCount*vCount);
+    return v*uCount + u + side*(uCount*vCount);
 }
 
 void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes, vector<Face>& faces){
 	ON_NurbsSurface* surface = surfaces_table[surface_index];
 	
-	ON_3dPoint topPts[uCount][vCount];
-	ON_3dPoint bottomPts[uCount][vCount];
+	//ON_3dPoint topPts[uCount][vCount];
+	//ON_3dPoint bottomPts[uCount][vCount];
+    
+  vector<ON_3dPoint> topPts;
+  vector<ON_3dPoint> bottomPts;
 	
 	double uMin, uMax, vMin, vMax;
 	
@@ -472,13 +492,18 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 			addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
 			addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
 			
-			topPts[uc][vc].x = pt.x + thickness*vec.x;
-			topPts[uc][vc].y = pt.y + thickness*vec.y;
-			topPts[uc][vc].z = pt.z + thickness*vec.z;
+            ON_3dPoint t, b;
+            
+			t.x = pt.x + thickness*vec.x;
+			t.y = pt.y + thickness*vec.y;
+			t.z = pt.z + thickness*vec.z;
 			
-			bottomPts[uc][vc].x = pt.x - thickness*vec.x;
-			bottomPts[uc][vc].y = pt.y - thickness*vec.y;
-			bottomPts[uc][vc].z = pt.z - thickness*vec.z;
+			b.x = pt.x - thickness*vec.x;
+			b.y = pt.y - thickness*vec.y;
+			b.z = pt.z - thickness*vec.z;
+            
+            topPts.push_back(t);
+            bottomPts.push_back(b);
 		}
 	}
 	
@@ -486,9 +511,9 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 	for( int uc=0; uc<=uCount-1; uc++ ){
 		for( int vc=0; vc<=vCount-1; vc++ ){
 			Node n;
-			n.x = topPts[uc][vc].x;
-			n.y = topPts[uc][vc].y;
-			n.z = topPts[uc][vc].z;
+			n.x = topPts[vc*uCount+uc].x;
+			n.y = topPts[vc*uCount+uc].y;
+			n.z = topPts[vc*uCount+uc].z;
 			nodes.push_back( n );
 		}
 	}
@@ -496,9 +521,9 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 	for( int uc=0; uc<=uCount-1; uc++ ){
 		for( int vc=0; vc<=vCount-1; vc++ ){
 			Node n;
-			n.x = bottomPts[uc][vc].x;
-			n.y = bottomPts[uc][vc].y;
-			n.z = bottomPts[uc][vc].z;
+			n.x = bottomPts[vc*uCount+uc].x;
+			n.y = bottomPts[vc*uCount+uc].y;
+			n.z = bottomPts[vc*uCount+uc].z;
 			nodes.push_back( n );
 		}
 	}
@@ -610,21 +635,22 @@ bool Geometry::generateMesh( vector<Node>& nodes, vector<Face>& faces, vector<Co
 	
   ON_Mesh* mesh = new ON_Mesh( face_count, vertex_count, bHasVertexNormals, bHasTexCoords);
 	
-	for( int i=0; i<nodes.size(); i++ ){
-		mesh->SetVertex( i, ON_3dPoint( nodes[i].x,  nodes[i].y,  nodes[i].z) );
-	}
-	
-	if( colors.size() == nodes.size() ){
-		for( int i=0; i<nodes.size(); i++ ){
-			mesh->m_C.Append( ON_Color( colors[i].r, colors[i].g, colors[i].b ) );
-		}
-	}
-	
-	for( int i=0; i<faces.size(); i++ ){
-		mesh->SetTriangle( i, faces[i].pt0, faces[i].pt1, faces[i].pt2 );
-	}
-	
-	bool ok = false;
+  for( int i=0; i<nodes.size(); i++ ){
+      mesh->SetVertex( i, ON_3dPoint( nodes[i].x,  nodes[i].y,  nodes[i].z) );
+  }
+
+  if( colors.size() == nodes.size() ){
+      for( int i=0; i<nodes.size(); i++ ){
+          mesh->m_C.Append( ON_Color( colors[i].r, colors[i].g, colors[i].b ) );
+      }
+  }
+
+  for( int i=0; i<faces.size(); i++ ){
+      mesh->SetTriangle( i, faces[i].pt0, faces[i].pt1, faces[i].pt2 );
+  }
+
+  bool ok = false;
+    
   if ( mesh->IsValid() ) 
   {
     if ( !mesh->HasVertexNormals() )

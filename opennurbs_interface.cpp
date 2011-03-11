@@ -7,8 +7,8 @@
  *
  */
 
-#import "/Users/awmartin/Documents/DevProjects/opennurbs/opennurbs.h"
-#import "/Users/awmartin/Documents/DevProjects/opennurbs/opennurbs_gl.h"
+#import "/Users/awmartin/Dropbox/OpenManifold/src/opennurbs/opennurbs.h"
+#import "/Users/awmartin/Dropbox/OpenManifold/src/opennurbs/opennurbs_gl.h"
 
 #import "opennurbs_interface.h"
 

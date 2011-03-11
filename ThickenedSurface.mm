@@ -96,11 +96,14 @@
 - (void) showMesh
 {
 	vector<Node> tmpNodes;
+  
+  double disp_scale = 1.0;
+  
 	for( int i=0; i<out->numberofpoints; i++ ){
 		Node n;
-		n.x = out->pointlist[i*3+0];
-		n.y = out->pointlist[i*3+1];
-		n.z = out->pointlist[i*3+2];
+		n.x = out->pointlist[i*3+0] + disp_scale*node_displacements[i*3+0];
+		n.y = out->pointlist[i*3+1] + disp_scale*node_displacements[i*3+1];
+		n.z = out->pointlist[i*3+2] + disp_scale*node_displacements[i*3+2];
 		tmpNodes.push_back( n );
 	}
 	
@@ -240,7 +243,7 @@
 		int numberofnodes = out->numberofpoints;
 		//int numberofelements = out->numberoftetrahedra;
 		
-		double node_displacements[numberofnodes][3];
+		//double node_displacements[numberofnodes][3];
 		//double element_stresses[numberofelements][6];
 		//double element_strains[numberofelements][6];
 		
@@ -265,12 +268,16 @@
 				NSString* displacement1 = [lines objectAtIndex:i+2];
 				NSString* displacement2 = [lines objectAtIndex:i+3];
 				
-				node_displacements[index][0] = [[displacement0 substringWithRange:r] doubleValue];
-				node_displacements[index][1] = [[displacement1 substringWithRange:r] doubleValue];
-				node_displacements[index][2] = [[displacement2 substringWithRange:r] doubleValue];
-				
+				//node_displacements[index][0] = [[displacement0 substringWithRange:r] doubleValue];
+				//node_displacements[index][1] = [[displacement1 substringWithRange:r] doubleValue];
+				//node_displacements[index][2] = [[displacement2 substringWithRange:r] doubleValue];
+        
+        node_displacements.push_back( [[displacement0 substringWithRange:r] doubleValue] );
+        node_displacements.push_back( [[displacement1 substringWithRange:r] doubleValue] );
+        node_displacements.push_back( [[displacement2 substringWithRange:r] doubleValue] );
+        
 				// Calculate magnitude. Calculate min and max.
-				double mag = sqrt( pow(node_displacements[index][0],2) + pow(node_displacements[index][1],2) + pow(node_displacements[index][2],2) );
+				double mag = sqrt( pow(node_displacements[index*3+1],2) + pow(node_displacements[index*3+1],2) + pow(node_displacements[index*3+2],2) );
 				
 				if( mag > maxDisplacement ) maxDisplacement = mag;
 				if( mag < minDisplacement ) minDisplacement = mag;
@@ -286,7 +293,7 @@
 		
 		for( int i=0; i<numberofnodes; i++ ){
 			
-			double mag = sqrt( pow(node_displacements[i][0],2) + pow(node_displacements[i][1],2) + pow(node_displacements[i][2],2) );
+			double mag = sqrt( pow(node_displacements[i*3+0],2) + pow(node_displacements[i*3+1],2) + pow(node_displacements[i*3+2],2) );
 			double p = (mag-minDisplacement)/deltaDisplacement;
 			// Calculate color given magnitude range.
 			Color c;

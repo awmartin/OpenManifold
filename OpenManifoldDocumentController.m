@@ -40,7 +40,7 @@
   
   /*NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
-  NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"~/Documents/OpenManifold" forKey:@"ScriptsLibraryPath"];
+  NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"~/Dropbox/OpenManifold" forKey:@"ScriptsLibraryPath"];
   
   [defaults registerDefaults:appDefaults];*/
 }
