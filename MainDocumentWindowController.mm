@@ -31,6 +31,8 @@
     [editModeSelect selectSegmentWithTag:GEOMETRY_SELECT_TAG];
   if( mode == PART )
     [editModeSelect selectSegmentWithTag:PART_SELECT_TAG];
+  if( mode == MESHPOINT )
+    [editModeSelect selectSegmentWithTag:MESHPOINT_SELECT_TAG];
 }
 
 - (void) setRenderingModeSelect:(int)mode

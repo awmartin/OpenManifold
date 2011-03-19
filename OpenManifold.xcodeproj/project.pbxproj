@@ -58,6 +58,7 @@
 		AF24C5951017A286007A1B31 /* Part.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF24C5941017A286007A1B31 /* Part.mm */; };
 		AF24CA2A1018E8F2007A1B31 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF24CA291018E8F2007A1B31 /* Geometry.cpp */; };
 		AF284B66102E95CC000C1C1B /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = AF284B65102E95CC000C1C1B /* Animator.m */; };
+		AF3C570813342EEE00E113E7 /* MeshPoint.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF3C570713342EEE00E113E7 /* MeshPoint.mm */; };
 		AF4A72471329D18E00F18FF6 /* opennurbs_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF4A72461329D18E00F18FF6 /* opennurbs_gl.cpp */; };
 		AF4A72501329E7F700F18FF6 /* libopennurbs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A724F1329E7F700F18FF6 /* libopennurbs.a */; };
 		AF5A7A7C104C5BAE00BF16B4 /* PythonController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AF5A7A7B104C5BAE00BF16B4 /* PythonController.mm */; };
@@ -176,6 +177,8 @@
 		AF24CA291018E8F2007A1B31 /* Geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
 		AF284B64102E95CC000C1C1B /* Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animator.h; sourceTree = "<group>"; };
 		AF284B65102E95CC000C1C1B /* Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animator.m; sourceTree = "<group>"; };
+		AF3C570613342EEE00E113E7 /* MeshPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshPoint.h; sourceTree = "<group>"; };
+		AF3C570713342EEE00E113E7 /* MeshPoint.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MeshPoint.mm; sourceTree = "<group>"; };
 		AF4A72461329D18E00F18FF6 /* opennurbs_gl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = opennurbs_gl.cpp; path = ../../OpenManifold/src/opennurbs/opennurbs_gl.cpp; sourceTree = "<group>"; };
 		AF4A724F1329E7F700F18FF6 /* libopennurbs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopennurbs.a; path = ../../OpenManifold/src/opennurbs/build/Debug/libopennurbs.a; sourceTree = "<group>"; };
 		AF5A7A7A104C5BAE00BF16B4 /* PythonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PythonController.h; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 				AF03DAC112EB83CF00DE62B7 /* DerivedProperty.mm */,
 				AF13F32412EBC08600D0CDD9 /* ThickenedSurface.h */,
 				AF13F32512EBC08600D0CDD9 /* ThickenedSurface.mm */,
+				AF3C570613342EEE00E113E7 /* MeshPoint.h */,
+				AF3C570713342EEE00E113E7 /* MeshPoint.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -605,6 +610,7 @@
 				AF03DAC212EB83CF00DE62B7 /* DerivedProperty.mm in Sources */,
 				AF13F32712EBC08600D0CDD9 /* ThickenedSurface.mm in Sources */,
 				AF4A72471329D18E00F18FF6 /* opennurbs_gl.cpp in Sources */,
+				AF3C570813342EEE00E113E7 /* MeshPoint.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

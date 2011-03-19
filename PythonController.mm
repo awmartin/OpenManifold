@@ -14,7 +14,7 @@ PyObject* log_CaptureStdout(PyObject* self, PyObject* pArgs)
 	char* LogStr = NULL;
 	if (!PyArg_ParseTuple(pArgs, "s", &LogStr)) return NULL;
 
-	[g_pPythonController pythonOut: [NSString stringWithCString: LogStr]];
+	[g_pPythonController pythonOut: [NSString stringWithUTF8String: LogStr]];
 
 	Py_INCREF(Py_None);
 	return Py_None;
@@ -26,7 +26,7 @@ PyObject* log_CaptureStderr(PyObject* self, PyObject* pArgs)
 	char* LogStr = NULL;
 	if (!PyArg_ParseTuple(pArgs, "s", &LogStr)) return NULL;
 
-	[g_pPythonController pythonOut: [NSString stringWithCString: LogStr]];
+	[g_pPythonController pythonOut: [NSString stringWithUTF8String: LogStr]];
 
 	Py_INCREF(Py_None);
 	return Py_None;

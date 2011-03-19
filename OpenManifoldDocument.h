@@ -17,9 +17,10 @@
 #define PARAMETER     3
 #define PART          4
 #define ASSEMBLY      5
+#define MESHPOINT     6
 
-#define DIAGRAM_PART  6
-#define DIAGRAM_RULE  7
+#define DIAGRAM_PART  7
+#define DIAGRAM_RULE  8
 
 
 #define OUTLINE       1
@@ -92,6 +93,7 @@
 - (void) build;
 
 - (void) addToSelection:(int)globalObjectIndex;
+- (void) addToSelection:(int)meshPointIndex withPart:(int)partIndex;
 
 - (void) unselectAll;
 

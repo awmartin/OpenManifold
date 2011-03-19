@@ -16,10 +16,12 @@
 #import "MainDocumentWindowController.h"
 #import "MainDocumentView.h"
 #import "ThickenedSurface.h"
+#import "MeshPoint.h"
 
 @implementation Part
 
 @synthesize parameters;
+@synthesize meshPoints;
 @synthesize geometries;
 @synthesize document;
 @synthesize name;
@@ -39,6 +41,9 @@
 
     parameters = [NSMutableArray array];
     [parameters retain];
+    
+    meshPoints = [NSMutableArray array];
+    [meshPoints retain];
     
     behaviors = [NSMutableArray array];
     [behaviors retain];
@@ -66,7 +71,7 @@
 
 - (void) thicken
 {
-	ThickenedSurface* tr = [[ThickenedSurface alloc] initWithSurface:0 andGeometry:geometry];
+	ThickenedSurface* tr = [[ThickenedSurface alloc] initWithSurface:0 andGeometry:geometry andPart:self];
 	[derivedProperties addObject:tr];
 }
 
@@ -89,6 +94,12 @@
 	if( [derivedProperties count] > 0 ){
 		[[derivedProperties objectAtIndex:0] showMesh];
 	}
+}
+
+- (void) addMeshPoint:(double)posX y:(double)posY z:(double)posZ
+{
+  MeshPoint* p = [[MeshPoint alloc] initWithX:posX y:posY z:posZ];
+  [meshPoints addObject:p];
 }
 
 - (void) analyze
@@ -560,6 +571,8 @@
 {
   selected = NO;
   geometry->unselectAll();
+  for( int i=0; i<[meshPoints count]; i++ )
+    [[meshPoints objectAtIndex:i] setSelected:NO];
 }
 
 
@@ -573,6 +586,12 @@
 - (void) selectGeometry:(int)globalObjectIndex
 {
   geometry->selectGeometry(globalObjectIndex);
+}
+
+
+- (void) selectMeshPoint:(int)localObjectIndex
+{
+  [[meshPoints objectAtIndex:localObjectIndex] setSelected:YES];
 }
 
 
@@ -699,6 +718,8 @@
   }
   
   if( [document getEditingMode] == PARAMETER ){
+    glPushName(PARAMETER);
+    
     for( int i=0; i<[parameters count]; i++ ){
       if( select ) glPushName(i);
       
@@ -706,8 +727,25 @@
       
       if( select ) glPopName();
     }
+    glPopName();
     
     geometry->drawParameterLines(select);
+  }
+  
+  if( [document getEditingMode] == MESHPOINT ){
+    // Draw points here, selectable for choosing loads and restraints for analysis.
+    // The 'geometry' object should keep track of the selectable points.
+    glPushName(MESHPOINT);
+    for( int i=0; i<[meshPoints count]; i++ )
+    {
+      if( select ) glPushName(i);
+      
+      // local object index
+      [[meshPoints objectAtIndex:i] drawMeshPoint];
+      
+      if( select ) glPopName();
+    }
+    glPopName();
   }
   
 }

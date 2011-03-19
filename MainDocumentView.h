@@ -36,4 +36,6 @@
 - (void) calculateDragPath:(int)axis;
 - (double) getDeltaDrag;
 
+- (void) updateAllSubViews;
+
 @end

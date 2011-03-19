@@ -428,6 +428,7 @@
 
 - (void) handleMouseDownSelection
 {
+  printf("\n\n-----\nChecking mouse down selection...\n");
   if( hits == 0 ){
     [[theController getDocument] unselectAll];
     return;
@@ -489,26 +490,44 @@
             printf( " %d,", *ptr );
           }
         }
-        
       } else if( numNames == 3 ){
-        ptr++;
-        int group = *ptr;
-        printf( "  object group = %d | ", group );
         
-        if( group == PARAMETER ){
-          // Do nothing.
-          
-          for( int j=0;j<numNames-1;j++ ){
-            ptr++;
-            printf( " %d,", *ptr );
-          }
-        }
-        
-      } else {
+        // Advance through the pointer.
         for( int j=0;j<numNames;j++ ){
           ptr++;
           printf( " %d,", *ptr );
         }
+      
+      } else if( numNames == 4 ){
+        ptr++;
+        int group = *ptr;
+        printf( "  object group = %d | ", group );
+        
+        if( group == PART ){
+          ptr++;
+          int part = *ptr;
+          printf( "  part id = %d | ", part );
+          
+          ptr++;
+          int type = *ptr;
+          printf( "type = %d | ", type );
+          
+          if( type == PARAMETER ){
+            // Do nothing.
+            
+            ptr++;
+            printf( "parameter = %d,", *ptr );
+            
+          } else if (type == MESHPOINT){
+
+            ptr++;
+            printf( "meshpoint = %d,", *ptr );
+
+          }
+        }
+        
+      } else {
+        
       }
       
       ptr++;
@@ -524,6 +543,7 @@
 
 - (void) handleMouseUpSelection
 {
+  printf("\n\n-----\nChecking mouse up selection...\n");
   // Handles the selection of geometry on mouse up events.
   if( !shiftKeyDown )
     [mani clearSelection];
@@ -556,7 +576,7 @@
         int group = *ptr;
         printf( "  object group = %d | ", group );
         
-        if( group == GEOMETRY or group == PART ){
+        if( group == GEOMETRY or group == PART or group == MESHPOINT ){
           
           ptr++;
           int globalObjectIndex = *ptr;
@@ -578,33 +598,49 @@
             printf( " %d,", *ptr );
           }
         }
-        
       } else if( numNames == 3 ){
+        for( int j=0;j<numNames;j++ ){
+          ptr++;
+          printf( " %d,", *ptr );
+        }
+      } else if( numNames == 4 ){
         ptr++;
         int group = *ptr;
         printf( "  object group = %d | ", group );
         
-        if( group == PARAMETER ){
+        if( group == PART ){
           ptr++;
           int partIndex = *ptr;
           printf( "part = %d | ", partIndex );
           
           ptr++;
-          int parameterIndex = *ptr;
-          printf( "parameter = %d | ", parameterIndex );
+          int type = *ptr;
+          printf( "type = %d | ", type );
           
-          id doc = [theController getDocument];
-          id part = [[doc parts] objectAtIndex:partIndex];
-          id parameter = [[part parameters] objectAtIndex:parameterIndex];
-          
-          [mani addTarget:parameter];
+          if( type == PARAMETER ){
+            ptr++;
+            int parameterIndex = *ptr;
+            printf( "parameter = %d | ", parameterIndex );
+            
+            id doc = [theController getDocument];
+            id part = [[doc parts] objectAtIndex:partIndex];
+            id parameter = [[part parameters] objectAtIndex:parameterIndex];
+            
+            [mani addTarget:parameter];
+            
+          } else if( type == MESHPOINT ) {
+            ptr++;
+            int pointIndex = *ptr;
+            printf( "meshpoint = %d | ", pointIndex );
+            
+            id doc = [theController getDocument];
+            //id part = [[doc parts] objectAtIndex:partIndex];
+            [doc addToSelection:pointIndex withPart:partIndex];
+          }
         }
         
       } else {
-        for( int j=0;j<numNames;j++ ){
-          ptr++;
-          printf( " %d,", *ptr );
-        }
+        
       }
       
       ptr++;
@@ -613,6 +649,12 @@
     
   } // end hits list
   
+  [self updateAllSubViews];
+}
+
+- (void) updateAllSubViews
+{
+  [[OpenManifoldDocumentController sharedDocumentController] inspectorPanel];
 }
 
 @end

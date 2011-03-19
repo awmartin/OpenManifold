@@ -13,9 +13,13 @@
 #import "Geometry.h"
 #import "ThickenedSurface.h"
 
+#import "Part.h"
+
 #import <math.h>
 
 @implementation ThickenedSurface
+
+@synthesize part;
 
 - (id) initWithSurface:(int)surfaceIndex andGeometry:(Geometry *)geo
 {
@@ -35,6 +39,17 @@
 	}
 	return self;
 }
+
+- (id) initWithSurface:(int)surfaceIndex andGeometry:(Geometry *)geo andPart:(Part *)p
+{
+	self = [super init];
+  if( self != nil ) {
+    [self initWithSurface:surfaceIndex andGeometry:geo];
+    part = p;
+	}
+	return self;
+}
+
 
 - (void) update
 {
@@ -81,13 +96,28 @@
 	}
 	
 	//tetrahedralize("pq1.414a0.1", &in, &out);
-	tetrahedralize("p", in, out);
+  char opts[] = "p";
+	tetrahedralize(opts, in, out);
 	
+	char tr[] = "mesh";
+	out->save_nodes(tr);
+	out->save_elements(tr);
+	out->save_faces(tr);
 	
-	out->save_nodes("mesh");
-	out->save_elements("mesh");
-	out->save_faces("mesh");
-	
+  // Produce the selectable points here from the 'out' object. They have to be indexed by the new tetrahedral mesh.
+
+  for( int i=0; i<out->numberofpoints; i++ ){
+		Node n;
+		n.x = out->pointlist[i*3+0];
+		n.y = out->pointlist[i*3+1];
+		n.z = out->pointlist[i*3+2];
+    // add a mesh point to the part
+    
+    if( part != nil ){
+      //geometry->addPoint( n.x, n.y, n.z );
+      [part addMeshPoint:n.x y:n.y z:n.z];
+    }
+	}
 }
 
 /**
@@ -241,14 +271,9 @@
 		// Parse the oofem output. Remember all the indices are indexed at 1.
 		
 		int numberofnodes = out->numberofpoints;
-		//int numberofelements = out->numberoftetrahedra;
-		
-		//double node_displacements[numberofnodes][3];
-		//double element_stresses[numberofelements][6];
-		//double element_strains[numberofelements][6];
 		
 		NSArray *lines = [oofemOutput componentsSeparatedByString:@"\n"];
-		printf("Number of lines = %d\n", [lines count]);
+		printf("Number of lines = %lu\n", [lines count]);
 		
 		double minDisplacement = 1000000;
 		double maxDisplacement = 0;
@@ -267,10 +292,6 @@
 				NSString* displacement0 = [lines objectAtIndex:i+1];
 				NSString* displacement1 = [lines objectAtIndex:i+2];
 				NSString* displacement2 = [lines objectAtIndex:i+3];
-				
-				//node_displacements[index][0] = [[displacement0 substringWithRange:r] doubleValue];
-				//node_displacements[index][1] = [[displacement1 substringWithRange:r] doubleValue];
-				//node_displacements[index][2] = [[displacement2 substringWithRange:r] doubleValue];
         
         node_displacements.push_back( [[displacement0 substringWithRange:r] doubleValue] );
         node_displacements.push_back( [[displacement1 substringWithRange:r] doubleValue] );

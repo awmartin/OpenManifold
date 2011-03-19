@@ -401,7 +401,8 @@ void ON_Wrapper::myDisplayObject( const ON_Object& geometry, const ON_Material& 
   if ( point ) 
   {
 		ON_GL( material );
-    ON_GL(*point);
+    ON_GL_POINT( *point );
+    //ON_GL(*point);
     return;
   }
   
@@ -413,6 +414,50 @@ void ON_Wrapper::myDisplayObject( const ON_Object& geometry, const ON_Material& 
     return;
   }
   
+}
+
+void ON_Wrapper::ON_GL_POINT( const ON_3dPoint& pt )
+{
+  glPushMatrix();
+  glTranslated(pt.x, pt.y, pt.z);
+  
+  float s = 0.05;
+  
+  glBegin(GL_QUADS);
+  {
+    glVertex3f(  s, -s, -s );
+    glVertex3f( -s, -s, -s );
+    glVertex3f( -s,  s, -s );
+    glVertex3f(  s,  s, -s );
+    
+    glVertex3f(  s,  s,  s );
+    glVertex3f( -s,  s,  s );
+    glVertex3f( -s, -s,  s );
+    glVertex3f(  s, -s,  s );
+    
+    glVertex3f(  s,  s, -s );
+    glVertex3f( -s,  s, -s );
+    glVertex3f( -s,  s,  s );
+    glVertex3f(  s,  s,  s );
+    
+    glVertex3f( -s,  s, -s );
+    glVertex3f( -s, -s, -s );
+    glVertex3f( -s, -s,  s );
+    glVertex3f( -s,  s,  s );
+    
+    glVertex3f( -s, -s, -s );
+    glVertex3f(  s, -s, -s );
+    glVertex3f(  s, -s,  s );
+    glVertex3f( -s, -s,  s );
+    
+    glVertex3f(  s, -s, -s );
+    glVertex3f(  s,  s, -s );
+    glVertex3f(  s,  s,  s );
+    glVertex3f(  s, -s,  s );
+  }
+  glEnd();
+  
+  glPopMatrix();
 }
 
 

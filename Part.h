@@ -10,6 +10,7 @@
 
 class Geometry;
 class ON_Wrapper;
+@class MeshPoint;
 @class OpenManifoldDocument;
 @class MainDocumentWindowController;
 @class MainDocumentView;
@@ -19,6 +20,7 @@ class ON_Wrapper;
   
   NSMutableArray* parameters;
   NSMutableDictionary* geometries;
+  NSMutableArray* meshPoints;
   
   BOOL selected;
   OpenManifoldDocument* document;
@@ -37,6 +39,8 @@ class ON_Wrapper;
 /** An array of all the parameters that make up this Part. 
  */
 @property (nonatomic, retain) NSMutableArray* parameters;
+
+@property (nonatomic, retain) NSMutableArray* meshPoints;
 
 @property (nonatomic, retain) NSMutableDictionary* geometries;
 
@@ -67,6 +71,10 @@ class ON_Wrapper;
 - (void) mesh;
 - (void) analyze;
 - (void) showMesh;
+
+- (void) addMeshPoint:(double)posX y:(double)posY z:(double)posZ;
+- (void) selectMeshPoint:(int)localObjectIndex;
+
 - (void) visualize;
 
 - (void) addBehavior:(id)behavior;

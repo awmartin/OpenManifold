@@ -16,13 +16,8 @@
 #import "Rule.h"
 #import "Animator.h"
 #import "Parameter.h"
-
-
 #import "Growl/Growl.h"
 
-#ifdef RUBY
-#import <MacRuby/MacRuby.h>
-#endif
 
 @implementation OpenManifoldDocument
 
@@ -354,7 +349,7 @@
 
 - (void) draw:(BOOL)select zoom:(float)zoom
 {
-  if( select ) glPushName(PARAMETER);
+  if( select ) glPushName(PART);
   
   for( int i=0;i<[parts count];i++ ){
     if( select ) glPushName(i);
@@ -447,6 +442,13 @@
       NSString* inspectorText = [NSString stringWithFormat:@"Number of selected parts: %d", [selectedParts count]];
       [[NSDocumentController sharedDocumentController] setInspectorText:inspectorText];
     }
+  }
+}
+
+- (void) addToSelection:(int)meshPointIndex withPart:(int)partIndex
+{
+  if( editingMode == MESHPOINT ){
+    [[parts objectAtIndex:partIndex] selectMeshPoint:meshPointIndex];
   }
 }
 
@@ -551,6 +553,10 @@
   }
   if( segment == 2 ){
     [self setEditingMode:PART];
+    [wc refreshView];
+  }
+  if( segment == 3 ){
+    [self setEditingMode:MESHPOINT];
     [wc refreshView];
   }
 }
