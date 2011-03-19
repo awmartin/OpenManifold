@@ -429,15 +429,12 @@
 - (void) handleMouseDownSelection
 {
   printf("\n\n-----\nChecking mouse down selection...\n");
-  if( hits == 0 ){
-    [[theController getDocument] unselectAll];
-    return;
-  }
   
   unsigned int i;
   GLuint numNames, *ptr;
   
   printf("number of hits = %d\n", hits);
+  if( hits < 1 ) return;
   
   ptr = (GLuint *) selectBuf;
   
@@ -545,13 +542,18 @@
 {
   printf("\n\n-----\nChecking mouse up selection...\n");
   // Handles the selection of geometry on mouse up events.
-  if( !shiftKeyDown )
+  if( !shiftKeyDown ){
     [mani clearSelection];
+    [[theController getDocument] unselectAll];
+  }
   
   unsigned int i;
   GLuint numNames, *ptr;
   
   printf("number of hits = %d\n", hits);
+  if( hits < 1 ) {
+    return;
+  }
   
   ptr = (GLuint *) selectBuf;
   
@@ -652,9 +654,11 @@
   [self updateAllSubViews];
 }
 
+// This was supposed to be the place to update the Inspector with a GUI for editing each mesh point.
+// Not implemented.
 - (void) updateAllSubViews
 {
-  [[OpenManifoldDocumentController sharedDocumentController] inspectorPanel];
+  //[[OpenManifoldDocumentController sharedDocumentController] inspectorPanel];
 }
 
 @end

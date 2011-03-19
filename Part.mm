@@ -686,6 +686,24 @@
   return params;
 }
 
+
+- (NSMutableArray *) getSelectedMeshPoints
+{
+  NSMutableArray* params = [NSMutableArray array];
+  
+  for( int i=0; i<[meshPoints count]; i++ ){
+    MeshPoint* p = [meshPoints objectAtIndex:i];
+    
+    if( [p selected] )
+      [ params addObject:p ];
+  }
+  
+  return params;
+}
+
+
+
+
 #pragma mark -
 #pragma mark Graph
 

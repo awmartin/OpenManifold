@@ -235,4 +235,6 @@ class ON_Wrapper;
 
 - (NSMutableArray *) getSelectedParameters;
 
+- (NSMutableArray *) getSelectedMeshPoints;
+
 @end

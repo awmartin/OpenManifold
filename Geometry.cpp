@@ -308,7 +308,7 @@ vector<int> Geometry::thickenSurface( int surface_index, float thickness )
 			v = vStep * (double)vc + vMin;
 			
 			surface->EvNormal(u, v, pt, vec);
-			addPoint( pt.x, pt.y, pt.z );
+			//addPoint( pt.x, pt.y, pt.z );
 			
 			addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
 			addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
@@ -478,7 +478,7 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 			v = vStep * (double)vc + vMin;
 			
 			surface->EvNormal(u, v, pt, vec);
-			addPoint( pt.x, pt.y, pt.z );
+			//addPoint( pt.x, pt.y, pt.z );
 			
 			addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
 			addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
