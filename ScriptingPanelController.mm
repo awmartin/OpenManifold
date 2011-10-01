@@ -92,8 +92,8 @@
 - (void) addStringToResult:(NSString*)stringToAdd
 {
   NSString* currentResult = [resultTextView string];
-  NSString* withNewLine = [currentResult stringByAppendingString:@"\n"];
-  [resultTextView setString:[ withNewLine stringByAppendingString:stringToAdd ] ];
+  //NSString* withNewLine = [currentResult stringByAppendingString:@"\n"];
+  [resultTextView setString:[ currentResult stringByAppendingString:stringToAdd ] ];
 }
 
 

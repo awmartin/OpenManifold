@@ -20,6 +20,9 @@
 @synthesize linkages;
 @synthesize values;
 @synthesize rules;
+@synthesize fixedX;
+@synthesize fixedY;
+@synthesize fixedZ;
 
 - (id) initWithPart:(id)part andGeometry:(Geometry *)geo
 {
@@ -37,6 +40,7 @@
     geometry = geo;
     dirty = NO;
     selected = NO;
+    fixed = NO;
   }
   return self;
 }
@@ -71,6 +75,18 @@
 - (void) setDirty
 {
   dirty = YES;
+}
+
+- (void) setFixed:(BOOL)x
+{
+  fixedX = x;
+  fixedY = x;
+  fixedZ = x;
+}
+
+- (BOOL) isFixed
+{
+  return fixedX and fixedY and fixedZ;
 }
 
 - (void) reset
@@ -146,6 +162,11 @@
 
 - (void) setValue:(NSString *)key withNumber:(NSNumber *)value 
 {
+  if ([self isFixed]) return;
+  if ([key isEqualToString:@"posX"] and fixedX) return;
+  if ([key isEqualToString:@"posY"] and fixedY) return;
+  if ([key isEqualToString:@"posZ"] and fixedZ) return;
+  
   //printf("The value received in setValue is %f.\n", [value floatValue]);
   [values setObject:value forKey:key];
   

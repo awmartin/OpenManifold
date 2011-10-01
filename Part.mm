@@ -17,6 +17,8 @@
 #import "MainDocumentView.h"
 #import "ThickenedSurface.h"
 #import "MeshPoint.h"
+#import "GravityLoad.h"
+#import "SupportZone.h"
 
 @implementation Part
 
@@ -29,6 +31,8 @@
 @synthesize diagramPosY;
 @synthesize behaviors;
 @synthesize derivedProperties;
+@synthesize loads;
+@synthesize supports;
 
 - (id) initWithWrapper:(ON_Wrapper*)wrap forDocument:(id)doc;
 {
@@ -50,6 +54,12 @@
 		
 		derivedProperties = [NSMutableArray array];
 		[derivedProperties retain];
+    
+    loads = [NSMutableArray array];
+    [loads retain];
+    
+    supports = [NSMutableArray array];
+    [supports retain];
     
     diagramPosX = 0;
     diagramPosY = 0;
@@ -75,6 +85,12 @@
 	[derivedProperties addObject:tr];
 }
 
+- (void) thicken:(double)thickness
+{
+  ThickenedSurface* tr = [[ThickenedSurface alloc] initWithSurface:0 andGeometry:geometry andPart:self andThickness:thickness];
+	[derivedProperties addObject:tr];
+}
+
 - (void) update
 {
 	for( int i=0; i<[derivedProperties count]; i++ ){
@@ -96,24 +112,147 @@
 	}
 }
 
-- (void) addMeshPoint:(double)posX y:(double)posY z:(double)posZ
+- (void) addMeshPoint:(double)posX y:(double)posY z:(double)posZ index:(int)pointIndex
 {
-  MeshPoint* p = [[MeshPoint alloc] initWithX:posX y:posY z:posZ];
+  MeshPoint* p = [[MeshPoint alloc] initWithX:posX y:posY z:posZ index:pointIndex];
   [meshPoints addObject:p];
+}
+
+- (void) removeAllMeshPoints
+{
+  [meshPoints removeAllObjects];
 }
 
 - (void) analyze
 {
 	if( [derivedProperties count] > 0 ){
-		[[derivedProperties objectAtIndex:0] analyze];
+    // Pass in the restraints and the loads.
+		[[derivedProperties objectAtIndex:0] analyze:[self meshPoints] withLoads:[self getLoads]];
 	}
 }
 
-- (void) visualize
+- (void) refreshAnalysis
+{
+  [self removeAllMeshPoints];
+  if( [derivedProperties count] > 0 ){
+		[[derivedProperties objectAtIndex:0] refreshAnalysis];
+	}
+}
+
+- (void) addSupport:(double)sx sy:(double)sy sz:(double)sz ex:(double)ex ey:(double)ey ez:(double)ez
+{
+  SupportZone* z = [[SupportZone alloc] init];
+  z.startX = sx;
+  z.startY = sy;
+  z.startZ = sz;
+  z.endX = ex;
+  z.endY = ey;
+  z.endZ = ez;
+  [supports addObject:z];
+}
+
+- (bool) supportsToPoints
+{
+  bool foundPoints = NO;
+  for( int i=0; i<[supports count]; i++ ){
+    SupportZone* support = [supports objectAtIndex:i];
+    NSMutableArray* fixedPoints = [NSMutableArray array];
+    for( int p=0; p<[meshPoints count]; p++ ){
+      MeshPoint* pt = [meshPoints objectAtIndex:p];
+      if ((pt.x <= support.endX && pt.x >= support.startX) && 
+          (pt.y <= support.endY && pt.y >= support.startY) &&
+          (pt.z <= support.endZ && pt.z >= support.startZ)){
+        [fixedPoints addObject:pt];
+        foundPoints = YES;
+      }
+    }
+    
+    if( foundPoints ){
+      for( int p; p<[fixedPoints count]; p++ ){
+        MeshPoint* pt = [fixedPoints objectAtIndex:p];
+        pt.locked = YES;
+      }
+    }
+  }
+  return foundPoints;
+}
+
+- (void) addLoad:(double)x y:(double)y z:(double)z loadY:(double)loadY
+{
+  GravityLoad* ld = [[GravityLoad alloc] initWithX:x y:y z:z];
+  ld.loadY = loadY;
+  [loads addObject:ld];
+}
+
+// Loops through all the loads and points to assign actual loads to generated mesh points.
+- (bool) loadsToPoints
+{
+  bool foundPoints = NO;
+  double loadRadius = 0.5;
+  for( int i=0; i<[loads count]; i++ ){
+    NSMutableArray* cachedPoints = [NSMutableArray array];
+    
+    GravityLoad* l = [loads objectAtIndex:i];
+    
+    for( int p=0; p<[meshPoints count]; p++ ){
+      MeshPoint* pt = [meshPoints objectAtIndex:p];
+      
+      // Just the distance in the xz plane.
+      double dist = sqrt( pow(l.x-pt.x,2) + pow(l.z-pt.z,2) );
+      if ( dist < loadRadius ){
+        foundPoints = YES;
+        [cachedPoints addObject:pt];
+      }
+    }
+    
+    // Distribute the load and add to the y component of the point load.
+    if( foundPoints ) {
+      double loadValue = [l magnitude] / double([cachedPoints count]);
+      for( int p=0; p<[cachedPoints count]; p++){
+        MeshPoint* pt = [cachedPoints objectAtIndex:p];
+        pt.loadY += -loadValue; // They're negative...
+      }
+    }
+  }
+  
+  return foundPoints;
+}
+
+- (NSArray *) getLoads
+{
+  NSMutableArray* tr = [NSMutableArray array];
+  for( int i=0; i<[meshPoints count]; i++ ){
+    MeshPoint* pt = [meshPoints objectAtIndex:i];
+    if( [ pt hasLoad ] )
+      [tr addObject:pt];
+  }
+  return tr;
+}
+
+- (NSArray *) getRestraints
+{
+  NSMutableArray* tr = [NSMutableArray array];
+  for( int i=0; i<[meshPoints count]; i++ ){
+    MeshPoint* pt = [meshPoints objectAtIndex:i];
+    if( [ pt locked ] )
+      [tr addObject:pt];
+  }
+  return tr;
+}
+
+- (void) processResults
 {
 	if( [derivedProperties count] > 0 ){
-		[[derivedProperties objectAtIndex:0] visualize];
+		[[derivedProperties objectAtIndex:0] processResults];
 	}
+}
+
+- (double) meshVolume
+{
+  if( [derivedProperties count] > 0 ){
+		return [[derivedProperties objectAtIndex:0] meshVolume];
+	}
+  return 0;
 }
 
 - (void) behave
@@ -766,6 +905,13 @@
     glPopName();
   }
   
+  for( int i=0; i<[loads count]; i++ ){
+    [[loads objectAtIndex:i] drawLoad];
+  }
+  
+  for( int i=0; i<[supports count]; i++ ){
+    [[supports objectAtIndex:i] drawSupport];
+  }
 }
 
 

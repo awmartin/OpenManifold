@@ -87,7 +87,7 @@ public:
 	
 	int getNodeIndex( int u, int v, int side );
 	void getMesh( int, double, vector<Node>&, vector<Face>&);
-	bool generateMesh( vector<Node>&, vector<Face>&, vector<Color>& );
+	bool generateMesh( vector<Node>&, vector<Face>&, vector<Color>&, vector<Color>& );
 	
 	void updateSimpleSurface( int, ON_3dPoint&, ON_3dPoint&, ON_3dPoint&, ON_3dPoint& );
 	int addSimpleSurface( ON_3dPoint&, ON_3dPoint&, ON_3dPoint&, ON_3dPoint& );

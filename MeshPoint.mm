@@ -19,8 +19,9 @@
 @synthesize loadZ;
 @synthesize selected;
 @synthesize locked;
+@synthesize index;
 
-- (id) initWithX:(double)posX y:(double)posY z:(double)posZ
+- (id) initWithX:(double)posX y:(double)posY z:(double)posZ index:(int)pointIndex
 {
     self = [super init];
     if (self) {
@@ -35,6 +36,8 @@
       
       self.selected = NO;
       self.locked = NO;
+      
+      self.index = pointIndex;
     }
     
     return self;
@@ -158,6 +161,11 @@
   }
   glPopMatrix();
   
+}
+
+- (BOOL) hasLoad
+{
+  return loadX != 0.0 or loadY != 0.0 or loadZ != 0.0;
 }
 
 - (void)dealloc

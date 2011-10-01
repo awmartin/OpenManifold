@@ -310,8 +310,8 @@ vector<int> Geometry::thickenSurface( int surface_index, float thickness )
 			surface->EvNormal(u, v, pt, vec);
 			//addPoint( pt.x, pt.y, pt.z );
 			
-			addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
-			addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
+			//addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
+			//addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
 			
       ON_3dPoint t, b;
             
@@ -480,8 +480,8 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 			surface->EvNormal(u, v, pt, vec);
 			//addPoint( pt.x, pt.y, pt.z );
 			
-			addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
-			addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
+			//addLine( pt.x, pt.y, pt.z, pt.x + thickness*vec.x, pt.y + thickness*vec.y, pt.z + thickness*vec.z );
+			//addLine( pt.x, pt.y, pt.z, pt.x - thickness*vec.x, pt.y - thickness*vec.y, pt.z - thickness*vec.z );
 			
       ON_3dPoint t, b;
             
@@ -618,26 +618,36 @@ void Geometry::getMesh( int surface_index, double thickness, vector<Node>& nodes
 }
 
 
-bool Geometry::generateMesh( vector<Node>& nodes, vector<Face>& faces, vector<Color>& colors ){
+bool Geometry::generateMesh( vector<Node>& nodes, vector<Face>& faces, vector<Color>& vertexColors, vector<Color>& faceColors ){
 	bool bHasVertexNormals = false;
   bool bHasTexCoords = false;
-  const int vertex_count = nodes.size();
+  const int vertex_count = faces.size()*3; // not nodes.size()
   const int face_count = faces.size();
 	
   ON_Mesh* mesh = new ON_Mesh( face_count, vertex_count, bHasVertexNormals, bHasTexCoords);
 	
-  for( int i=0; i<nodes.size(); i++ ){
+  // Use this for per vertex (displacement) coloring...
+  /*for( int i=0; i<nodes.size(); i++ ){
     mesh->SetVertex( i, ON_3dPoint( nodes[i].x,  nodes[i].y,  nodes[i].z) );
   }
 
-  if( colors.size() == nodes.size() ){
+  if( vertexColors.size() == nodes.size() ){
     for( int i=0; i<nodes.size(); i++ ){
-      mesh->m_C.Append( ON_Color( colors[i].r, colors[i].g, colors[i].b ) );
+      mesh->m_C.Append( ON_Color( vertexColors[i].r, vertexColors[i].g, vertexColors[i].b ) );
     }
-  }
-
+  }*/
+  
   for( int i=0; i<faces.size(); i++ ){
-    mesh->SetTriangle( i, faces[i].pt0, faces[i].pt1, faces[i].pt2 );
+    // Add points individually and add the colors as needed.
+    mesh->SetVertex( i*3+0, ON_3dPoint( nodes[faces[i].pt0].x,  nodes[faces[i].pt0].y,  nodes[faces[i].pt0].z ) );
+    mesh->SetVertex( i*3+1, ON_3dPoint( nodes[faces[i].pt1].x,  nodes[faces[i].pt1].y,  nodes[faces[i].pt1].z ) );
+    mesh->SetVertex( i*3+2, ON_3dPoint( nodes[faces[i].pt2].x,  nodes[faces[i].pt2].y,  nodes[faces[i].pt2].z ) );
+    
+    mesh->m_C.Append( ON_Color( faceColors[i].r, faceColors[i].g, faceColors[i].b ) );
+    mesh->m_C.Append( ON_Color( faceColors[i].r, faceColors[i].g, faceColors[i].b ) );
+    mesh->m_C.Append( ON_Color( faceColors[i].r, faceColors[i].g, faceColors[i].b ) );
+    
+    mesh->SetTriangle( i, i*3+0, i*3+1, i*3+2 );
   }
 
   bool ok = false;
@@ -653,7 +663,7 @@ bool Geometry::generateMesh( vector<Node>& nodes, vector<Face>& faces, vector<Co
 		meshes_table.push_back( mesh );
 		object_types.push_back( MESH );
 		
-		int global_object_index = model->m_object_table.Count(); // So se can keep track of this object globally.
+		int global_object_index = model->m_object_table.Count(); // So we can keep track of this object globally.
 		global_object_indices.push_back( global_object_index );
 		
 		selected_objects.push_back( 0 );

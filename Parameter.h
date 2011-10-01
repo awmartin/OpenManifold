@@ -34,11 +34,19 @@ class Geometry;
   BOOL dirty;
   
   BOOL selected;
+  
+  BOOL fixed;
+  BOOL fixedX;
+  BOOL fixedY;
+  BOOL fixedZ;
 }
 
 @property (nonatomic, retain) NSMutableDictionary* values;
 @property (nonatomic, retain) NSMutableArray* linkages;
 @property (nonatomic, retain) NSMutableArray* rules;
+@property (nonatomic, assign) BOOL fixedX;
+@property (nonatomic, assign) BOOL fixedY;
+@property (nonatomic, assign) BOOL fixedZ;
 
 /** 
  *  Standard constructor. 
@@ -52,6 +60,8 @@ class Geometry;
 - (NSMutableArray*) getUnexecutedRules;
 
 - (BOOL) isDirty;
+
+- (void) setFixed:(BOOL)x;
 
 /**
  *  Makes a node dirty for the graph evaluation.

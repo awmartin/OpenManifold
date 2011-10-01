@@ -70,6 +70,7 @@
   scriptsBrowserPanel = [[ScriptsBrowserPanelController alloc] initWithDocument:self];
   [self addWindowController:scriptsBrowserPanel];
   [(NSPanel*)[scriptsBrowserPanel window] setFloatingPanel:NO];
+  [(NSPanel*)[scriptsBrowserPanel window] setIsVisible:NO];
   
   scriptingPanel = [[ScriptingPanelController alloc] initWithDocument:self];
   [self addWindowController:scriptingPanel];
@@ -702,8 +703,6 @@
   rules = nil;
   [animators release];
   animators = nil;
-  
-  
   
   [super dealloc];
 }

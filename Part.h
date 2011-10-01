@@ -21,6 +21,8 @@ class ON_Wrapper;
   NSMutableArray* parameters;
   NSMutableDictionary* geometries;
   NSMutableArray* meshPoints;
+  NSMutableArray* loads;
+  NSMutableArray* supports;
   
   BOOL selected;
   OpenManifoldDocument* document;
@@ -43,6 +45,9 @@ class ON_Wrapper;
 @property (nonatomic, retain) NSMutableArray* meshPoints;
 
 @property (nonatomic, retain) NSMutableDictionary* geometries;
+
+@property (nonatomic, retain) NSMutableArray* loads;
+@property (nonatomic, retain) NSMutableArray* supports;
 
 @property (nonatomic, retain) OpenManifoldDocument* document;
 
@@ -67,15 +72,25 @@ class ON_Wrapper;
 
 - (void) thickenSurfaceTest;
 - (void) thicken;
+- (void) thicken:(double)thickness;
 - (void) update;
 - (void) mesh;
 - (void) analyze;
 - (void) showMesh;
 
-- (void) addMeshPoint:(double)posX y:(double)posY z:(double)posZ;
+- (void) addMeshPoint:(double)posX y:(double)posY z:(double)posZ index:(int)pointIndex;
+- (void) removeAllMeshPoints;
 - (void) selectMeshPoint:(int)localObjectIndex;
 
-- (void) visualize;
+- (void) addSupport:(double)sx sy:(double)sy sz:(double)sz ex:(double)ex ey:(double)ey ez:(double)ez;
+- (bool) supportsToPoints;
+- (void) addLoad:(double)x y:(double)y z:(double)z loadY:(double)loadY;
+- (bool) loadsToPoints;
+- (NSArray *) getLoads;
+- (NSArray *) getRestraints;
+
+- (void) processResults;
+- (double) meshVolume;
 
 - (void) addBehavior:(id)behavior;
 
